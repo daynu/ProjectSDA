@@ -34,28 +34,7 @@ const Event = mongoose.model('Event', eventSchema)
 
 const User = mongoose.model('User', userSchema);
 
-function addUser(name, email)
-{
-  const newUser = new User(
-    {
-      name: name,
-      email: email
-    }
-  )
-
-  newUser.save()
-}
-
-addUser('Dan', 'danucelcurajos')
-
-const Rockstadt = new Event(
-  {
-    name: 'Rockstadt',
-    date: '12/11/2023'
-  }
-)
-
-Rockstadt.save()
+//ROUTES
 
 app.get('/api/users', async function (req, res) {
   try {
@@ -79,5 +58,33 @@ app.get('/api/events', async function (req, res)
     res.status(500).send('Internal Server Error');
   }
 })
+
+//ADD FUNCTIONS
+
+function addUser(name, email)
+{
+  const newUser = new User(
+    {
+      name: name,
+      email: email
+    }
+  )
+
+  newUser.save()
+}
+
+function addEvent(name, date)
+{
+  const newEvent = new Event(
+  {
+    name: name,
+    date: date
+  }
+  )
+
+  newEvent.save()
+}
+
+
 
 app.listen(5000)

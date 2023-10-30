@@ -39,7 +39,7 @@ function App() {
       {(typeof eventsData === 'undefined') ? (<p>Loading...</p>)
       : (eventsData.map((event, i)=>
       (
-        <p key = {i}>{event.name}</p>
+        <p key = {i}>{event.name}, {event.date}</p>
       )))}
     </div>
     </>
