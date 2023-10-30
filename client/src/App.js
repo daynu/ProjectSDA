@@ -1,29 +1,48 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import Navbar from './components/Navbar'
 
 function App() {
 
-  const [backendData, setBackendData] = useState([{}])
+  const [usersData, setUsersData] = useState([{}])
+
+  const [eventsData, setEventsData] = useState([{}])
 
   useEffect(()=>
   {
-    fetch('/api').then((response)=>
+    fetch('/api/users').then((response)=>
     {
       response.json().then((data) =>
       {
-        setBackendData(data)
+        setUsersData(data)
+      })
+    })
+
+    fetch('/api/events').then((response)=>
+    {
+      response.json().then((data)=>
+      {
+        setEventsData(data)
       })
     })
   }, [])
 
   return (
+    <>
+    <Navbar />
     <div>
-      {(typeof backendData.users === 'undefined') ? (<p>Loading...</p>)
-      : (backendData.users.map((user, i)=>
+      {(typeof usersData === 'undefined') ? (<p>Loading...</p>)
+      : (usersData.map((user, i)=>
       (
-        <p key = {i}>{user}</p>
+        <p key = {i}>{user.name}</p>
+      )))}
+      {(typeof eventsData === 'undefined') ? (<p>Loading...</p>)
+      : (eventsData.map((event, i)=>
+      (
+        <p key = {i}>{event.name}</p>
       )))}
     </div>
+    </>
   )
 }
 
