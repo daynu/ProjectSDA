@@ -7,6 +7,8 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(cors())
+
 
 //MONGO SETUP
 const mongoose = require('mongoose')
