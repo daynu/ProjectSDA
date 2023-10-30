@@ -1,49 +1,21 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import Navbar from './components/Navbar'
+import { BrowserRouter as Router, Route, Link, useLocation } from 'react-router-dom';
+import Home from './components/Home';
+import './index.css'
 
 function App() {
-
-  const [usersData, setUsersData] = useState([{}])
-
-  const [eventsData, setEventsData] = useState([{}])
-
-  useEffect(()=>
-  {
-    fetch('/api/users').then((response)=>
-    {
-      response.json().then((data) =>
-      {
-        setUsersData(data)
-      })
-    })
-
-    fetch('/api/events').then((response)=>
-    {
-      response.json().then((data)=>
-      {
-        setEventsData(data)
-      })
-    })
-  }, [])
-
   return (
     <>
-    <Navbar />
-    <div>
-      {(typeof usersData === 'undefined') ? (<p>Loading...</p>)
-      : (usersData.map((user, i)=>
-      (
-        <p key = {i}>{user.name}</p>
-      )))}
-      {(typeof eventsData === 'undefined') ? (<p>Loading...</p>)
-      : (eventsData.map((event, i)=>
-      (
-        <p key = {i}>{event.name}, {event.date}</p>
-      )))}
-    </div>
+        <div id="navbar">
+          <Link to='/'>Home</Link>
+          <Link to='/contact'>Contact</Link>
+          <div id = "loginSignup">
+              <Link to='/login'>Login</Link>
+              <Link to="/signup">Sign up</Link>
+          </div>
+         
+        </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

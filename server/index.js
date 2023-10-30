@@ -1,8 +1,11 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express()
 
 
-
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //MONGO SETUP
@@ -23,6 +26,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   name: String,
   email: String,
+  password: String
 });
 
 const eventSchema = new Schema({
@@ -59,14 +63,21 @@ app.get('/api/events', async function (req, res)
   }
 })
 
+app.post('/signup', function(req, res)
+{
+  const {name, email, password} = req.body
+  addUser(name, email, password)
+})
+
 //ADD FUNCTIONS
 
-function addUser(name, email)
+function addUser(name, email, password)
 {
   const newUser = new User(
     {
       name: name,
-      email: email
+      email: email,
+      password: password
     }
   )
 

@@ -12,17 +12,26 @@ code {
     monospace;
 }
 
-.navbar
+#navbar
 {
   width: 100vw;
   background-color: black;
   color: white;
   height: 7vh;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 a
 {
     text-decoration: none;
     color: white;
+}
+
+
+#loginSignup
+{
+  display: flex;
+  gap: 20px;
 }
