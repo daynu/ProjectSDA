@@ -12,13 +12,17 @@ function Signup() {
     e.preventDefault();
     
     try {
-      // Send a POST request to your Express.js server
-      const response = await axios.post('/signup', formData);
+      const response = await axios.post('/signup', formData).then(res =>
+        {
+          if(res.data === "exists")
+          {
+            alert("User already exists")
+          }
+        });
 
-      // Handle the response, e.g., show a success message to the user
       console.log(response.data);
     } catch (error) {
-      // Handle errors, e.g., show an error message to the user
+     
       console.error(error);
     }
   };

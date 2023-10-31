@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const passportLocalMongoose = require('passport-local-mongoose')
 const cors = require('cors')
 const app = express()
 
@@ -13,7 +14,7 @@ app.use(cors())
 //MONGO SETUP
 const mongoose = require('mongoose')
 
-const mongoURI = 'mongodb+srv://danu:danu@test0.hlgvzt2.mongodb.net/'
+const mongoURI = 'mongodb+srv://danu:danu@cluster0.4zkmykg.mongodb.net/'
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection
@@ -26,7 +27,7 @@ db.once('open', () => {
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  name: String,
+  username: String,
   email: String,
   password: String
 });
@@ -35,6 +36,8 @@ const eventSchema = new Schema({
   name: String,
   date: String
 })
+
+userSchema.plugin(passportLocalMongoose)
 
 const Event = mongoose.model('Event', eventSchema)
 
@@ -65,19 +68,31 @@ app.get('/api/events', async function (req, res)
   }
 })
 
-app.post('/signup', function(req, res)
-{
-  const {name, email, password} = req.body
-  addUser(name, email, password)
-})
+app.post('/signup', async function(req, res) {
+  const { name, email, password } = req.body;
 
+  try {
+    const existingUser = await User.findOne({ username: name });
+
+    if (existingUser) {
+      return res.status(400).json("exists");
+    }
+
+    // Assuming addUser is a synchronous function that adds the user to the database
+    addUser(name, email, password);
+
+    res.json({ success: 'User registered successfully' });
+  } catch (error) {
+    return res.status(500).json({ error: 'Error registering user' });
+  }
+});
 //ADD FUNCTIONS
 
 function addUser(name, email, password)
 {
   const newUser = new User(
     {
-      name: name,
+      username: name,
       email: email,
       password: password
     }
