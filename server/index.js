@@ -78,7 +78,6 @@ app.post('/signup', async function(req, res) {
       return res.json("exists");
     }
 
-    // Assuming addUser is a synchronous function that adds the user to the database
     addUser(name, email, password);
 
     res.json({ success: 'User registered successfully' });
