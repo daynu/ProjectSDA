@@ -8,16 +8,20 @@ export default function Login()
         name: '',
         password: '',
       });
-    
+      
+    const[response, setResponse] = useState()
+
       const handleFormSubmit = async (e) => {
         e.preventDefault();
         
         try {
-          // Send a POST request to your Express.js server
-          const response = await axios.post('/login', loginData);
-    
-          // Handle the response, e.g., show a success message to the user
-          console.log(response.data);
+          await axios.post('/login', loginData).then(res =>
+          {
+              setResponse(res.data)
+              console.log(response)
+          });
+  
+          
         } catch (error) {
           // Handle errors, e.g., show an error message to the user
           console.error(error);
@@ -35,6 +39,7 @@ export default function Login()
     return(
         <>
             <h2>Log into your account</h2>
+            <p>{response && response}</p>
             <form onSubmit={handleFormSubmit} id = 'loginForm'>
                 <input onChange={handleInputChange} name="name" type="text" placeholder="Username" />
                 <input onChange={handleInputChange} name="password" type="password" placeholder="Password" />

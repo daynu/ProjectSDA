@@ -75,7 +75,7 @@ app.post('/signup', async function(req, res) {
     const existingUser = await User.findOne({ username: name });
 
     if (existingUser) {
-      return res.status(400).json("exists");
+      return res.json("exists");
     }
 
     // Assuming addUser is a synchronous function that adds the user to the database
@@ -86,6 +86,40 @@ app.post('/signup', async function(req, res) {
     return res.status(500).json({ error: 'Error registering user' });
   }
 });
+
+app.post("/login", async function(req, res)
+{
+  const {name, password} = req.body
+
+  try
+  {
+    const user = await User.findOne({username: name})
+
+    if(user)
+    {
+      if(password === user.password)
+      {
+        res.json("Logged in")
+      }
+      else
+      {
+        res.json("Wrong password")
+      }
+    }
+    else
+    {
+      res.json("User hasn't registered yet")
+    }
+
+  }
+  catch(e)
+  {
+    console.log(e)
+  }
+
+
+})
+
 //ADD FUNCTIONS
 
 function addUser(name, email, password)

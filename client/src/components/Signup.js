@@ -1,26 +1,39 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios or your preferred HTTP client
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
+
+  const history = useNavigate()
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
   });
 
+const [exists, setExists] = useState(false)
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     
     try {
-      const response = await axios.post('/signup', formData).then(res =>
-        {
-          if(res.data === "exists")
-          {
-            alert("User already exists")
-          }
-        });
+      const response = await axios.post('/signup', formData)
 
-      console.log(response.data);
+      const data = response.data
+
+      console.log(data)
+
+      if(data === "exists")
+      {
+        setExists(true)
+      }
+      else
+      {
+        setExists(false)
+        history("/login")
+      }
+
     } catch (error) {
      
       console.error(error);
@@ -38,6 +51,7 @@ function Signup() {
   return (
     <>
     <h2>Sign Up</h2>
+    {exists && <p>User already exists</p> }
     <form onSubmit={handleFormSubmit}>
       <input
         type="text"
