@@ -29,7 +29,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
   email: String,
-  password: String
+  password: String, 
+  admin: Boolean
 });
 
 const eventSchema = new Schema({
@@ -127,7 +128,8 @@ function addUser(name, email, password)
     {
       username: name,
       email: email,
-      password: password
+      password: password,
+      admin: false
     }
   )
 
