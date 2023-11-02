@@ -30,8 +30,8 @@ const [exists, setExists] = useState(false)
       }
       else
       {
-        setExists(false)
         history("/login")
+        setExists(false)
       }
 
     } catch (error) {

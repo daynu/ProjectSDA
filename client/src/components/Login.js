@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate} from 'react-router-dom';
 
 export default function Login()
 {
+
+  const history = useNavigate()
 
     const [loginData, setLoginData] = useState({
         name: '',
@@ -18,7 +21,6 @@ export default function Login()
           await axios.post('/login', loginData).then(res =>
           {
               setResponse(res.data)
-              console.log(response)
           });
   
           
@@ -28,6 +30,12 @@ export default function Login()
         }
       };
     
+      useEffect(() => {
+        if (response === "Logged in") {
+          history('/', {state: {name: loginData.name}})
+        }
+      }, [response, history]);
+
       const handleInputChange = (e) => {
         const { name, value } = e.target;
         setLoginData({

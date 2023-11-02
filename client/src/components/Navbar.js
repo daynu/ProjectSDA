@@ -7,26 +7,47 @@ export default function Navbar()
     const [user, setUser] = useState()
 
     const location = useLocation()
-
-    useEffect(() =>
+    try
+    {
+            useEffect(() =>
     {
         if(location.state.name)
         {
             setUser(location.state.name)
-            console.log(user)
         }
     }, [])
-   
+    }
+    catch(e)
+    {
+        console.log(e)
+    }
+
+   function LogOut()
+   {
+        setUser('')
+        console.log("pressed")
+   }
+
+
 
     return(
         <div id="navbar">
           <Link to='/'>Home</Link>
           <Link to='/contact'>Contact</Link>
-          <div id = "loginSignup">
-            {user && <p>{user.name}</p>}
-              <Link to='/login'>Login</Link>
-              <Link to="/signup">Sign up</Link>
-          </div>
+          
+            {user ? (
+                <div id = "loginSignup">
+                <p>{user}</p>
+                <button id = "logout" onClick = {LogOut}>Log out</button>
+                </div>
+                )
+            :
+            (   <div id = "loginSignup">
+                <Link to='/login'>Login</Link>
+                <Link to="/signup">Sign up</Link>
+                </div>
+            )}
+
          
         </div>
     )
