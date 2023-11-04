@@ -9,17 +9,15 @@ export default function Navbar()
     const location = useLocation()
     try
     {
-            useEffect(() =>
-    {
-        if(location.state.name)
-        {
-            setUser(location.state.name)
-        }
-    }, [])
+        useEffect(() => {
+            if (location.state && location.state.name) {
+              setUser(location.state.name);
+            }
+          }, [location.state]);
     }
     catch(e)
     {
-        console.log(e)
+        console.error(e)
     }
 
    function LogOut()
