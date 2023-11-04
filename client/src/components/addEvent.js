@@ -37,6 +37,7 @@ export default function AddEvent()
         <form onSubmit={handleFormSubmit} id = "projectForm">
             <input onChange={handleChange} name = "title" placeholder="title" type="text" />
             <input onChange={handleChange} name = "date" type="date" />
+            <input type="submit" />
         </form>
     )
 }

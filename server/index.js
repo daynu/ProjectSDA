@@ -34,7 +34,7 @@ const userSchema = new Schema({
 });
 
 const eventSchema = new Schema({
-  name: String,
+  title: String,
   date: String
 })
 
@@ -129,6 +129,13 @@ app.post("/login", async function(req, res)
 
 })
 
+app.post('/addevent', async function(req, res)
+{
+  const {title, date} = req.body
+
+  addEvent(title, date)
+})
+
 //ADD FUNCTIONS
 
 function addUser(name, email, password)
@@ -145,11 +152,11 @@ function addUser(name, email, password)
   newUser.save()
 }
 
-function addEvent(name, date)
+function addEvent(title, date)
 {
   const newEvent = new Event(
   {
-    name: name,
+    title: title,
     date: date
   }
   )

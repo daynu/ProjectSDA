@@ -15,7 +15,13 @@ export default function Home()
 
     const location = useLocation()
 
-
+    useEffect(() =>
+    {
+        axios.get('/api/events').then(res =>
+            {
+                setEventsData(res.data)
+            })
+    }, [])
 
     useEffect(() => {
         if (location.state && location.state.name) {
@@ -45,7 +51,7 @@ export default function Home()
         {(typeof eventsData === 'undefined') ? (<p>Loading...</p>)
         : (eventsData.map((event, i)=>
         (
-            <p key = {i}>{event.name}, {event.date}</p>
+            <p key = {i}>{event.title}, {event.date}</p>
         )))}
         </div>
         </>
