@@ -1,38 +1,47 @@
 import { useEffect, useState } from "react"
+import { useLocation } from "react-router-dom"
+import axios from "axios"
+import AddEvent from "./addEvent"
 
 export default function Home()
 {
-    const [usersData, setUsersData] = useState([{}])
-
     const [eventsData, setEventsData] = useState([{}])
 
-    useEffect(()=>
-    {
-        fetch('/api/users').then((response)=>
-        {
-        response.json().then((data) =>
-        {
-            setUsersData(data)
-        })
-        })
+    const [user, setUser] = useState()
 
-        fetch('/api/events').then((response)=>
-        {
-        response.json().then((data)=>
-        {
-            setEventsData(data)
-        })
-        })
-    }, [])
+    const [isAdmin, setIsAdmin] = useState(false)
+
+    const [showForm, setShowForm] = useState(false)
+
+    const location = useLocation()
+
+
+
+    useEffect(() => {
+        if (location.state && location.state.name) {
+          setUser(location.state.name);
+        }
+      }, [location.state]);
+      
+      useEffect(() => {
+        if (user) {
+          axios.get(`/api/userRole/${user}`).then((res) => {
+            setIsAdmin(res.data.isAdmin);
+          });
+        }
+      }, [user]);
+ 
+      function toggleAddForm()
+      {
+        setShowForm(true)
+      }
+
 
     return (
         <>
+        {(isAdmin && !showForm) && <button onClick={toggleAddForm}>Add Event</button>}
+        {showForm && <AddEvent />}
         <div>
-        {(typeof usersData === 'undefined') ? (<p>Loading...</p>)
-        : (usersData.map((user, i)=>
-        (
-            <p key = {i}>{user.name}</p>
-        )))}
         {(typeof eventsData === 'undefined') ? (<p>Loading...</p>)
         : (eventsData.map((event, i)=>
         (

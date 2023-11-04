@@ -69,6 +69,15 @@ app.get('/api/events', async function (req, res)
   }
 })
 
+app.get('/api/userRole/:name', async function (req, res)
+{
+  const userName = req.params.name
+
+  const userRole = await findUserRole(userName)
+
+  res.json({isAdmin: userRole})
+})
+
 app.post('/signup', async function(req, res) {
   const { name, email, password } = req.body;
 
@@ -148,6 +157,19 @@ function addEvent(name, date)
   newEvent.save()
 }
 
+
+async function findUserRole(name)
+{
+  try {
+    const user = await User.findOne({ username: name });
+    if (user) {
+      return user.admin;
+    }
+  } catch (error) {
+    
+    console.error('Error finding user role:', error);
+  }
+}
 
 
 app.listen(5000)
