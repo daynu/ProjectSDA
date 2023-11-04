@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-export default function AddEvent()
+export default function AddEvent({fetchEvents})
 {
 
     const [formData, setFormData] = useState({
@@ -15,7 +15,11 @@ export default function AddEvent()
 
         try
         {
-            axios.post('/addevent', formData)
+            axios.post('/addevent', formData).then(res =>
+              {
+                 fetchEvents()
+              })
+           
         }
         catch(e)
         {

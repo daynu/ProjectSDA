@@ -134,6 +134,8 @@ app.post('/addevent', async function(req, res)
   const {title, date} = req.body
 
   addEvent(title, date)
+
+  res.json("Event added")
 })
 
 //ADD FUNCTIONS
