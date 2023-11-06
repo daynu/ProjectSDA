@@ -7,6 +7,7 @@ export default function AddEvent({fetchEvents})
     const [formData, setFormData] = useState({
         title: '',
         date: '',
+        picture: '',
       });
 
     const handleFormSubmit = (e) =>
@@ -37,11 +38,43 @@ export default function AddEvent({fetchEvents})
         })
       }
 
+      const handleFileChange = async (e) =>
+      {
+        const file = e.target.files[0]
+
+        const base64 = await convertTo64(file)
+
+        setFormData({
+          ...formData,
+          picture: base64
+        })
+
+      }
+
     return(
         <form onSubmit={handleFormSubmit} id = "projectForm">
+            <input onChange={handleFileChange} type="file" accept=".jpeg, .jpg, .png"/>
             <input onChange={handleChange} name = "title" placeholder="title" type="text" />
             <input onChange={handleChange} name = "date" type="date" />
             <input type="submit" />
         </form>
     )
+}
+
+
+function convertTo64(file)
+{
+  return new Promise((resolve, reqject) =>
+  {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () =>
+    {
+      resolve(fileReader.result)
+    };
+    fileReader.onerror = (error) => 
+    {
+      reqject(error)
+    } 
+  })
 }

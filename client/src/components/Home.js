@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import AddEvent from "./addEvent";
+import AddEvent from "./AddEvent";
 
 export default function Home() {
   const [eventsData, setEventsData] = useState([]);
@@ -68,7 +68,7 @@ export default function Home() {
         ) : (
           eventsData.map((event, i) => (
             <p key={i}>
-              {event.title}, {event.date}
+              <img alt="eventImage" src={event.picture}></img>{event.title}, {event.date}
             </p>
           ))
         )}
