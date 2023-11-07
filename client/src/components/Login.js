@@ -49,8 +49,8 @@ export default function Login()
             <h2>Log into your account</h2>
             <p>{response && response}</p>
             <form onSubmit={handleFormSubmit} id = 'loginForm'>
-                <input onChange={handleInputChange} name="name" type="text" placeholder="Username" />
-                <input onChange={handleInputChange} name="password" type="password" placeholder="Password" />
+                <input onChange={handleInputChange} name="name" type="text" placeholder="Username" required/>
+                <input onChange={handleInputChange} name="password" type="password" placeholder="Password" required/>
                 <input type="submit" value="Log in"/>
             </form>
             <div>

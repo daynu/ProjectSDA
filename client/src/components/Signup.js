@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios or your preferred HTTP client
 import { useNavigate } from 'react-router-dom';
+const bcrypt = require('bcryptjs')
 
 function Signup() {
 
@@ -48,6 +49,7 @@ const [exists, setExists] = useState(false)
     });
   };
 
+
   return (
     <>
     <h2>Sign Up</h2>
@@ -59,6 +61,7 @@ const [exists, setExists] = useState(false)
         value={formData.name}
         onChange={handleInputChange}
         placeholder="Name"
+        required
       />
       <input
         type="email"
@@ -66,6 +69,7 @@ const [exists, setExists] = useState(false)
         value={formData.email}
         onChange={handleInputChange}
         placeholder="Email"
+        required
       />
       <input
         type="password"
@@ -73,6 +77,7 @@ const [exists, setExists] = useState(false)
         value={formData.password}
         onChange={handleInputChange}
         placeholder="Password"
+        required
       />
       <button type="submit">Sign Up</button>
     </form>

@@ -54,8 +54,8 @@ export default function AddEvent({fetchEvents})
     return(
         <form onSubmit={handleFormSubmit} id = "projectForm">
             <input onChange={handleFileChange} type="file" accept=".jpeg, .jpg, .png"/>
-            <input onChange={handleChange} name = "title" placeholder="title" type="text" />
-            <input onChange={handleChange} name = "date" type="date" />
+            <input onChange={handleChange} name = "title" placeholder="title" type="text" required/>
+            <input onChange={handleChange} name = "date" type="date" required/>
             <input type="submit" />
         </form>
     )

@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const passportLocalMongoose = require('passport-local-mongoose')
 const cors = require('cors')
 const app = express()
+const bcrypt = require('bcryptjs')
 
 
 app.use(bodyParser.json())
@@ -13,6 +14,7 @@ app.use(cors())
 
 //MONGO SETUP
 const mongoose = require('mongoose')
+const { use } = require('passport')
 
 const mongoURI = 'mongodb+srv://danu:danu@cluster0.4zkmykg.mongodb.net/'
 
@@ -82,6 +84,8 @@ app.get('/api/userRole/:name', async function (req, res)
 app.post('/signup', async function(req, res) {
   const { name, email, password } = req.body;
 
+  const cryptedPassword = await passwordCrypt(password)
+
   try {
     const existingUser = await User.findOne({ username: name });
 
@@ -89,7 +93,7 @@ app.post('/signup', async function(req, res) {
       return res.json("exists");
     }
 
-    addUser(name, email, password);
+    addUser(name, email, cryptedPassword);
 
     res.json({ success: 'User registered successfully' });
   } catch (error) {
@@ -107,14 +111,17 @@ app.post("/login", async function(req, res)
 
     if(user)
     {
-      if(password === user.password)
+      bcrypt.compare(password, user.password, (err, result) =>
       {
-        res.json("Logged in")
-      }
-      else
-      {
-        res.json("Wrong password")
-      }
+        if(err ||!result)
+        {
+          res.json("Wrong password")
+        }
+        else
+        {
+          res.json("Logged in")
+        }
+      })
     }
     else
     {
@@ -182,5 +189,15 @@ async function findUserRole(name)
   }
 }
 
+
+async function passwordCrypt(password) {
+  try {
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password, salt); 
+    return hash; 
+  } catch (error) {
+    throw error; 
+  }
+}
 
 app.listen(5000)
