@@ -46,3 +46,11 @@ img
 {
   background-color: blue;
 }
+
+
+#evenimenteDisplay
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -62,7 +62,8 @@ export default function Home() {
         <button onClick={toggleAddForm}>Add Event</button>
       )}
       {showForm && <AddEvent fetchEvents = {fetchEvents}/>}
-      <div>
+      <div id = "evenimenteDisplay">
+        <h2 id = "evenimenteTitle">EVENIMENTE</h2>
         {eventsData.length === 0 ? (
           <p>Loading...</p>
         ) : (
