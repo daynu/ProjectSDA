@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import AddEvent from "./AddEvent";
 
+
 export default function Home() {
   const [eventsData, setEventsData] = useState([]);
   const [user, setUser] = useState();
@@ -10,6 +11,7 @@ export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const location = useLocation();
+  const [todayEvents, setTodayEvents] = useState([])
 
 
   useEffect(() => {
@@ -19,6 +21,11 @@ export default function Home() {
             setEventsData(res.data)
         })
   }, []);
+
+  useEffect(() =>
+  {
+    setTodayEvents(todaysEvents(eventsData))
+  }, [eventsData])
 
   useEffect(() => {
     if (location.state && location.state.name) {
@@ -62,18 +69,65 @@ export default function Home() {
         <button onClick={toggleAddForm}>Add Event</button>
       )}
       {showForm && <AddEvent fetchEvents = {fetchEvents}/>}
-      <div id = "evenimenteDisplay">
-        <h2 id = "evenimenteTitle">EVENIMENTE</h2>
-        {eventsData.length === 0 ? (
-          <p>Loading...</p>
-        ) : (
-          eventsData.map((event, i) => (
-            <p key={i}>
-              <img alt="eventImage" src={event.picture}></img>{event.title}, {event.date}
-            </p>
-          ))
-        )}
+      <div id="evenimenteDisplay">
+  <h2 id="evenimenteTitle">EVENIMENTE</h2>
+
+  {todayEvents.length === 0 ? (
+    <p></p>
+  ) : (
+    <>
+      <h2>Astăzi</h2>
+      <div id = "todayDisplay">
+        {todayEvents.map((event, i) => (
+        <div key={i}>
+          <img alt="eventImage" src={event.picture} />
+          <p>{event.title}, {event.date}</p>
+        </div>
+      ))
+      }
       </div>
+      
+    </>
+  )}
+
+  {eventsData.length === 0 ? (
+    <p>Loading...</p>
+  ) : (
+    <div id = "Upcoming">
+      {
+    eventsData.map((event, i) => (
+      <div key={i}>
+        <img alt="eventImage" src={event.picture} />
+        <p>{event.title}, {event.date}</p>
+      </div>
+    ))
+   
+} </div>
+  )}
+  
+</div>
     </>
   );
+}
+
+
+function todaysEvents(events)
+{
+  let date = new Date()
+  let todaysEvents = []
+  console.log(date)
+
+  for(let i = 0; i < events.length; i++)
+  {
+
+    let dateToCheck = new Date(events[i].date)
+    if(date.getDate() === dateToCheck.getDate()
+      && date.getMonth() === dateToCheck.getMonth()
+    && date.getFullYear() === dateToCheck.getFullYear())
+    {
+      todaysEvents.push(events[i])
+    }
+  }
+
+  return todaysEvents;
 }
