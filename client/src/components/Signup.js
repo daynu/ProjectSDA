@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios or your preferred HTTP client
 import { useNavigate } from 'react-router-dom';
-const bcrypt = require('bcryptjs')
 
 function Signup() {
 

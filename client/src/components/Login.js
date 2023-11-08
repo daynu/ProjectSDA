@@ -34,7 +34,7 @@ export default function Login()
         if (response === "Logged in") {
           history('/', {state: {name: loginData.name}})
         }
-      }, [response, history]);
+      }, [response, history, loginData.name]);
 
       const handleInputChange = (e) => {
         const { name, value } = e.target;
