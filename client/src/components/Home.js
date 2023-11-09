@@ -171,9 +171,9 @@ function thisWeekEvents(events)
     }
   }
 
-  thisWeekEvents.sort(compareDates)
+  const sortedWeek = thisWeekEvents.sort((a, b) => compareDates(a.date, b.date))
   
-  return thisWeekEvents;
+  return sortedWeek;
 }
 
 
