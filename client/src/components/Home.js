@@ -12,6 +12,7 @@ export default function Home() {
   const [refresh, setRefresh] = useState(false);
   const location = useLocation();
   const [todayEvents, setTodayEvents] = useState([])
+  const [thisWeek, setThisWeek] = useState([])
 
 
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function Home() {
   useEffect(() =>
   {
     setTodayEvents(todaysEvents(eventsData))
+    setThisWeek(thisWeekEvents(eventsData))
   }, [eventsData])
 
   useEffect(() => {
@@ -90,6 +92,25 @@ export default function Home() {
     </>
   )}
 
+{thisWeek.length === 0 ? (
+    <p></p>
+  ) : (
+    <>
+      <h2>Această Săptămână</h2>
+      <div id = "thisWeekDisplay">
+        {thisWeek.map((event, i) => (
+        <div key={i}>
+          <img alt="eventImage" src={event.picture} />
+          <p>{event.title}, {event.date}</p>
+        </div>
+      ))
+      }
+      </div>
+      
+    </>
+  )}
+
+
   {eventsData.length === 0 ? (
     <p>Loading...</p>
   ) : (
@@ -130,4 +151,36 @@ function todaysEvents(events)
   }
 
   return todaysEvents;
+}
+
+
+function thisWeekEvents(events)
+{
+  let date = new Date()
+  let thisWeekEvents = []
+
+  for(let i = 0; i < events.length; i++)
+  {
+
+    let dateToCheck = new Date(events[i].date)
+    let timeDifference = dateToCheck - date
+    let daysDifference = timeDifference/(1000 * 60 * 60 * 24)
+    if(daysDifference < 7)
+    {
+      thisWeekEvents.push(events[i])
+    }
+  }
+
+  thisWeekEvents.sort(compareDates)
+  
+  return thisWeekEvents;
+}
+
+
+function compareDates(date1, date2)
+{
+  const dateOne = new Date(date1)
+  const dateTwo = new Date(date2)
+
+  return dateOne - dateTwo;
 }

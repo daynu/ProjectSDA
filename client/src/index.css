@@ -55,7 +55,9 @@ img
   align-items: center;
 }
 
-#Upcoming
+#Upcoming, #thisWeekDisplay, #todayDisplay
 {
   display: flex;
+  gap: 25px
 }
+
