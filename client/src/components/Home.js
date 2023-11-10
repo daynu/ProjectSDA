@@ -3,11 +3,12 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import AddEvent from "./AddEvent";
 import EventCarousel from "./EventCarousel";
+import { useAuth } from "../utils/AuthContext";
 
 
 export default function Home() {
   const [eventsData, setEventsData] = useState([]);
-  const [user, setUser] = useState();
+  const { user } = useAuth()
   const [isAdmin, setIsAdmin] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [refresh, setRefresh] = useState(false);
@@ -31,14 +32,8 @@ export default function Home() {
   }, [eventsData])
 
   useEffect(() => {
-    if (location.state && location.state.name) {
-      setUser(location.state.name);
-    }
-  }, [location.state]);
-
-  useEffect(() => {
     if (user) {
-      axios.get(`/api/userRole/${user}`)
+      axios.get(`/api/userRole/${user.name}`)
         .then((res) => {
           setIsAdmin(res.data.isAdmin);
         })
