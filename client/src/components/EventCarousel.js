@@ -11,6 +11,7 @@ function EventCarousel({events})
         <Carousel.Item>
           <Carousel.Caption>
             <p>{event.title}</p>
+            <p>{event.date}</p>
           </Carousel.Caption>
           <img
             key={i}
