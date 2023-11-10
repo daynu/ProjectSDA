@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import AddEvent from "./AddEvent";
+import EventCarousel from "./EventCarousel";
 
 
 export default function Home() {
@@ -67,6 +68,13 @@ export default function Home() {
 
   return (
     <>
+    <div id = "carouselContainer">
+      <div id = "carousel">
+        <EventCarousel events = {eventsData}/>
+      </div>
+      
+    </div>
+    
       {isAdmin && !showForm && (
         <button onClick={toggleAddForm}>Add Event</button>
       )}
@@ -110,21 +118,6 @@ export default function Home() {
     </>
   )}
 
-
-  {eventsData.length === 0 ? (
-    <p>Loading...</p>
-  ) : (
-    <div id = "Upcoming">
-      {
-    eventsData.map((event, i) => (
-      <div key={i}>
-        <img alt="eventImage" src={event.picture} />
-        <p>{event.title}, {event.date}</p>
-      </div>
-    ))
-   
-} </div>
-  )}
   
 </div>
     </>

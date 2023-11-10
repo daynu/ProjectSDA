@@ -12,6 +12,7 @@ body {
   }
 }
 
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -65,4 +66,39 @@ img
   display: flex;
   gap: 25px
 }
+
+#carousel, img
+{
+  width: 80%;
+  max-height: 500px;
+}
+
+
+#carouselContainer
+{ 
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: gray;
+}
+
+#loginSignup
+{
+  display: flex;
+  align-items: center;
+  justify-items: center ;
+}
+
+.carousel-caption {
+  top: 50%;
+  color: white;
+  font-size: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
