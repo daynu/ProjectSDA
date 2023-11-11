@@ -8,6 +8,8 @@ export default function AddEvent({fetchEvents})
         title: '',
         date: '',
         picture: '',
+        hour: '',
+        location: ''
       });
 
     const handleFormSubmit = (e) =>
@@ -52,10 +54,14 @@ export default function AddEvent({fetchEvents})
       }
 
     return(
-        <form onSubmit={handleFormSubmit} id = "projectForm">
-            <input onChange={handleFileChange} type="file" accept=".jpeg, .jpg, .png"/>
-            <input onChange={handleChange} name = "title" placeholder="title" type="text" required/>
+        <form onSubmit={handleFormSubmit} id = "eventForm">
+            <input onChange={handleFileChange} type="file" accept=".jpeg, .jpg, .png" required/>
+            <input onChange={handleChange} name = "title" placeholder="Nume eveniment" type="text" required/>
+            <label>Data</label>
             <input onChange={handleChange} name = "date" type="date" required/>
+            <label>Ora</label>
+            <input onChange={handleChange} name="hour" type="time" required/>
+            <input onChange={handleChange} name="location" placeholder="Locul" type="text" required />
             <input type="submit" />
         </form>
     )

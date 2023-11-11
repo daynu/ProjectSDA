@@ -27,6 +27,9 @@ function EventPage()
         <h2>{eventData.title}</h2>
         <img id = "frontEventImage" src={eventData.picture} alt="eventPicture"/>
         <h2>{eventData.date}</h2>
+        <h2>{eventData.hour}</h2>
+        <h2>{eventData.location}</h2>
+        
         <button>Cumpără bilet</button>
         </>
     )
