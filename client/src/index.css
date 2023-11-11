@@ -72,9 +72,15 @@ a
   color:rgb(152, 125, 7);
 }
 
+#logo
+{
+  font-weight: bolder;
+  font-size: 25px;
+}
+
 #homeButton
 {
-  background-image: url("./img/HomeIcon.png");
+  color: white;
   background-size: cover;
   background-color: white;
   border-style: solid;

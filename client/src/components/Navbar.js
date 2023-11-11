@@ -17,9 +17,7 @@ export default function Navbar()
 
     return(
         <div id="navbar">
-            <button id = "homeButton">
-                <Link to='/'/>
-            </button>
+            <Link id = "logo" to="/">EventBV</Link>
           
             {user.name ? (
                 <div id = "loginSignup">
