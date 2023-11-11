@@ -3,7 +3,7 @@ import axios from "axios";
 import AddEvent from "./AddEvent";
 import EventCarousel from "./EventCarousel";
 import { useAuth } from "../utils/AuthContext";
-import LoadingScreen from '../img/LoadingBrasov.png'
+import LoadingScreen from '../img/BrasovStema.png'
 
 
 export default function Home() {
@@ -74,7 +74,7 @@ export default function Home() {
       </div>
     )}
 
-    
+
     <div id = "carouselContainer">
       <div id = "carousel">
         <EventCarousel events = {eventsData}/>
