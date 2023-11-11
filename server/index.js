@@ -134,7 +134,7 @@ app.post("/login", async function(req, res)
       {
         if(err ||!result)
         {
-          res.json("Wrong password")
+          res.json("Parola incorecta!")
         }
         else
         {
@@ -144,7 +144,7 @@ app.post("/login", async function(req, res)
     }
     else
     {
-      res.json("User hasn't registered yet")
+      res.json("Nume invalid!")
     }
 
   }

@@ -53,7 +53,7 @@ const [exists, setExists] = useState(false)
     <div id = "signupFull">
       <div id = "signupPage">
         <h2>Creare cont</h2>
-        {exists && <p>User already exists</p> }
+        {exists && <p>Utilizator existent!</p> }
         <form onSubmit={handleFormSubmit}>
           <input id = "numeSignup"
             type="text"

@@ -49,11 +49,12 @@ export default function Login()
     return(
       <div id = "loginFull">
         <div id = "loginPage">
-            <h2>Intră în cont</h2>
-              <p>{response && response}</p>
+            <h2>Accesare cont</h2>
+              
               <form onSubmit={handleFormSubmit} id = 'loginForm'>
                  <input id = "numeLogin" onChange={handleInputChange} name="name" type="text" placeholder="Nume" required/> 
                  <input id = "parolaLogin" onChange={handleInputChange} name="password" type="password" placeholder="Parolă" required/> 
+                 <p>{response && response}</p>
                   <input id = "butonLogin" type="submit" value="Log in"/>
               </form>
               <div>

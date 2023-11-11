@@ -31,6 +31,7 @@ code {
 #userName
 {
   margin: 0;
+  margin-right: 2vh;
 }
 
 a
@@ -54,10 +55,40 @@ a
 
 #logout
 {
+  background-color: rgb(152, 125, 75);
+  color:white;
+  border-style: solid;
   border-radius: 30px;
-  width: 100px;
-  height: 50px;
-  font-size: larger; font-weight: 500;
+  width: 10vh;
+  height: 6vh;
+  font-size: larger;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#logout:hover
+{
+  background-color: white;
+  color:rgb(152, 125, 7);
+}
+
+#homeButton
+{
+  background-image: url("./img/HomeIcon.png");
+  background-size: cover;
+  background-color: white;
+  border-style: solid;
+  filter: invert(1);
+  border-radius: 15px;
+  width: 6vh;
+  height: 6vh;
+  margin-left: 1vh;
+  transition: 0.3s;
+}
+
+#homeButton:hover
+{
+  filter: invert(0);
 }
 
 img
@@ -68,7 +99,7 @@ img
 
 #loginFull, #signupFull
 {
-  background-color: rgb(75, 0, 75);
+  background-image: linear-gradient(rgb(75, 0, 75), black);
   height: 100vh;
 }
 
@@ -84,7 +115,6 @@ img
 
 #loginPage > h2, #signupPage > h2
 {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: rgb(75, 0, 75);
   text-align: center;
   margin-top: 20px;
@@ -100,9 +130,12 @@ img
 #numeLogin, #parolaLogin, #numeSignup, #parolaSignup, #emailSignup
 {
   display:flex;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
   border-radius: 20px;
   border-color: rgb(75, 0, 75);
+  border-style: solid;
+  font-size: large;
+  font-weight: bold;
   width: 500px;
   height: 50px;
   margin-left: 50px;
@@ -113,12 +146,29 @@ img
 {
   background-color: rgb(75, 0, 75);
   color: white;
+  font-size: 25px;
+  font-weight: bolder;
   margin-left: 175px;
   text-align: center;
   border-radius: 20px;
   border-width: 0px;
   width: 250px;
   height: 50px;
+  transition: 0.3s;
+}
+
+#butonLogin:hover, #butonSignup:hover
+{
+  background-color: white;
+  color: rgb(75, 0, 75);
+}
+
+#loginForm > p
+{
+  color: red;
+  font-weight: bold;
+  font-size: larger;
+  text-align: center;
 }
 
 #evenimenteDisplay
