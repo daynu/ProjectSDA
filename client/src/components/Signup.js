@@ -50,40 +50,42 @@ const [exists, setExists] = useState(false)
 
 
   return (
-    <>
-    <h2>Sign Up</h2>
-    {exists && <p>User already exists</p> }
-    <form onSubmit={handleFormSubmit}>
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleInputChange}
-        placeholder="Name"
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        value={formData.email}
-        onChange={handleInputChange}
-        placeholder="Email"
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        value={formData.password}
-        onChange={handleInputChange}
-        placeholder="Password"
-        required
-      />
-      <button type="submit">Sign Up</button>
-    </form>
-    <div>
-        <p>Already have an account? <a style={{color: 'blue'}} href="/login">Click here to log in</a></p>
-    </div>
-    </>
+    <div id = "signupFull">
+      <div id = "signupPage">
+        <h2>Creare cont</h2>
+        {exists && <p>User already exists</p> }
+        <form onSubmit={handleFormSubmit}>
+          <input id = "numeSignup"
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            placeholder="Name"
+            required
+          />
+          <input id = "emailSignup"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="Email"
+            required
+          />
+          <input id = "parolaSignup"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+            placeholder="Password"
+            required
+          />
+          <button id = "butonSignup" type="submit">Sign Up</button>
+        </form>
+        <div>
+            <p id = "signupQ" >Ai deja un cont? <a style={{color: 'blue'}} href="/login">Apasa aici!</a></p>
+        </div>
+      </div>
+    </div>  
   );
 }
 

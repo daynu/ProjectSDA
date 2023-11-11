@@ -12,7 +12,6 @@ body {
   }
 }
 
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -35,11 +34,20 @@ a
     color: white;
 }
 
-
 #loginSignup
 {
   display: flex;
+  align-items: center;
+  justify-items: center ;
   gap: 20px;
+}
+
+#logout
+{
+  border-radius: 30px;
+  width: 100px;
+  height: 50px;
+  font-size: larger; font-weight: 500;
 }
 
 img
@@ -48,11 +56,60 @@ img
   height: 100px;
 }
 
-#logout
+#loginFull, #signupFull
 {
-  background-color: blue;
+  background-color: rgb(75, 0, 75);
+  height: 100vh;
 }
 
+#loginPage, #signupPage
+{
+  background-color: white;
+  border-radius: 20px;
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#loginPage > h2, #signupPage > h2
+{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(75, 0, 75);
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+#loginQ, #signupQ
+{
+  text-align: center;
+}
+
+
+#numeLogin, #parolaLogin, #numeSignup, #parolaSignup, #emailSignup
+{
+  display:flex;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  border-color: rgb(75, 0, 75);
+  width: 500px;
+  height: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#butonLogin, #butonSignup
+{
+  background-color: rgb(75, 0, 75);
+  color: white;
+  margin-left: 175px;
+  text-align: center;
+  border-radius: 20px;
+  border-width: 0px;
+  width: 250px;
+  height: 50px;
+}
 
 #evenimenteDisplay
 {
@@ -83,13 +140,6 @@ img
   background-color: gray;
 }
 
-#loginSignup
-{
-  display: flex;
-  align-items: center;
-  justify-items: center ;
-}
-
 .carousel-caption {
   top: 50%;
   color: white;
@@ -101,5 +151,3 @@ img
   align-items: center;
   flex-direction: column;
 }
-
-

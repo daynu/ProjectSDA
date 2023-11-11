@@ -47,17 +47,20 @@ export default function Login()
       };
 
     return(
-        <>
-            <h2>Log into your account</h2>
-            <p>{response && response}</p>
-            <form onSubmit={handleFormSubmit} id = 'loginForm'>
-                <input onChange={handleInputChange} name="name" type="text" placeholder="Username" required/>
-                <input onChange={handleInputChange} name="password" type="password" placeholder="Password" required/>
-                <input type="submit" value="Log in"/>
-            </form>
-            <div>
-                <p>Don't have an account? <a style={{color: 'blue'}} href="/signup">Click here to sign up</a></p>
-            </div>
-        </>
+      <div id = "loginFull">
+        <div id = "loginPage">
+            <h2>Intră în cont</h2>
+              <p>{response && response}</p>
+              <form onSubmit={handleFormSubmit} id = 'loginForm'>
+                 <input id = "numeLogin" onChange={handleInputChange} name="name" type="text" placeholder="Nume" required/> 
+                 <input id = "parolaLogin" onChange={handleInputChange} name="password" type="password" placeholder="Parolă" required/> 
+                  <input id = "butonLogin" type="submit" value="Log in"/>
+              </form>
+              <div>
+                  <p id = "loginQ" >Nu ai cont? <a style={{color: 'blue'}} href="/signup">Apasă aici!</a></p>
+              </div>
+
+        </div>
+      </div>
     )
 }
