@@ -184,6 +184,12 @@ img
 }
 
 
+#frontEventImage
+{
+  height: 500px;
+}
+
+
 @keyframes loadingScreen {
 
   from

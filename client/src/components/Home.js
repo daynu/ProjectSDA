@@ -68,7 +68,7 @@ export default function Home() {
 
   return (
     <>
-    
+
       <div id="loadingOverlay" className={eventsData.length === 0 ? 'show' : 'hide'}>
         <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
       </div>

@@ -9,6 +9,7 @@ function EventCarousel({events})
       {events.map((event, i) =>
       (
         <Carousel.Item>
+          <a href={`/event/${event._id}`}>
           <Carousel.Caption>
             <p>{event.title}</p>
             <p>{event.date}</p>
@@ -19,6 +20,7 @@ function EventCarousel({events})
             src={event.picture}
             alt="First slide"
           />
+          </a>
       </Carousel.Item>
       ))}
       

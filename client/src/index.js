@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { AuthProvider } from "./utils/AuthContext";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import EventPage from "./components/EventPage";
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup/>
+  },
+  {
+    path: "/event/:id",
+    element: <EventPage />
   }
 ]);
 

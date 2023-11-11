@@ -72,6 +72,23 @@ app.get('/api/events', async function (req, res)
   }
 })
 
+app.get('/api/event/:id', async function (req, res) {
+  const eventId = req.params.id;
+
+  try {
+    const eventRes = await Event.findById(eventId);
+
+    if (!eventRes) {
+      return res.status(404).json({ message: 'Event not found' });
+    }
+
+    res.json(eventRes);
+  } catch (error) {
+    console.error('Error fetching event:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
 app.get('/api/userRole/:name', async function (req, res)
 {
   const userName = req.params.name
