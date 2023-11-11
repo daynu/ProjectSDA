@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-export default function AddEvent({fetchEvents})
+export default function AddEvent({toggleAddForm})
 {
 
     const [formData, setFormData] = useState({
@@ -15,12 +15,13 @@ export default function AddEvent({fetchEvents})
     const handleFormSubmit = (e) =>
       {
         e.preventDefault()
+        toggleAddForm()
 
         try
         {
             axios.post('/addevent', formData).then(res =>
               {
-                 fetchEvents()
+                 console.log("Event Added")
               })
            
         }

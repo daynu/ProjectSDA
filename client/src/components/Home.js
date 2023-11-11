@@ -48,15 +48,20 @@ export default function Home() {
     }
   }, [user]);
 
+  useEffect(() =>
+  {
+    fetchEvents()
+  }, [showForm])
+
   function toggleAddForm() {
-    setShowForm(true);
+    setShowForm(!showForm);
   }
 
   function fetchEvents() {
     axios.get('/api/events')
       .then((res) => {
         setEventsData(res.data);
-        setRefresh(!refresh); // Toggle the value to trigger a re-render
+        setRefresh(!refresh); 
         console.log("FETCHCHHCHCHCCHHC")
       })
       .catch((error) => {
@@ -83,7 +88,7 @@ export default function Home() {
       {isAdmin && !showForm && (
         <button onClick={toggleAddForm}>Add Event</button>
       )}
-      {showForm && <AddEvent fetchEvents = {fetchEvents}/>}
+      {showForm && <AddEvent toggleAddForm = {toggleAddForm}/>}
       <div id="evenimenteDisplay">
   <h2 id="evenimenteTitle">EVENIMENTE</h2>
 
