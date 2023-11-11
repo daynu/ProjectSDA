@@ -34,6 +34,11 @@ a
     color: white;
 }
 
+.eventLink
+{
+  color: black;
+}
+
 #loginSignup
 {
   display: flex;

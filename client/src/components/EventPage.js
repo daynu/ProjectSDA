@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
+import LoadingScreen from '../img/BrasovStema.png'
 
 function EventPage()
 {
@@ -19,6 +20,9 @@ function EventPage()
 
     return(
         <>
+        <div id="loadingOverlay" className={eventData.length === 0 ? 'show' : 'hide'}>
+            <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
+        </div>
         <Navbar />
         <h2>{eventData.title}</h2>
         <img id = "frontEventImage" src={eventData.picture} alt="eventPicture"/>

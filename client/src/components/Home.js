@@ -95,8 +95,10 @@ export default function Home() {
       <div id = "todayDisplay">
         {todayEvents.map((event, i) => (
         <div key={i}>
-          <img alt="eventImage" src={event.picture} />
-          <p>{event.title}, {event.date}</p>
+          <a className="eventLink" href={`/event/${event._id}`}>
+            <img alt="eventImage" src={event.picture} />
+            <p>{event.title}, {event.date}</p>
+          </a>
         </div>
       ))
       }
@@ -113,8 +115,10 @@ export default function Home() {
       <div id = "thisWeekDisplay">
         {thisWeek.map((event, i) => (
         <div key={i}>
-          <img alt="eventImage" src={event.picture} />
-          <p>{event.title}, {event.date}</p>
+          <a className="eventLink" href={`/event/${event._id}`}>
+            <img alt="eventImage" src={event.picture} />
+            <p>{event.title}, {event.date}</p>
+          </a>
         </div>
       ))
       }
