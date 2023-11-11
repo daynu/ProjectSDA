@@ -174,8 +174,14 @@ img
   justify-content: center;
   align-items: center;
   z-index: 999;
+  transition: transform 0.6s ease-in;
 }
 
+
+#loadingOverlay.hide
+{
+  transform: translateY(-100%);
+}
 
 
 @keyframes loadingScreen {

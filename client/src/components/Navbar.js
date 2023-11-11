@@ -18,7 +18,6 @@ export default function Navbar()
     return(
         <div id="navbar">
           <Link to='/'>Home</Link>
-          <Link to='/contact'>Contact</Link>
           
             {user.name ? (
                 <div id = "loginSignup">

@@ -68,12 +68,10 @@ export default function Home() {
 
   return (
     <>
-     {eventsData.length === 0 && (
-      <div id="loadingOverlay">
+    
+      <div id="loadingOverlay" className={eventsData.length === 0 ? 'show' : 'hide'}>
         <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
       </div>
-    )}
-
 
     <div id = "carouselContainer">
       <div id = "carousel">
