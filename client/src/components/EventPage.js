@@ -30,7 +30,7 @@ function EventPage()
         <h2>{eventData.hour}</h2>
         <h2>{eventData.location}</h2>
         
-        <button>Cumpără bilet</button>
+        <a href="https://www.youtube.com/watch?v=NpkPy3y6ors"><button>Cumpără bilet</button></a>
         </>
     )
 

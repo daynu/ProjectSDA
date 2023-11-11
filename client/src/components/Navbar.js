@@ -21,7 +21,7 @@ export default function Navbar()
           
             {user.name ? (
                 <div id = "loginSignup">
-                <p>{user.name}</p>
+                <p id="userName">{user.name}</p>
                 <button id = "logout" onClick = {LogOut}>Log out</button>
                 </div>
                 )
