@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import axios from "axios";
 import AddEvent from "./AddEvent";
 import EventCarousel from "./EventCarousel";
 import { useAuth } from "../utils/AuthContext";
+import LoadingScreen from '../img/LoadingBrasov.png'
 
 
 export default function Home() {
@@ -12,7 +12,6 @@ export default function Home() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [refresh, setRefresh] = useState(false);
-  const location = useLocation();
   const [todayEvents, setTodayEvents] = useState([])
   const [thisWeek, setThisWeek] = useState([])
 
@@ -27,12 +26,14 @@ export default function Home() {
 
   useEffect(() =>
   {
+    // Setting the events
     setTodayEvents(todaysEvents(eventsData))
     setThisWeek(thisWeekEvents(eventsData))
   }, [eventsData])
 
   useEffect(() => {
-    if (user) {
+    //Checking if user is an admin
+    if (user.name) {
       axios.get(`/api/userRole/${user.name}`)
         .then((res) => {
           setIsAdmin(res.data.isAdmin);
@@ -40,6 +41,10 @@ export default function Home() {
         .catch((error) => {
           console.error("Error fetching user role:", error);
         });
+    }
+    else
+    {
+      setIsAdmin(false)
     }
   }, [user]);
 
@@ -63,6 +68,13 @@ export default function Home() {
 
   return (
     <>
+     {eventsData.length === 0 && (
+      <div id="loadingOverlay">
+        <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
+      </div>
+    )}
+
+    
     <div id = "carouselContainer">
       <div id = "carousel">
         <EventCarousel events = {eventsData}/>

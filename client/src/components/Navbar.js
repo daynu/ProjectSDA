@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useAuth } from "../utils/AuthContext"
+import { useEffect } from "react"
 
 
 export default function Navbar()
@@ -12,7 +13,6 @@ export default function Navbar()
         logout()
         console.log("pressed")
    }
-
 
 
     return(
