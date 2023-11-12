@@ -246,6 +246,18 @@ img
 }
 
 
+#pictureInput
+{
+  display: none;
+}
+
+.btn
+{
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+}
+
 @keyframes loadingScreen {
 
   from

@@ -25,6 +25,7 @@ function EventPage()
         </div>
         <Navbar />
         <h2>{eventData.title}</h2>
+        <p>{eventData.description}</p>
         <img id = "frontEventImage" src={eventData.picture} alt="eventPicture"/>
         <h2>{eventData.date}</h2>
         <h2>{eventData.hour}</h2>

@@ -9,7 +9,8 @@ export default function AddEvent({toggleAddForm})
         date: '',
         picture: '',
         hour: '',
-        location: ''
+        location: '',
+        description: ''
       });
 
     const handleFormSubmit = (e) =>
@@ -56,13 +57,15 @@ export default function AddEvent({toggleAddForm})
 
     return(
         <form onSubmit={handleFormSubmit} id = "eventForm">
-            <input onChange={handleFileChange} type="file" accept=".jpeg, .jpg, .png" required/>
+            <label htmlFor="pictureInput" className="btn">Poza</label>
+            <input onChange={handleFileChange} id="pictureInput" type="file" accept=".jpeg, .jpg, .png" required/>
             <input onChange={handleChange} name = "title" placeholder="Nume eveniment" type="text" required/>
             <label>Data</label>
             <input onChange={handleChange} name = "date" type="date" required/>
             <label>Ora</label>
             <input onChange={handleChange} name="hour" type="time" required/>
             <input onChange={handleChange} name="location" placeholder="Locul" type="text" required />
+            <input onChange={handleChange} name="description" placeholder="Descriere" type="text" required />
             <input type="submit" />
         </form>
     )
