@@ -55,10 +55,16 @@ export default function AddEvent({toggleAddForm})
 
       }
 
+      function cancelAdd()
+      {
+        toggleAddForm()
+      }
+
+
     return(
       <div id = "addEventBox">
         <form onSubmit={handleFormSubmit} id = "eventForm">
-            <p>TEST TEST TEST TEST TEST</p>
+            <p>TESTT</p>
             <label htmlFor="pictureInput" className="btn">Poza</label>
             <input onChange={handleFileChange} id="pictureInput" type="file" accept=".jpeg, .jpg, .png" required/>
             <input onChange={handleChange} name = "title" placeholder="Nume eveniment" type="text" required/>
@@ -69,6 +75,8 @@ export default function AddEvent({toggleAddForm})
             <input onChange={handleChange} name="location" placeholder="Locul" type="text" required />
             <input onChange={handleChange} name="description" placeholder="Descriere" type="text" required />
             <input type="submit" />
+            <button onClick={cancelAdd}>Cancel</button>
+            
         </form>
         </div>
     )

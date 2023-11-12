@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import AddEvent from "./AddEvent";
+import AddEvent from "./addEvent";
 import EventCarousel from "./EventCarousel";
 import { useAuth } from "../utils/AuthContext";
 import LoadingScreen from '../img/BrasovStema.png'
