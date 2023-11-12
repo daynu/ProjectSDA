@@ -56,7 +56,9 @@ export default function AddEvent({toggleAddForm})
       }
 
     return(
+      <div id = "addEventBox">
         <form onSubmit={handleFormSubmit} id = "eventForm">
+            <p>TEST TEST TEST TEST TEST</p>
             <label htmlFor="pictureInput" className="btn">Poza</label>
             <input onChange={handleFileChange} id="pictureInput" type="file" accept=".jpeg, .jpg, .png" required/>
             <input onChange={handleChange} name = "title" placeholder="Nume eveniment" type="text" required/>
@@ -68,6 +70,7 @@ export default function AddEvent({toggleAddForm})
             <input onChange={handleChange} name="description" placeholder="Descriere" type="text" required />
             <input type="submit" />
         </form>
+        </div>
     )
 }
 

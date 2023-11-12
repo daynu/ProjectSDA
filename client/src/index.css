@@ -127,6 +127,7 @@ img
   margin-bottom: 25px;
   border-radius: 20px;
   border-color: rgb(0, 139, 226);
+  border-width: 5px;
   border-style: solid;
   font-size: large;
   font-weight: bold;
@@ -146,7 +147,7 @@ img
   text-align: center;
   border-radius: 20px;
   border-color: rgb(0, 139, 226);
-  border-width: thin;
+  border-width: 5px;
   border-style:solid;
   width: 250px;
   height: 50px;
@@ -178,6 +179,45 @@ img
 {
   display: flex;
   gap: 25px
+}
+
+#addEventBox
+{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: aqua;
+  width: 50vh;
+  height: 70vh;
+  z-index: 10;
+}
+
+#eventForm
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 10vh;
+}
+
+#eventForm > input
+{
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border-style: solid;
+  width: 300px;
+  height: 50px;
+  font-size: larger;
+  font-weight: bold;
+}
+
+#eventForm > label 
+{
+  color: fuchsia;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #carousel, img
