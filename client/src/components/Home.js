@@ -14,6 +14,7 @@ export default function Home() {
   const [refresh, setRefresh] = useState(false);
   const [todayEvents, setTodayEvents] = useState([])
   const [thisWeek, setThisWeek] = useState([])
+  const [upcoming, setUpcoming] = useState([])
 
 
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function Home() {
     // Setting the events
     setTodayEvents(todaysEvents(eventsData))
     setThisWeek(thisWeekEvents(eventsData))
+    setUpcoming(upcomingEvents(eventsData))
   }, [eventsData])
 
   useEffect(() => {
@@ -80,7 +82,7 @@ export default function Home() {
 
     <div id = "carouselContainer">
       <div id = "carousel">
-        <EventCarousel events = {eventsData}/>
+        <EventCarousel events = {upcoming}/>
       </div>
       
     </div>
@@ -158,6 +160,28 @@ function todaysEvents(events)
   }
 
   return todaysEvents;
+}
+
+function upcomingEvents(events)
+{
+  let date = new Date()
+  let upcomingEvents = []
+
+  for(let i = 0; i < events.length; i++)
+  {
+
+    let dateToCheck = new Date(events[i].date)
+    let timeDifference = dateToCheck - date
+    let daysDifference = timeDifference/(1000 * 60 * 60 * 24)
+    if(daysDifference > -1)
+    {
+      upcomingEvents.push(events[i])
+    }
+  }
+  
+  return upcomingEvents;
+
+
 }
 
 
