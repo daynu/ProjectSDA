@@ -172,7 +172,7 @@ function thisWeekEvents(events)
     let dateToCheck = new Date(events[i].date)
     let timeDifference = dateToCheck - date
     let daysDifference = timeDifference/(1000 * 60 * 60 * 24)
-    if(daysDifference < 7)
+    if(daysDifference < 7 && daysDifference > 0)
     {
       thisWeekEvents.push(events[i])
     }
