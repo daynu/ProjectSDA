@@ -25,13 +25,13 @@ function EventPage()
         </div>
         <Navbar />
         <h2>{eventData.title}</h2>
+        <p>{eventData.organizer}</p>
         <p>{eventData.description}</p>
         <img id = "frontEventImage" src={eventData.picture} alt="eventPicture"/>
         <h2>{eventData.date}</h2>
         <h2>{eventData.hour}</h2>
         <h2>{eventData.location}</h2>
-        
-        <a href="https://www.youtube.com/watch?v=NpkPy3y6ors"><button>Cumpără bilet</button></a>
+        <a href={eventData.link ? eventData.link : "https://www.youtube.com/watch?v=NpkPy3y6ors"} target="_blank"><button>Cumpără bilet</button></a>
         </>
     )
 

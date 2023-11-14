@@ -41,7 +41,10 @@ const eventSchema = new Schema({
   picture: String,
   location: String,
   hour: String,
-  description: String
+  description: String,
+  organizer: String,
+  link: String,
+  category: String
 })
 
 userSchema.plugin(passportLocalMongoose)
@@ -159,9 +162,9 @@ app.post("/login", async function(req, res)
 
 app.post('/addevent', async function(req, res)
 {
-  const {title, date, picture, location, hour, description} = req.body
+  const {title, date, picture, location, hour, description, organizer, link, category} = req.body
 
-  addEvent(title, date, picture, location, hour, description)
+  addEvent(title, date, picture, location, hour, description, organizer, link, category)
 
   res.json("Event added")
 })
@@ -182,7 +185,7 @@ function addUser(name, email, password)
   newUser.save()
 }
 
-function addEvent(title, date, picture, location, hour, description)
+function addEvent(title, date, picture, location, hour, description, organizer, link, category)
 {
   const newEvent = new Event(
   { 
@@ -191,7 +194,10 @@ function addEvent(title, date, picture, location, hour, description)
     picture: picture,
     location: location,
     hour: hour,
-    description: description
+    description: description,
+    organizer: organizer,
+    link: link,
+    category: category
   }
   )
 

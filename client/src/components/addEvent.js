@@ -10,7 +10,10 @@ export default function AddEvent({toggleAddForm})
         picture: '',
         hour: '',
         location: '',
-        description: ''
+        description: '',
+        organizer: '',
+        link: '',
+        category: ''
       });
 
     const handleFormSubmit = (e) =>
@@ -74,9 +77,17 @@ export default function AddEvent({toggleAddForm})
             <input onChange={handleChange} name="hour" type="time" required/>
             <input onChange={handleChange} name="location" placeholder="Locul" type="text" required />
             <input onChange={handleChange} name="description" placeholder="Descriere" type="text" required />
-            <input type="submit" />
-            <button onClick={cancelAdd}>Cancel</button>
-            
+            <input onChange={handleChange} name="organizer" placeholder="Organizatorul" type="text" required/>
+            <input onChange={handleChange} name="link" placeholder="Link bilet" type="text" required/>
+            <label>Categorie</label>
+            <select onChange={handleChange} name="category">
+              <option value="Muzica">Muzică</option>
+              <option value="Teatru">Teatru</option>
+              <option value="Sport">Sport</option>
+              <option value="Altele">Altele</option>
+            </select>
+            <input type="submit" value="Adăugare"/>
+            <button onClick={cancelAdd}>Cancel</button>           
         </form>
         </div>
     )
