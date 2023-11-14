@@ -16,6 +16,9 @@ export default function AddEvent({toggleAddForm})
         category: ''
       });
 
+    const [photo, setPhoto] = useState()
+
+
     const handleFormSubmit = (e) =>
       {
         e.preventDefault()
@@ -48,8 +51,9 @@ export default function AddEvent({toggleAddForm})
       const handleFileChange = async (e) =>
       {
         const file = e.target.files[0]
-
         const base64 = await convertTo64(file)
+
+        setPhoto(base64)
 
         setFormData({
           ...formData,
@@ -69,6 +73,7 @@ export default function AddEvent({toggleAddForm})
         <form onSubmit={handleFormSubmit} id = "eventForm">
             <p>TESTT</p>
             <label htmlFor="pictureInput" className="btn">Poza</label>
+            {photo && <img src={photo} alt="EventPhoto"/>}
             <input onChange={handleFileChange} id="pictureInput" type="file" accept=".jpeg, .jpg, .png" required/>
             <input onChange={handleChange} name = "title" placeholder="Nume eveniment" type="text" required/>
             <label>Data</label>
