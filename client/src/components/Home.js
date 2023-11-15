@@ -49,8 +49,8 @@ export default function Home() {
   useEffect(() =>
   {
     // Setting the events
-
     setUpcoming(upcomingEvents(eventsData))
+    setFilteredEvents(upcomingEvents(eventsData))
   }, [eventsData])
 
   useEffect(() => {
@@ -111,7 +111,7 @@ export default function Home() {
       </div>
       
     </div>
-    
+    <h2 id="evenimenteTitle">EVENIMENTE</h2>
       {isAdmin && !showForm && (
         <button onClick={toggleAddForm}>Add Event</button>
       )}
@@ -126,7 +126,7 @@ export default function Home() {
                 (
                   <a href={`/event/${event._id}`}>
                   <div className="eventCell">
-                      <img src={event.picture} alt={event.title}/>
+                      <img className="eventCellImg" src={event.picture} alt={event.title}/>
                       <p>{event.title}</p>
                     </div>
                   </a>
@@ -138,7 +138,7 @@ export default function Home() {
           
         }
         </div>
-  <h2 id="evenimenteTitle">EVENIMENTE</h2>
+  
 
   </>
 )
