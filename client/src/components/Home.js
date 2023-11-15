@@ -127,7 +127,8 @@ export default function Home() {
                   <a href={`/event/${event._id}`}>
                   <div className="eventCell">
                       <img className="eventCellImg" src={event.picture} alt={event.title}/>
-                      <p>{event.title}</p>
+                      <p className="eventCellTitle">{event.title}</p>
+                      <p className="eventCellDate">{dateToString(event.date)}</p>
                     </div>
                   </a>
                 ))
@@ -236,4 +237,18 @@ function filterByCategory(events, category)
   }
 
   return newEvents
+}
+
+
+function dateToString(date)
+{
+  let newDate = new Date(date)
+  let month = newDate.toLocaleString('ro-RO', {month: 'long'})
+  let monthFirstLetter = month.charAt(0).toUpperCase()
+  let monthRestLetters = month.slice(1)
+  month = monthFirstLetter + monthRestLetters
+  let day = newDate.getDate()
+
+  return day + " " + month
+
 }
