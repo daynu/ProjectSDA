@@ -4,6 +4,7 @@ import AddEvent from "./addEvent";
 import EventCarousel from "./EventCarousel";
 import { useAuth } from "../utils/AuthContext";
 import LoadingScreen from '../img/BrasovStema.png'
+import Filter from "./Filter";
 
 
 export default function Home() {
@@ -12,9 +13,13 @@ export default function Home() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [refresh, setRefresh] = useState(false);
-  const [todayEvents, setTodayEvents] = useState([])
-  const [thisWeek, setThisWeek] = useState([])
   const [upcoming, setUpcoming] = useState([])
+  const [filteredEvents, setFilteredEvents] = useState([])
+  const [showFilter, setShowFilter] = useState(false)
+  const [filterPreferences, setFilterPreferences] = useState({
+    category: '',
+    date: ''
+  })
 
 
   useEffect(() => {
@@ -25,11 +30,26 @@ export default function Home() {
         })
   }, []);
 
+  useEffect(() => {
+
+    console.log(filterPreferences)
+    let filteredEvents = eventsData;
+  
+    if (filterPreferences.date === 'today') {
+      filteredEvents = todaysEvents(filteredEvents);
+    } else if (filterPreferences.date === 'thisWeek') {
+      filteredEvents = thisWeekEvents(filteredEvents);
+    }
+  
+    filteredEvents = filterByCategory(filteredEvents, filterPreferences.category);
+  
+    setFilteredEvents([...filteredEvents]);
+  }, [filterPreferences]);
+
   useEffect(() =>
   {
     // Setting the events
-    setTodayEvents(todaysEvents(eventsData))
-    setThisWeek(thisWeekEvents(eventsData))
+
     setUpcoming(upcomingEvents(eventsData))
   }, [eventsData])
 
@@ -72,6 +92,11 @@ export default function Home() {
   }
 
 
+  function toggleFilter()
+  {
+    setShowFilter(!showFilter)
+  }
+
 
   return (
     <>
@@ -90,55 +115,36 @@ export default function Home() {
       {isAdmin && !showForm && (
         <button onClick={toggleAddForm}>Add Event</button>
       )}
-      {showForm && <AddEvent toggleAddForm = {toggleAddForm}/>}
+      {showForm && <AddEvent toggleAddForm = {toggleAddForm}/>}  
+      <button onClick={toggleFilter}>Filtru</button>
+      {showFilter && <Filter toggleFilter={toggleFilter}  setFilterPreferences={setFilterPreferences}/>}
       <div id="evenimenteDisplay">
+        {
+          filteredEvents.length > 0 ? 
+          (
+                filteredEvents.map((event) =>
+                (
+                  <a href={`/event/${event._id}`}>
+                  <div className="eventCell">
+                      <img src={event.picture} alt={event.title}/>
+                      <p>{event.title}</p>
+                    </div>
+                  </a>
+                ))
+          ):
+          (
+            <p>Niciun eveniment găsit</p>
+          )
+          
+        }
+        </div>
   <h2 id="evenimenteTitle">EVENIMENTE</h2>
 
-  {todayEvents.length === 0 ? (
-    <p></p>
-  ) : (
-    <>
-      <h2>Astăzi</h2>
-      <div id = "todayDisplay">
-        {todayEvents.map((event, i) => (
-        <div key={i}>
-          <a className="eventLink" href={`/event/${event._id}`}>
-            <img alt="eventImage" src={event.picture} />
-            <p>{event.title}, {event.date}</p>
-          </a>
-        </div>
-      ))
-      }
-      </div>
-      
-    </>
-  )}
+  </>
+)
 
-{thisWeek.length === 0 ? (
-    <p></p>
-  ) : (
-    <>
-      <h2>Această Săptămână</h2>
-      <div id = "thisWeekDisplay">
-        {thisWeek.map((event, i) => (
-        <div key={i}>
-          <a className="eventLink" href={`/event/${event._id}`}>
-            <img alt="eventImage" src={event.picture} />
-            <p>{event.title}, {event.date}</p>
-          </a>
-        </div>
-      ))
-      }
-      </div>
-      
-    </>
-  )}
+        }
 
-  
-</div>
-    </>
-  );
-}
 
 
 function todaysEvents(events)
@@ -214,4 +220,20 @@ function compareDates(date1, date2)
   const dateTwo = new Date(date2)
 
   return dateOne - dateTwo;
+}
+
+
+function filterByCategory(events, category)
+{
+  let newEvents = []
+
+  for(let i = 0; i < events.length; i++)
+  {
+    if(events[i].category === category)
+    {
+      newEvents.push(events[i])
+    }
+  }
+
+  return newEvents
 }
