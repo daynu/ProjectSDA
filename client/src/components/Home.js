@@ -31,20 +31,26 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-
-    console.log(filterPreferences)
-    let filteredEvents = eventsData;
+    console.log('Filter Preferences:', filterPreferences);
   
-    if (filterPreferences.date === 'today') {
-      filteredEvents = todaysEvents(filteredEvents);
-    } else if (filterPreferences.date === 'thisWeek') {
-      filteredEvents = thisWeekEvents(filteredEvents);
+    let filtered = upcomingEvents(eventsData);
+  
+    if (Object.keys(filterPreferences).length > 0) {
+      if (filterPreferences.date === 'today') {
+          filtered = todaysEvents(filtered)
+      }
+      if (filterPreferences.date === 'thisWeek') {
+        filtered = getThisWeekEvents(filtered)
+      }
+      if (filterPreferences.category) {
+        filtered = filterByCategory(filtered)
+      }
     }
   
-    filteredEvents = filterByCategory(filteredEvents, filterPreferences.category);
-  
-    setFilteredEvents([...filteredEvents]);
-  }, [filterPreferences]);
+    console.log('Applying filtering:', filtered);
+    setFilteredEvents(filtered);
+  }, [filterPreferences, eventsData]);
+
 
   useEffect(() =>
   {
@@ -97,6 +103,9 @@ export default function Home() {
     setShowFilter(!showFilter)
   }
 
+  function clearPreferences() {
+    setFilterPreferences({ category: '', date: '' });
+  }
 
   return (
     <>
@@ -117,6 +126,7 @@ export default function Home() {
       )}
       {showForm && <AddEvent toggleAddForm = {toggleAddForm}/>}  
       <button onClick={toggleFilter}>Filtru</button>
+      <button onClick={clearPreferences}>Elimină filtru</button>
       {showFilter && <Filter toggleFilter={toggleFilter}  setFilterPreferences={setFilterPreferences}/>}
       <div id="evenimenteDisplay">
         {
@@ -191,8 +201,28 @@ function upcomingEvents(events)
 
 }
 
+function getTomorrowEvents(events)
+{
+  let date = new Date()
+  let tomorrowEvents = []
 
-function thisWeekEvents(events)
+  for(let i = 0; i < events.length; i++)
+  {
+
+    let dateToCheck = new Date(events[i].date)
+    let timeDifference = dateToCheck - date
+    let daysDifference = timeDifference/(1000 * 60 * 60 * 24)
+    if(daysDifference < 1 && daysDifference > 0)
+    {
+      tomorrowEvents.push(events[i])
+    }
+  }
+
+  return tomorrowEvents;
+}
+
+
+function getThisWeekEvents(events)
 {
   let date = new Date()
   let thisWeekEvents = []
@@ -252,3 +282,5 @@ function dateToString(date)
   return day + " " + month
 
 }
+
+
