@@ -340,6 +340,44 @@ img
   justify-self: center;
 }
 
+.eventPage
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.eventView
+{
+  display: flex;
+  width: 100vw;
+  margin-top: 10vh;
+  justify-content: space-around;
+}
+
+.eventDetails
+{
+  background-color: white;
+  color: black;
+  height: 60vh;
+  width: 20vw;
+  border-radius: 5%;
+  overflow: hidden;
+}
+
+#frontEventImage
+{
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.titleAndDescription
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 @keyframes loadingScreen {
 
   from

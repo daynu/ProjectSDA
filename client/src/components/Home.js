@@ -6,6 +6,7 @@ import { useAuth } from "../utils/AuthContext";
 import LoadingScreen from '../img/BrasovStema.png'
 import Filter from "./Filter";
 import SearchEventsBar from "./SearchEventsBar";
+import dateToString from "../utils/dateFormatter";
 
 
 export default function Home() {
@@ -267,17 +268,6 @@ function filterByCategory(events, category)
 }
 
 
-function dateToString(date)
-{
-  let newDate = new Date(date)
-  let month = newDate.toLocaleString('ro-RO', {month: 'long'})
-  let monthFirstLetter = month.charAt(0).toUpperCase()
-  let monthRestLetters = month.slice(1)
-  month = monthFirstLetter + monthRestLetters
-  let day = newDate.getDate()
 
-  return day + " " + month
-
-}
 
 
