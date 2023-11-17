@@ -44,8 +44,12 @@ export default function Home() {
       if (filterPreferences.date === 'thisWeek') {
         filtered = getThisWeekEvents(filtered)
       }
+      if(filterPreferences.date === 'tomorrow')
+      {
+        filtered = getTomorrowEvents(filtered)
+      }
       if (filterPreferences.category) {
-        filtered = filterByCategory(filtered)
+        filtered = filterByCategory(filtered, filterPreferences.category)
       }
     }
   
