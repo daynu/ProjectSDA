@@ -21,6 +21,11 @@ function Filter({toggleFilter, setFilterPreferences})
 
     }
 
+    function clearPreferences() {
+      setFilterPreferences({ category: '', date: '' });
+      toggleFilter()
+    }
+
     function handleCategoryChange(e) {
         const categoryValue = e.target.value;
         console.log('Category changed to:', categoryValue);
@@ -58,7 +63,7 @@ function Filter({toggleFilter, setFilterPreferences})
             </select>
             <input type="submit" value="Aplică filtru" />
             </form>
-
+            <button onClick={clearPreferences}>Elimină filtru</button>
             <button onClick={toggleFilter}>Cancel</button>
         </>
     )

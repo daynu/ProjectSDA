@@ -5,6 +5,7 @@ import EventCarousel from "./EventCarousel";
 import { useAuth } from "../utils/AuthContext";
 import LoadingScreen from '../img/BrasovStema.png'
 import Filter from "./Filter";
+import SearchEventsBar from "./SearchEventsBar";
 
 
 export default function Home() {
@@ -103,9 +104,6 @@ export default function Home() {
     setShowFilter(!showFilter)
   }
 
-  function clearPreferences() {
-    setFilterPreferences({ category: '', date: '' });
-  }
 
   return (
     <>
@@ -113,7 +111,7 @@ export default function Home() {
       <div id="loadingOverlay" className={eventsData.length === 0 ? 'show' : 'hide'}>
         <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
       </div>
-
+    <SearchEventsBar events={eventsData} />
     <div id = "carouselContainer">
       <div id = "carousel">
         <EventCarousel events = {upcoming}/>
@@ -126,7 +124,6 @@ export default function Home() {
       )}
       {showForm && <AddEvent toggleAddForm = {toggleAddForm}/>}  
       <button onClick={toggleFilter}>Filtru</button>
-      <button onClick={clearPreferences}>Elimină filtru</button>
       {showFilter && <Filter toggleFilter={toggleFilter}  setFilterPreferences={setFilterPreferences}/>}
       <div id="evenimenteDisplay">
         {
