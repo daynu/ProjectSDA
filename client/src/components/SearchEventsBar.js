@@ -16,11 +16,15 @@ function SearchEventsBar({ events }) {
     <div>
       <input onChange={handleSearchChange} type="text" placeholder="Search events" />
       {searchEvents.length > 0 && (
-        <ul>
+        <div id="searchedEvents">
           {searchEvents.map((event) => (
-            <li key={event.id}>{event.title}</li>
+            <a href={`/event/${event._id}`}>
+            <div className="searchEventDiv" key={event.id}>
+                <p>{event.title}</p>
+            </div>
+            </a>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

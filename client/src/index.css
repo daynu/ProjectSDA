@@ -259,6 +259,19 @@ img
   background-color: gray;
 }
 
+#searchedEvents
+{
+  background-color: white;
+  color:black;
+  position: absolute;
+  z-index: 20;
+}
+
+.searchEventDiv
+{
+  color: black;
+}
+
 .carousel-caption {
   top: 50%;
   color: white;
