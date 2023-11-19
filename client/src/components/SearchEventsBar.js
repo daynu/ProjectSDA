@@ -30,7 +30,7 @@ function SearchEventsBar({ events }) {
       (
         
           <div id="searchedEvents">
-                <p>Niciun eveniment găsit</p>
+                <p id="noEventSearch">Niciun eveniment găsit</p>
             </div>
       )}
     </div>
