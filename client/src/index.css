@@ -37,11 +37,6 @@ code {
   z-index: 20;
 }
 
-#searchBar
-{
-  position: absolute;
-  top: 10vh;
-}
 
 #userName
 {

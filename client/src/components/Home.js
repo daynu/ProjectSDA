@@ -7,6 +7,7 @@ import LoadingScreen from '../img/BrasovStema.png'
 import Filter from "./Filter";
 import SearchEventsBar from "./SearchEventsBar";
 import dateToString from "../utils/dateFormatter";
+import Navbar from "./Navbar";
 
 
 export default function Home() {
@@ -112,11 +113,10 @@ export default function Home() {
 
   return (
     <>
-
+      <Navbar  events={eventsData}/>
       <div id="loadingOverlay" className={eventsData.length === 0 ? 'show' : 'hide'}>
         <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
       </div>
-    <SearchEventsBar events={eventsData} />
     <div id = "carouselContainer">
       <div id = "carousel">
         <EventCarousel events = {upcoming}/>
@@ -124,6 +124,7 @@ export default function Home() {
       
     </div>
     <h2 id="evenimenteTitle">EVENIMENTE</h2>
+    
       {isAdmin && !showForm && (
         <button onClick={toggleAddForm}>Add Event</button>
       )}
