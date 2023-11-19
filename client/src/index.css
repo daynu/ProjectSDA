@@ -267,6 +267,7 @@ img
 { 
   max-width: 100%;
   display: flex;
+  padding-top: 9vh;
   align-items: center;
   justify-content: center;
   background-color: gray;
