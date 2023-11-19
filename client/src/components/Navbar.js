@@ -2,12 +2,15 @@ import { Link } from "react-router-dom"
 import { useAuth } from "../utils/AuthContext"
 import { useEffect } from "react"
 import SearchEventsBar from "./SearchEventsBar"
+import { useEvents } from "../utils/EventsProvider"
 
 
-export default function Navbar({events})
+export default function Navbar()
 {
 
     const {user, logout} = useAuth()
+
+    const events = useEvents()
 
    function LogOut()
    {
