@@ -37,6 +37,12 @@ code {
   z-index: 20;
 }
 
+#searchBar
+{
+  position: absolute;
+  top: 10vh;
+}
+
 #userName
 {
   margin: 0;
@@ -85,7 +91,7 @@ a
 {
   font-family: 'FontLogo';
   font-weight: bolder;
-  font-size: 50px;
+  font-size: 25px;
   margin-left: 1vh;
 }
 

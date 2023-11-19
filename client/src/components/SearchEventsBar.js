@@ -13,7 +13,7 @@ function SearchEventsBar({ events }) {
   }
 
   return (
-    <div>
+    <div id="searchBar">
       <input onChange={handleSearchChange} type="text" placeholder="Search events" />
       {searchEvents.length > 0 && (
         <div id="searchedEvents">
