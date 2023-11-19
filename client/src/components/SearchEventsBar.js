@@ -15,7 +15,7 @@ function SearchEventsBar({ events }) {
   return (
     <div id="searchBar">
       <input onChange={handleSearchChange} type="text" placeholder="Search events" />
-      {searchEvents.length > 0 && (
+      {searchEvents.length > 0 && search !== '' ? (
         <div id="searchedEvents">
           {searchEvents.map((event) => (
             <a href={`/event/${event._id}`}>
@@ -25,6 +25,13 @@ function SearchEventsBar({ events }) {
             </a>
           ))}
         </div>
+      ):
+      search !== '' &&
+      (
+        
+          <div id="searchedEvents">
+                <p>Niciun eveniment găsit</p>
+            </div>
       )}
     </div>
   );
