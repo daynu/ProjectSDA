@@ -31,10 +31,16 @@ function SearchEventsBar({ events }) {
 }
 
 function getSearchEvents(search, events) {
+  const query = normalizeString(search).toLowerCase();
 
-  const query = search.toLowerCase();
+  return events.filter((event) => {
+    const normalizedTitle = normalizeString(event.title).toLowerCase();
+    return normalizedTitle.includes(query);
+  });
+}
 
-  return events.filter((event) => event.title.toLowerCase().includes(query));
+function normalizeString(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 export default SearchEventsBar;
