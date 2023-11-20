@@ -226,8 +226,8 @@ img
   transform: translate(-50%, -50%);
   background-color: white;
   border-radius: 20px;
-  width: 40vw;
-  height: 70vh;
+  width: 42vw;
+  height: 77vh;
   z-index: 10;
 }
 
@@ -238,45 +238,122 @@ img
   flex-direction: column;
 }
 
-#dataOraLoc 
+#dataOraLoc
 {
   margin-top: 1vh;
+  margin-left: 1vw;
   gap: 1vw;
   display: flex;
   flex-direction: row;
 }
 
+#butonPozaAE
+{
+  margin-top: 5vh;
+  position: fixed;
+  width: 13.25vw;
+  height: 26.5vh;
+  background-color: aquamarine;
+  border-radius: 20px;
+  left: 27vw;
+}
+
 #titluAE
 {
+  margin-left: 1vw;
   border-style: solid;
   border-radius: 20px;
   width: 24.5vw;
   height: 5vh;
-  margin-top: 1vh;
+  margin-top: 5vh;
 }
 
-#dataAE
+#dataAE, #oraAE, #loculAE  
 {
-  border-style: solid;
+  display: flex;
+  flex-direction: column;
+}
+
+#dataAE > label, #oraAE > label, #loculAE >label
+{
+  color: black;
+  font-size: larger;
+  font-weight: bold;
+}
+
+#dataAE > input, #oraAE > input, #loculAE > input
+{
   border-radius: 20px;
+  border-style: solid;
   width: 7.5vw;
   height: 5vh;
 }
 
-#oraAE
+#descriereAE
 {
-
+  margin-top: 2vh;
+  margin-left: 1vw;
   border-style: solid;
   border-radius: 20px;
-  width: 7.5vw;
+  width: 24.5vw;
+  height: 10vh;
+}
+
+#organizatorAE
+{
+  margin-top: 2vh;
+  margin-left: 1vw;
+  border-style: solid;
+  border-radius: 20px;
+  width: 12.25vw;
   height: 5vh;
 }
 
-#loculAE
+#linkAE
 {
+  margin-top: 2vh;
+  margin-left: 1vw;
   border-style: solid;
   border-radius: 20px;
-  width: 7.5vw;
+  width: 40vw;
+  height: 5vh;
+}
+
+#selectAE
+{
+  margin-top: 2vh;
+  margin-left: 1vw;
+  border-style: solid;
+  border-radius: 20px;
+  width: 40vw;
+  height: 5vh;
+}
+
+#submitAE
+{
+  margin-top: 5vh;
+  margin-left: 13.5vw; /*(box width/2) - (submit width/2)*/
+  background-color: #142d4c;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  border-style: solid;
+  border-radius: 25px;
+  width: 15vw;
+  height: 7vh;
+}
+
+#cancelAE
+{
+  margin-top: 2vh;
+  margin-left: 16vw;
+  background-color: #8e4141;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  border-style: solid;
+  border-radius: 20px;
+  width: 10vw;
   height: 5vh;
 }
 
@@ -379,13 +456,6 @@ img
 #pictureInput
 {
   display: none;
-}
-
-.btn
-{
-  background-color: blue;
-  color: white;
-  cursor: pointer;
 }
 
 #evenimenteTitle

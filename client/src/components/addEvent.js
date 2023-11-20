@@ -71,27 +71,42 @@ export default function AddEvent({toggleAddForm})
     return(
       <div id = "addEventBox">
         <form onSubmit={handleFormSubmit} id = "eventForm">
-            <label htmlFor="pictureInput" className="btn">Poza</label>
+            <label id = "butonPozaAE" htmlFor="pictureInput" className="btn">Baga o poza, coaie</label>
             {photo && <img src={photo} alt="EventPhoto"/>}
             <input onChange={handleFileChange} id="pictureInput" type="file" accept=".jpeg, .jpg, .png" required/>
             <input id = "titluAE" onChange={handleChange} name = "title" placeholder="Nume eveniment" type="text" required/>
+  
             <div id = "dataOraLoc">
-              <input id = "dataAE" onChange={handleChange} name = "date" type="date" required/>
-              <input id = "oraAE" onChange={handleChange} name="hour" type="time" required/>
-              <input id = "loculAE" onChange={handleChange} name="location" placeholder="Locul" type="text" required/>
-            </div>  
-            <input onChange={handleChange} name="description" placeholder="Descriere" type="text" required />
-            <input onChange={handleChange} name="organizer" placeholder="Organizatorul" type="text" required/>
-            <input onChange={handleChange} name="link" placeholder="Link bilet" type="text" required/>
+
+              <div id = "dataAE">
+                <label>Data</label>
+                <input onChange={handleChange} name = "date" type="date" required/>
+              </div> 
+
+              <div id = "oraAE">
+                <label>Ora</label>
+                <input onChange={handleChange} name="hour" type="time" required/>
+              </div>
+
+              <div id = "loculAE">
+                <label>Locul</label>
+               <input onChange={handleChange} name="location" placeholder="Locul" type="text" required/>
+              </div>
+            </div> 
+
+            <input id = "descriereAE" onChange={handleChange} name="description" placeholder="Descriere" type="text" required />
+            <input id = "organizatorAE" onChange={handleChange} name="organizer" placeholder="Organizatorul" type="text" required/>
             <label>Categorie</label>
-            <select onChange={handleChange} name="category">
+            <select id = "selectAE" onChange={handleChange} name="category">
               <option value="Muzica">Muzică</option>
               <option value="Teatru">Teatru</option>
               <option value="Sport">Sport</option>
               <option value="Altele">Altele</option>
             </select>
-            <input type="submit" value="Adăugare"/>
-            <button onClick={cancelAdd}>Cancel</button>           
+            <input id = "linkAE" onChange={handleChange} name="link" placeholder="Link bilet" type="text" required/>
+            
+            <input id = "submitAE" type="submit" value="Adăugare"/>
+            <button id = "cancelAE" onClick={cancelAdd}>Cancel</button>           
         </form>
         </div>
     )
