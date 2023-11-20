@@ -14,7 +14,7 @@ function SearchEventsBar({ events }) {
 
   return (
     <div id="searchBar">
-      <input onChange={handleSearchChange} type="text" placeholder="Search events" />
+      <input id="searchArea" onChange={handleSearchChange} type="text" placeholder="Search events" />
       {searchEvents.length > 0 && search !== '' ? (
         <div id="searchedEvents">
           {searchEvents.map((event) => (
