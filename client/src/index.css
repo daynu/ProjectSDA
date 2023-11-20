@@ -49,6 +49,7 @@ code {
 {
   margin: 0;
   margin-right: 2vh;
+  cursor: pointer;
 }
 
 a
@@ -62,7 +63,7 @@ a
   color: black;
 }
 
-#loginSignup
+#loginSignup, #userName
 {
   display: flex;
   align-items: center;
@@ -71,15 +72,33 @@ a
   margin-right: 2vh;
 }
 
+#userName
+{
+  flex-direction: column;
+}
+
+#userOptions
+{
+  height: 5vh;
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  background-color: #142d4c;
+  margin-top: 6vh;
+  margin-right: 9vw;
+}
+
 #logout
 {
-  background-color: rgb(152, 125, 75);
+  background-color: red;
   color:white;
   border-style: solid;
   border-radius: 30px;
-  width: 10vh;
-  height: 6vh;
-  font-size: larger;
+  width: 50%;
+  height: 5vh;
   font-weight: bold;
   transition: 0.3s;
 }
