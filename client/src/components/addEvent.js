@@ -71,16 +71,15 @@ export default function AddEvent({toggleAddForm})
     return(
       <div id = "addEventBox">
         <form onSubmit={handleFormSubmit} id = "eventForm">
-            <p>TESTT</p>
             <label htmlFor="pictureInput" className="btn">Poza</label>
             {photo && <img src={photo} alt="EventPhoto"/>}
             <input onChange={handleFileChange} id="pictureInput" type="file" accept=".jpeg, .jpg, .png" required/>
-            <input onChange={handleChange} name = "title" placeholder="Nume eveniment" type="text" required/>
-            <label>Data</label>
-            <input onChange={handleChange} name = "date" type="date" required/>
-            <label>Ora</label>
-            <input onChange={handleChange} name="hour" type="time" required/>
-            <input onChange={handleChange} name="location" placeholder="Locul" type="text" required />
+            <input id = "titluAE" onChange={handleChange} name = "title" placeholder="Nume eveniment" type="text" required/>
+            <div id = "dataOraLoc">
+              <input id = "dataAE" onChange={handleChange} name = "date" type="date" required/>
+              <input id = "oraAE" onChange={handleChange} name="hour" type="time" required/>
+              <input id = "loculAE" onChange={handleChange} name="location" placeholder="Locul" type="text" required/>
+            </div>  
             <input onChange={handleChange} name="description" placeholder="Descriere" type="text" required />
             <input onChange={handleChange} name="organizer" placeholder="Organizatorul" type="text" required/>
             <input onChange={handleChange} name="link" placeholder="Link bilet" type="text" required/>
