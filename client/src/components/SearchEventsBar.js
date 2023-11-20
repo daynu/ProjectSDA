@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import Magnifying from '../img/Magnifying.svg.png'
+
 function SearchEventsBar({ events }) {
   const [search, setSearch] = useState('');
   const [searchEvents, setSearchEvents] = useState([]);
@@ -14,10 +16,14 @@ function SearchEventsBar({ events }) {
 
   return (
     <div id="searchBar">
-      <input id="searchArea" onChange={handleSearchChange} type="text" placeholder="Search events" />
+      <div id="searchMain">
+        <img src={Magnifying} />
+        <input id="searchArea" onChange={handleSearchChange} type="text" placeholder="Search events" />
+      </div>
+      
       {searchEvents.length > 0 && search !== '' ? (
         <div id="searchedEvents">
-          {searchEvents.map((event) => (
+          {searchEvents.map((event) => (  
             <a href={`/event/${event._id}`}>
             <div className="searchEventDiv" key={event.id}>
                 <p>{event.title}</p>

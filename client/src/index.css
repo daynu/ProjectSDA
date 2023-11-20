@@ -39,6 +39,29 @@ code {
   outline: none;
 }
 
+#searchMain
+{
+  width: 25vw;
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2%/18%;
+}
+
+#searchMain > img
+{
+  height: 3vh;
+  width: 1.5vw;
+  margin-left: 1vh;
+  margin-right: 1vh;
+}
+
+#searchArea
+{
+  padding-left: 0.4vw;
+}
+
 #navbar
 {
   width: 100vw;
@@ -417,7 +440,10 @@ img
   width: 25vw;
   display: flex;
   flex-direction: column;
+  margin-top: 0.5vh;
+  border-radius: 5px;
 }
+
 
 #noEventSearch
 {
