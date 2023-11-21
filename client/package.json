@@ -4,6 +4,7 @@
   "proxy": "http://127.0.0.1:5000",
   "private": true,
   "dependencies": {
+    "@react-oauth/google": "^0.12.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -16,6 +17,7 @@
     "carousel": "^0.0.3",
     "cors": "^2.8.5",
     "fs": "^0.0.1-security",
+    "jwt-decode": "^4.0.0",
     "path-browserify": "^1.0.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
