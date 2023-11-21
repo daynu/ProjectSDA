@@ -83,7 +83,7 @@ export default function AddEvent({isAdmin})
         <form onSubmit={handleFormSubmit} id = "eventForm">
           <label id = "headerAE">Adaugă un eveniment</label>
             <label id = "butonPozaAE" htmlFor="pictureInput" className="btn">
-              {photo && <img id = "PozaAE" src={photo} alt="EventPhoto"/>}
+              {photo && <img id = "pozaAE" src={photo} alt="EventPhoto"/>}
             </label>
            
             <input onChange={handleFileChange} id="pictureInput" type="file" accept=".jpeg, .jpg, .png" required/>
