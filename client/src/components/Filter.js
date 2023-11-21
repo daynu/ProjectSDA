@@ -60,9 +60,9 @@ function Filter({toggleFilter, setFilterPreferences})
               <option value="tomorrow">Mâine</option>
               <option value="thisWeek">Săptămâna aceasta</option>
             </select>
-            <input type="submit" value="Caută" />
+            <input id="filterSubmit" type="submit" value="Caută" />
             </form>
-            <button onClick={clearPreferences}>Reset</button>
+            <button id="filterReset" onClick={clearPreferences}>Reset</button>
         </>
     )
 

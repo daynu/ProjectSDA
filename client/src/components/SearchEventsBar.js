@@ -17,7 +17,7 @@ function SearchEventsBar({ events }) {
   return (
     <div id="searchBar">
       <div id="searchMain">
-        <img src={Magnifying} />
+        <img src={Magnifying} alt="magnifying"/>
         <input id="searchArea" onChange={handleSearchChange} type="text" placeholder="Search events" />
       </div>
       
@@ -26,7 +26,7 @@ function SearchEventsBar({ events }) {
           {searchEvents.map((event) => (  
             <a href={`/event/${event._id}`}>
             <div className="searchEventDiv" key={event.id}>
-                <p>{event.title}</p>
+                <p className="foundEvent">{event.title}</p>
             </div>
             </a>
           ))}
