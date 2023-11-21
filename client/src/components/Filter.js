@@ -48,7 +48,6 @@ function Filter({toggleFilter, setFilterPreferences})
 
         <>
             <form onSubmit={handleSubmit}>
-            <label>Categorie</label>
             <select onChange={handleCategoryChange} name="category">
               <option value="Muzica">Muzică</option>
               <option value="Teatru">Teatru</option>
@@ -61,10 +60,9 @@ function Filter({toggleFilter, setFilterPreferences})
               <option value="tomorrow">Mâine</option>
               <option value="thisWeek">Săptămâna aceasta</option>
             </select>
-            <input type="submit" value="Aplică filtru" />
+            <input type="submit" value="Caută" />
             </form>
-            <button onClick={clearPreferences}>Elimină filtru</button>
-            <button onClick={toggleFilter}>Cancel</button>
+            <button onClick={clearPreferences}>Reset</button>
         </>
     )
 

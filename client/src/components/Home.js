@@ -113,7 +113,7 @@ export default function Home() {
 
 
   return (
-    <>
+    <div id="mainPage">
       <Navbar  events={eventsData}/>
       <div id="loadingOverlay" className={eventsData.length === 0 ? 'show' : 'hide'}>
         <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
@@ -121,15 +121,18 @@ export default function Home() {
     <div id = "mainPhotoContainer">
       <img className="vignette" id="mainPhoto" src={Brasov} alt="Brasov" />
       <p id="mainTitle">Evenimente în Brașov</p>
+      
     </div>
+    <div id="filterContainer">
+          <Filter toggleFilter={toggleFilter}  setFilterPreferences={setFilterPreferences}/>
+    </div>  
     <h2 id="evenimenteTitle">Evenimente</h2>
     
       {isAdmin && !showForm && (
         <button onClick={toggleAddForm}>Add Event</button>
       )}
-      {showForm && <AddEvent toggleAddForm = {toggleAddForm}/>}  
-      <button onClick={toggleFilter}>Filtru</button>
-      {showFilter && <Filter toggleFilter={toggleFilter}  setFilterPreferences={setFilterPreferences}/>}
+      {showForm && <AddEvent toggleAddForm = {toggleAddForm}/>}
+      
       <div id="evenimenteDisplay">
         {
           filteredEvents.length > 0 ? 
@@ -153,7 +156,7 @@ export default function Home() {
         </div>
   
 
-  </>
+  </div>
 )
 
         }

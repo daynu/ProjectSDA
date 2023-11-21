@@ -236,6 +236,7 @@ img
   align-items: center;
   justify-content: center;
   gap: 2vw;
+  padding-top: 5vh;
 
 }
 
@@ -438,6 +439,29 @@ img
   height: 100%;
   box-shadow: 100px 100px 300px rgba(0, 0, 0, 2) inset;
   z-index: 1; 
+}
+
+#filterContainer
+{
+  background-color: white;
+  justify-self: center;
+  align-self: center;
+  transform: translateY(450px);
+  position: absolute;
+  width: 40vw;
+  display: flex;
+  height: 15vh;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  box-shadow: 5px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+#mainPage
+{
+  display: flex;
+  flex-direction: column;
 }
 
 #mainTitle {
