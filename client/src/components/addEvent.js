@@ -101,7 +101,7 @@ export default function AddEvent({isAdmin})
 
               <div id = "loculAE">
                 <label>Locul</label>
-               <input onChange={handleChange} name="location" placeholder="Locul" type="text" required/>
+              <input onChange={handleChange} name="location" placeholder="Locul" type="text" required/>
               </div>
             </div> 
 
@@ -119,7 +119,7 @@ export default function AddEvent({isAdmin})
             <input id = "submitAE" type="submit" value="Adăugare"/>
             <button id = "cancelAE" onClick={cancelAdd}>Cancel</button>           
         </form>
-        </div>
+        </div> 
       }
       
         </>
