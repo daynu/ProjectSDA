@@ -18,7 +18,7 @@ function SearchEventsBar({ events }) {
     <div id="searchBar">
       <div id="searchMain">
         <img src={Magnifying} alt="magnifying"/>
-        <input id="searchArea" onChange={handleSearchChange} type="text" placeholder="Search events" />
+        <input id="searchArea" onChange={handleSearchChange} type="text" placeholder="Caută evenimente" />
       </div>
       
       {searchEvents.length > 0 && search !== '' ? (

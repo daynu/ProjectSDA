@@ -81,8 +81,9 @@ export default function AddEvent({isAdmin})
       {showForm &&
       <div id = "addEventBox">
         <form onSubmit={handleFormSubmit} id = "eventForm">
-            <label id = "butonPozaAE" htmlFor="pictureInput" className="btn">Baga o poza, coaie</label>
-            {photo && <img src={photo} alt="EventPhoto"/>}
+          <label id = "headerAE">Adaugă un eveniment</label>
+            <label id = "butonPozaAE" htmlFor="pictureInput" className="btn"/>
+            {photo && <img id = "PozaAE" src={photo} alt="EventPhoto"/>}
             <input onChange={handleFileChange} id="pictureInput" type="file" accept=".jpeg, .jpg, .png" required/>
             <input id = "titluAE" onChange={handleChange} name = "title" placeholder="Nume eveniment" type="text" required/>
   
@@ -104,9 +105,9 @@ export default function AddEvent({isAdmin})
               </div>
             </div> 
 
-            <input id = "descriereAE" onChange={handleChange} name="description" placeholder="Descriere" type="text" required />
+            <textarea id = "descriereAE" onChange={handleChange} name="description" placeholder="Descriere" type="text" required />
             <input id = "organizatorAE" onChange={handleChange} name="organizer" placeholder="Organizatorul" type="text" required/>
-            <label>Categorie</label>
+            <label id = "categorieTxtAE">Categorie</label>
             <select id = "selectAE" onChange={handleChange} name="category">
               <option value="Muzica">Muzică</option>
               <option value="Teatru">Teatru</option>
