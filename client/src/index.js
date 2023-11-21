@@ -8,6 +8,7 @@ import { AuthProvider } from "./utils/AuthContext";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EventPage from "./components/EventPage";
 import { EventsProvider } from "./utils/EventsProvider";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 
 const router = createBrowserRouter([
@@ -31,11 +32,12 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <EventsProvider>
-        <RouterProvider router={router} />
-      </EventsProvider>
-    </AuthProvider>
-    
+      <AuthProvider>
+        <GoogleOAuthProvider clientId="840492136831-6pt83mruob7u4o3ps1qgv75k5peii96i.apps.googleusercontent.com">
+          <EventsProvider>
+            <RouterProvider router={router} />
+          </EventsProvider>
+          </GoogleOAuthProvider>
+      </AuthProvider>
   </React.StrictMode>
 );

@@ -1,12 +1,12 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../utils/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import GoogleAuth from './GoogleAuth';
+
 
 export default function Login()
 {
   const { login } = useAuth()
-  const navigate = useNavigate()
 
     const [loginData, setLoginData] = useState({
         name: '',
@@ -34,7 +34,6 @@ export default function Login()
       useEffect(() => {
         if (response === "Logged in") {
           login(loginData.name)
-          navigate('/')
         }
       }, [response, loginData.name, login]);
 
@@ -57,6 +56,7 @@ export default function Login()
                  <p>{response && response}</p>
                   <input id = "butonLogin" type="submit" value="Log in"/>
               </form>
+              <GoogleAuth />
               <div>
                   <p id = "loginQ" >Nu ai cont? <a style={{color: 'blue'}} href="/signup">Apasă aici!</a></p>
               </div>

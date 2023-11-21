@@ -4,12 +4,13 @@ import React, { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem('user');
     return storedUser ? JSON.parse(storedUser) : { name: '' };
   });
-  
+
 
   const logout = () => {
     setUser({ name: '' });
@@ -20,6 +21,7 @@ export const AuthProvider = ({ children }) => {
   {
     setUser({name: user})
     localStorage.setItem('user', JSON.stringify({ name: user }));
+    window.location.href = '/'
   }
 
   return (

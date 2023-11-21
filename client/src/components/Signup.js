@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios or your preferred HTTP client
 import { useNavigate } from 'react-router-dom';
+import GoogleAuth from './GoogleAuth';
 
 function Signup() {
 
@@ -81,6 +82,7 @@ const [exists, setExists] = useState(false)
           />
           <button id = "butonSignup" type="submit">Sign Up</button>
         </form>
+        <GoogleAuth />
         <div>
             <p id = "signupQ" >Ai deja un cont? <a style={{color: 'blue'}} href="/login">Apasa aici!</a></p>
         </div>
