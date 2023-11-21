@@ -8,6 +8,7 @@ import Filter from "./Filter";
 import SearchEventsBar from "./SearchEventsBar";
 import dateToString from "../utils/dateFormatter";
 import Navbar from "./Navbar";
+import Brasov from '../img/brasov.jpg'
 
 
 export default function Home() {
@@ -117,13 +118,11 @@ export default function Home() {
       <div id="loadingOverlay" className={eventsData.length === 0 ? 'show' : 'hide'}>
         <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
       </div>
-    <div id = "carouselContainer">
-      <div id = "carousel">
-        <EventCarousel events = {upcoming}/>
-      </div>
-      
+    <div id = "mainPhotoContainer">
+      <img className="vignette" id="mainPhoto" src={Brasov} alt="Brasov" />
+      <p id="mainTitle">Evenimente în Brașov</p>
     </div>
-    <h2 id="evenimenteTitle">EVENIMENTE</h2>
+    <h2 id="evenimenteTitle">Evenimente</h2>
     
       {isAdmin && !showForm && (
         <button onClick={toggleAddForm}>Add Event</button>
