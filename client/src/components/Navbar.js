@@ -49,7 +49,7 @@ export default function Navbar()
 
     return(
         <div id="navbar">
-            <Link id = "logo" to="/">EventBV</Link>
+            <Link id = "logo" to="/">BVent</Link>
             <SearchEventsBar events={events} />
             {user.name ? (
                 <>

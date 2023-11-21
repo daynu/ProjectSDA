@@ -1,7 +1,10 @@
+
+
 @font-face {
   font-family: 'FontLogo';
-  src: url("./fonts/NewYorkLarge-Bold.otf");
+  src: url('./fonts/Agbalumo-Regular.ttf');
 }
+
 
 body {
   margin: 0;
@@ -143,7 +146,8 @@ a
 {
   font-family: 'FontLogo';
   font-weight: bolder;
-  font-size: 25px;
+  font-size: 30px;
+  letter-spacing: 1px;
   margin-left: 2vh;
 }
 
