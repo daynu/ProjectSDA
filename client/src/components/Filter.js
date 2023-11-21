@@ -45,7 +45,6 @@ function Filter({toggleFilter, setFilterPreferences})
       }
 
     return(
-
         <>
             <form onSubmit={handleSubmit}>
             <select onChange={handleCategoryChange} name="category">

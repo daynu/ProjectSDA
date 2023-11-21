@@ -49,7 +49,9 @@ export default function Home() {
         filtered = getTomorrowEvents(filtered)
       }
       if (filterPreferences.category) {
+        console.log(filtered)
         filtered = filterByCategory(filtered, filterPreferences.category)
+        console.log(filtered)
       }
     }
   

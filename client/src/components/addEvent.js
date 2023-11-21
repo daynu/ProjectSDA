@@ -20,7 +20,7 @@ export default function AddEvent({isAdmin})
         description: '',
         organizer: '',
         link: '',
-        category: ''
+        category: 'Muzica'
       });
 
     const [photo, setPhoto] = useState()
@@ -110,7 +110,7 @@ export default function AddEvent({isAdmin})
             <textarea id = "descriereAE" onChange={handleChange} name="description" placeholder="Descriere" type="text" required />
             <input id = "organizatorAE" onChange={handleChange} name="organizer" placeholder="Organizatorul" type="text" required/>
             <label id = "categorieTxtAE">Categorie</label>
-            <select id = "selectAE" onChange={handleChange} name="category">
+            <select id="selectAE" onChange={handleChange} name="category">
               <option value="Muzica">Muzică</option>
               <option value="Teatru">Teatru</option>
               <option value="Sport">Sport</option>

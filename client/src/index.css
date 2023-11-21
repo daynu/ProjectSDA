@@ -330,9 +330,9 @@ img
   background-color: rgb(209, 209, 209);
 }
 
-#pozaAE
+#PozaAE
 {
-  top: 14.35%;
+  margin-top: 12vh;
   position: fixed;
   width: 13.25vw;
   height: 26.5vh;
@@ -452,7 +452,6 @@ img
 {
   margin-top: 2vh;
   margin-left: 16vw;
-  margin-bottom: auto;
   background-color: #8e4141;
   color: white;
   border: none;
