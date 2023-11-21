@@ -510,7 +510,8 @@ select
 #mainTitle {
   position: absolute;
   font-size: 48px;
-  z-index: 2; 
+  z-index: 2;
+  text-shadow: 1px 1px 2px black;
 }
 
 #mainPhoto {

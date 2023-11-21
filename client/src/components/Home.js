@@ -14,8 +14,6 @@ import Brasov from '../img/brasov.jpg'
 export default function Home() {
   const [eventsData, setEventsData] = useState([]);
   const { user } = useAuth()
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [showForm, setShowForm] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const [upcoming, setUpcoming] = useState([])
   const [filteredEvents, setFilteredEvents] = useState([])
@@ -67,31 +65,7 @@ export default function Home() {
     setFilteredEvents(upcomingEvents(eventsData))
   }, [eventsData])
 
-  useEffect(() => {
-    //Checking if user is an admin
-    if (user.name) {
-      axios.get(`/api/userRole/${user.name}`)
-        .then((res) => {
-          setIsAdmin(res.data.isAdmin);
-        })
-        .catch((error) => {
-          console.error("Error fetching user role:", error);
-        });
-    }
-    else
-    {
-      setIsAdmin(false)
-    }
-  }, [user]);
 
-  useEffect(() =>
-  {
-    fetchEvents()
-  }, [showForm])
-
-  function toggleAddForm() {
-    setShowForm(!showForm);
-  }
 
   function fetchEvents() {
     axios.get('/api/events')
@@ -128,10 +102,6 @@ export default function Home() {
     </div>  
     <h2 id="evenimenteTitle">Evenimente</h2>
     
-      {isAdmin && !showForm && (
-        <button onClick={toggleAddForm}>Add Event</button>
-      )}
-      {showForm && <AddEvent toggleAddForm = {toggleAddForm}/>}
       
       <div id="evenimenteDisplay">
         {

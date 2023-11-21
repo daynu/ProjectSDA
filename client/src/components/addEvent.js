@@ -1,8 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
 
-export default function AddEvent({toggleAddForm})
+export default function AddEvent({isAdmin})
 {
+
+  const [showForm, setShowForm] = useState(false);
+  
+
+  function toggleAddForm() {
+    setShowForm(!showForm);
+  }
 
     const [formData, setFormData] = useState({
         title: '',
@@ -69,6 +76,9 @@ export default function AddEvent({toggleAddForm})
 
 
     return(
+      <>
+      {isAdmin && <button onClick={toggleAddForm}>Add event</button>}
+      {showForm &&
       <div id = "addEventBox">
         <form onSubmit={handleFormSubmit} id = "eventForm">
             <label id = "butonPozaAE" htmlFor="pictureInput" className="btn">Baga o poza, coaie</label>
@@ -109,6 +119,9 @@ export default function AddEvent({toggleAddForm})
             <button id = "cancelAE" onClick={cancelAdd}>Cancel</button>           
         </form>
         </div>
+      }
+      
+        </>
     )
 }
 
