@@ -544,6 +544,12 @@ select
 .searchEventDiv
 {
   color: black;
+  display: flex;
+}
+
+p
+{
+  margin: 5px;
 }
 
 .carousel-caption {
