@@ -321,6 +321,11 @@ img
   left: 27vw;
 }
 
+#butonPozaAE:hover
+{
+  background-color: rgb(209, 209, 209);
+}
+
 #PozaAE
 {
   margin-top: 12vh;
@@ -436,6 +441,7 @@ img
   border-radius: 25px;
   width: 15vw;
   height: 7vh;
+  transition: 0.3s;
 }
 
 #cancelAE
@@ -451,6 +457,20 @@ img
   border-radius: 20px;
   width: 10vw;
   height: 5vh;
+  transition: 0.3s;
+}
+
+#submitAE:hover
+{
+  transform: scale(1.2);
+  color: #142d4c;
+  background-color: white;
+}
+
+#cancelAE:hover
+{
+  color: #8e4141;
+  background-color: white;
 }
 
 #carousel
