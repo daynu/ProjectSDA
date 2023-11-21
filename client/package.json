@@ -17,6 +17,7 @@
     "carousel": "^0.0.3",
     "cors": "^2.8.5",
     "fs": "^0.0.1-security",
+    "install": "^0.13.0",
     "jwt-decode": "^4.0.0",
     "path-browserify": "^1.0.1",
     "react": "^18.2.0",
