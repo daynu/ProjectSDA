@@ -47,13 +47,16 @@ export default function Login()
 
     return(
       <div id = "loginFull">
+        <div id = "loginImage">
+          <label>BVent</label>
+        </div>
         <div id = "loginPage">
             <h2>Accesare cont</h2>
               
               <form onSubmit={handleFormSubmit} id = 'loginForm'>
-                 <input id = "numeLogin" onChange={handleInputChange} name="name" type="text" placeholder="Nume" required/> 
-                 <input id = "parolaLogin" onChange={handleInputChange} name="password" type="password" placeholder="Parolă" required/> 
-                 <p>{response && response}</p>
+                <input id = "numeLogin" onChange={handleInputChange} name="name" type="text" placeholder="Nume" required/> 
+                <input id = "parolaLogin" onChange={handleInputChange} name="password" type="password" placeholder="Parolă" required/> 
+                <p>{response && response}</p>
                   <input id = "butonLogin" type="submit" value="Log in"/>
               </form>
               <GoogleAuth />

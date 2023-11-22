@@ -159,26 +159,45 @@ img
 
 #loginFull, #signupFull
 {
-  background-image: linear-gradient(rgb(0, 82, 133),rgb(255, 255, 255));
+  display: flex;
+  flex-direction: row;
   height: 100vh;
+}
+
+#loginImage
+{
+  background-image: url('./img/biserica-neagra.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  text-align: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+}
+
+#loginImage > label
+{
+  font-family: 'FontLogo';
+  font-size: 10vh;
+  margin-top: 40%;
 }
 
 #loginPage, #signupPage
 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: white;
-  border-radius: 20px;
-  position:absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 100%;
+  z-index: 2;
 }
 
 #loginPage > h2, #signupPage > h2
 {
+  margin-top: 40px;
   color: rgb(0, 139, 226);
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 50px;
 }
 
 #loginQ, #signupQ
@@ -197,10 +216,8 @@ img
   border-style: solid;
   font-size: large;
   font-weight: bold;
-  width: 500px;
-  height: 50px;
-  margin-left: 50px;
-  margin-right: 50px;
+  width: 25vw;
+  height: 5vh;
 }
 
 #butonLogin, #butonSignup
@@ -209,14 +226,11 @@ img
   color: white;
   font-size: 25px;
   font-weight: bolder;
-  margin-left: 175px;
   text-align: center;
   border-radius: 20px;
   border-color: rgb(0, 139, 226);
   border-width: 5px;
   border-style:solid;
-  width: 250px;
-  height: 50px;
   transition: 0.3s;
 }
 
