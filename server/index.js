@@ -113,7 +113,7 @@ app.post('/google-user-add', async (req, res) => {
   {
     try {
 
-    const existingUser = await User.findOne({ username: name });
+    const existingUser = await User.findOne({ email: email });
 
     if (!existingUser) {
       addUser(name, email);

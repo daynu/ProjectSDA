@@ -10,9 +10,7 @@ function GoogleAuth()
 
     const { login } = useAuth()
 
-    const [credentials, setCredentials] = useState([])
-
-    function addUser()
+    function addUser(credentials)
     {
         axios.post('/google-user-add', credentials)
     }
@@ -21,8 +19,7 @@ function GoogleAuth()
         <GoogleLogin
             onSuccess={credentialResponse => {
             var credentialResponse = jwtDecode(credentialResponse.credential)
-            setCredentials(credentialResponse)
-            addUser()
+            addUser(credentialResponse)
             login(credentialResponse.name)
             }}
             onError={() => {
