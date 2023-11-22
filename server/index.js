@@ -4,6 +4,7 @@ const passportLocalMongoose = require('passport-local-mongoose')
 const cors = require('cors')
 const app = express()
 const bcrypt = require('bcryptjs')
+const { OAuth2Client } = require('google-auth-library');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,6 +18,7 @@ const mongoose = require('mongoose')
 const { use } = require('passport')
 
 const mongoURI = 'mongodb+srv://danu:danu@cluster0.4zkmykg.mongodb.net/'
+const googleClient = new OAuth2Client('840492136831-d7hc0cqsh2cgh6fl0jk5ma4j3kjs4mlg.apps.googleusercontent.com');
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection
@@ -103,6 +105,29 @@ app.get('/api/userRole/:name', async function (req, res)
 
   res.json({isAdmin: userRole})
 })
+
+
+app.post('/google-user-add', async (req, res) => {
+  const { name, email } = req.body;
+  if(name && email)
+  {
+    try {
+
+    const existingUser = await User.findOne({ username: name });
+
+    if (!existingUser) {
+      addUser(name, email);
+    }
+
+    res.status(200).send('Success');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+  }
+  
+});
+
 
 app.post('/signup', async function(req, res) {
   const { name, email, password } = req.body;
