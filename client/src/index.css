@@ -266,12 +266,28 @@ img
   overflow: hidden;
   background-color: white;
   margin-bottom: 5vh;
+  box-shadow: 5px 5px black;
+}
+
+.eventCell:hover > .eventCellImgContainer > .eventCellImg
+{
+  transform: scale(1.05)
 }
 
 .eventCellImg {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
+  overflow: hidden;
+  transition: transform 0.35s ease-in-out;
+  z-index: -1;
+}
+
+.eventCellImgContainer
+{
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .eventCellTitle
@@ -546,7 +562,6 @@ img
   justify-content: center;
   align-items: center;
   z-index: 2;
-  box-shadow: 5px 2px 0 rgba(0, 0, 0, 0.5);
 }
 
 #mainPage

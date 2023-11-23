@@ -115,7 +115,7 @@ export default function Home() {
                 (
                   <a href={`/event/${event._id}`}>
                   <div className="eventCell">
-                      <img className="eventCellImg" src={event.picture} alt={event.title}/>
+                      <div className="eventCellImgContainer"><img className="eventCellImg" src={event.picture} alt={event.title}/></div>
                       <p className="eventCellTitle">{event.title}</p>
                       <div className="eventCellDate"><img className="eventIcon" alt="calendar" src={Calendar}/><p>{dateToString(event.date)}</p></div>
                       <div className="eventCellLocation"><img src={Location} className="eventIcon"/><p>{event.location}</p></div>
