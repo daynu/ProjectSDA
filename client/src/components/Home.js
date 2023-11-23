@@ -9,6 +9,8 @@ import SearchEventsBar from "./SearchEventsBar";
 import dateToString from "../utils/dateFormatter";
 import Navbar from "./Navbar";
 import Brasov from '../img/brasov.jpg'
+import Calendar from '../img/date.png'
+import Location from '../img/pin.png'
 
 
 export default function Home() {
@@ -115,7 +117,8 @@ export default function Home() {
                   <div className="eventCell">
                       <img className="eventCellImg" src={event.picture} alt={event.title}/>
                       <p className="eventCellTitle">{event.title}</p>
-                      <p className="eventCellDate">{dateToString(event.date)}</p>
+                      <div className="eventCellDate"><img className="eventIcon" alt="calendar" src={Calendar}/><p>{dateToString(event.date)}</p></div>
+                      <div className="eventCellLocation"><img src={Location} className="eventIcon"/><p>{event.location}</p></div>
                     </div>
                   </a>
                 ))

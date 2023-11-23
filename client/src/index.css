@@ -73,7 +73,7 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  position: absolute;
   z-index: 20;
 }
 
@@ -261,7 +261,7 @@ img
 .eventCell {
   color: black;
   width: 20vw;
-  height: 40vh;
+  height: 42vh;
   border-radius: 5%;
   overflow: hidden;
   background-color: white;
@@ -277,6 +277,20 @@ img
 .eventCellTitle
 {
   font-weight: bold;
+  text-align: center;
+}
+
+.eventIcon
+{
+  height: 15px;
+  width: 15px;
+}
+
+.eventCellDate, .eventCellLocation
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
