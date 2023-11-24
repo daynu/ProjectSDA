@@ -77,7 +77,12 @@ export default function AddEvent({isAdmin})
 
     return(
       <>
-      {isAdmin && <button onClick={toggleAddForm}>Add event</button>}
+      {isAdmin && <div class="menu-item" onClick={toggleAddForm}>
+        <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><g><path d="M931.5,441.5h-373v-373c0-32.3-26.1-58.5-58.5-58.5c-32.4,0-58.5,26.2-58.5,58.5v373h-373C36.1,441.5,10,467.7,10,500c0,32.3,26.1,58.5,58.5,58.5h372.9v373c0,32.3,26.2,58.5,58.5,58.5c32.4,0,58.5-26.2,58.5-58.5v-373h373c32.4,0,58.5-26.2,58.5-58.5C990,467.7,963.9,441.5,931.5,441.5z"></path></g>
+                                </svg>
+                                Add event
+                              </div>
+        }
       {showForm &&
       <div id = "addEventBox">
         <form onSubmit={handleFormSubmit} id = "eventForm">

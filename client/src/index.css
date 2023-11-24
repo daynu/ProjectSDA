@@ -28,17 +28,19 @@ code {
 }
 
   .userOptions {
-  position: relative;
+  margin-top: 6vh;
+  margin-right: 9vw;
+  position: absolute;
   width: 200px;
   height: 150px;
   background-color: lightblue;
-  border-radius: 15px; /* Adjust the border-radius for rounded corners */
+  border-radius: 15px; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  align-items: stretch; /* Ensures children stretch to full width */
-  overflow: hidden; /* Prevents child elements from overflowing */
+  align-items: stretch; 
+  overflow: hidden; 
   }
 
 .menu-item {
