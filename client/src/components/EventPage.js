@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import LoadingScreen from '../img/BrasovStema.png'
 import dateToString from "../utils/dateFormatter";
+import Calendar from '../img/date.png'
+import Location from '../img/pin.png'
 
 function EventPage()
 {
@@ -25,6 +27,9 @@ function EventPage()
             <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
         </div>
         <Navbar />
+        <div id = "mainEventPhotoContainer">
+            <img className="vignette" id="mainPhoto" src={eventData.picture} alt="eventPicture" />
+        </div>
         <div className="eventPage">
             <div className="eventView">
             <div className="titleAndDescription">
@@ -34,11 +39,14 @@ function EventPage()
                 <a href={eventData.link ? eventData.link : "https://www.youtube.com/watch?v=NpkPy3y6ors"} target="_blank"><button>Cumpără bilet</button></a>
             </div>
             
-            <div className="eventDetails">
-                <img id = "frontEventImage" src={eventData.picture} alt="eventPicture"/>
-                <p>{dateToString(eventData.date)}</p>
-                <p>{eventData.hour}</p>
-                <p>{eventData.location}</p> 
+            <div className="eventPageContainer">
+                <div className="eventDetails">
+                    <h2>{eventData.title}</h2>
+                    <div className="eventCellDate"><img className="eventIcon" alt="calendar" src={Calendar}/><p>{dateToString(eventData.date)}</p></div>
+                    <div className="eventCellLocation"><img src={Location} className="eventIcon"/><p>{eventData.location}</p></div>
+                </div>
+                
+                <div className="buyTicketContainer"><a href={eventData.link ? eventData.link : "https://www.youtube.com/watch?v=NpkPy3y6ors"} target="_blank"><button>Cumpără bilet</button></a></div>
                 
             </div>
         </div>
