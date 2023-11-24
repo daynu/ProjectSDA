@@ -48,7 +48,7 @@ export default function Navbar()
    }
 
     return(
-        <div id="navbar">
+      <div id="navbar">
             <Link id = "logo" to="/">BVent</Link>
             <SearchEventsBar events={events} />
             {user.name ? (
@@ -57,14 +57,23 @@ export default function Navbar()
                         <p onClick={handleUserNameClick} id="userName">{user.name}</p>
                         
                             {showUserOptions && 
-                            <div id="userOptions">
-                                <AddEvent isAdmin = {isAdmin}/>
-                                <button id = "logout" onClick = {LogOut}>Log out</button>
-                            </div>}
-                        
-                    </div>
-                    
-                </>
+                            <div class="userOptions">
+                              <div class="menu-item" onclick="{toggleAddForm}">
+                                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><g><path d="M931.5,441.5h-373v-373c0-32.3-26.1-58.5-58.5-58.5c-32.4,0-58.5,26.2-58.5,58.5v373h-373C36.1,441.5,10,467.7,10,500c0,32.3,26.1,58.5,58.5,58.5h372.9v373c0,32.3,26.2,58.5,58.5,58.5c32.4,0,58.5-26.2,58.5-58.5v-373h373c32.4,0,58.5-26.2,58.5-58.5C990,467.7,963.9,441.5,931.5,441.5z"></path></g>
+                                </svg>
+                                Add event
+                              </div>
+                              <div class="menu-item"></div>
+                              <div class="menu-item" onclick="{LogOut}">
+                                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M938,500c0,16.7-7,31.7-18.1,42l0,0L737.4,711.6v0c-9.7,9-22.5,14.5-36.6,14.5c-30.2,0-54.8-25.3-54.8-56.5c0-16.7,7-31.7,18.1-42l0,0l76.5-71.1H408.7l0,0c-30.2,0-54.8-25.3-54.8-56.5s24.5-56.5,54.8-56.5l0,0h331.8l-76.5-71v0c-11.1-10.3-18.1-25.3-18.1-42c0-31.2,24.5-56.5,54.8-56.5c14.1,0,26.9,5.5,36.6,14.5l0,0L919.9,458l0,0C931,468.3,938,483.3,938,500z M390.5,123.1h-219v753.8h219c30.2,0,54.8,25.3,54.8,56.5c0,31.2-24.5,56.5-54.8,56.5H116.7C86.5,990,62,964.7,62,933.5V66.5C62,35.3,86.5,10,116.7,10h273.8c30.2,0,54.8,25.3,54.8,56.5C445.2,97.8,420.7,123.1,390.5,123.1z"></path>
+                                </svg>
+                                Log out
+                              </div>
+                            </div>
+                            }
+                            
+                    </div>    
+                </>   
                 )
             :
             (   <div id = "loginSignup">
@@ -74,7 +83,7 @@ export default function Navbar()
             )}
 
          
-        </div>
+      </div>
     )
 
 }
