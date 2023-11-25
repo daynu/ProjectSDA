@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../utils/AuthContext';
 import GoogleAuth from './GoogleAuth';
+import BlackChurch from '../img/biserica-neagra.jpg'
 
 
 export default function Login()
@@ -47,8 +48,10 @@ export default function Login()
 
     return(
       <div id = "loginFull">
-        <div id = "loginImage">
+        <div id = "loginImageContainer">
           <label>BVent</label>
+          <img id='loginImage' src={BlackChurch} alt='black' />
+          
         </div>
         <div id = "loginPage">
             <h2>Accesare cont</h2>

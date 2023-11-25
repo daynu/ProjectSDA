@@ -11,6 +11,7 @@ import Navbar from "./Navbar";
 import Brasov from '../img/brasov.jpg'
 import Calendar from '../img/date.png'
 import Location from '../img/pin.png'
+import Footer from "./Footer";
 
 
 export default function Home() {
@@ -130,7 +131,7 @@ export default function Home() {
         }
         </div>
   
-
+        <Footer />
   </div>
 )
 
