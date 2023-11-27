@@ -337,13 +337,34 @@ img
   width: 15px;
 }
 
-.eventCellDate, .eventCellLocation
+.eventCellDate, .eventCellLocation, .eventCellTitle, .eventCellHour
 {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+#buyTicket, #interestedButton
+{
+  border-radius: 5px;
+  background-color: #142d4c;
+  color: white;
+  border: none;
+  height: 20%;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+#buyTicket
+{
+  height: 100%;
+  width: 100%;
+}
+
+#buyTicketLink
+{
+  height: 20%;
+}
 
 #Upcoming, #thisWeekDisplay, #todayDisplay
 {
@@ -774,9 +795,8 @@ p
   justify-content: space-around;
 }
 
-.eventPageContainer
+.ticket
 { 
-
   display: flex;
   top: 40vh;
   justify-self: center;
@@ -792,16 +812,25 @@ p
 
 .eventDetails
 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 70%;
   background-color: white;
 }
 
 .buyTicketContainer {
   width: 30%;
+  height: 100%;
   background-color: white;
   padding: 20px;
-  border-left: 5px solid black;
+  border-left: 4px solid black;
   border-left-style: dashed ;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 10%;
+  flex-direction: column;
 } 
 
 
@@ -812,8 +841,9 @@ p
   object-fit: cover;
 }
 
-.titleAndDescription
+.eventDescription
 {
+  margin-top: 15vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
