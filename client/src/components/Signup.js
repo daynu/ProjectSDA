@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios or your preferred HTTP client
 import { useNavigate } from 'react-router-dom';
 import GoogleAuth from './GoogleAuth';
+import BlackChurch from '../img/biserica-neagra.jpg'
 
 function Signup() {
 
@@ -52,6 +53,13 @@ const [exists, setExists] = useState(false)
 
   return (
     <div id = "signupFull">
+    <div id = "signupImageContainer">
+        <label>BVent</label>
+        <img id='signupImage' src={BlackChurch} alt='black' />
+          
+    </div>
+
+
       <div id = "signupPage">
         <h2>Creare cont</h2>
         {exists && <p>Utilizator existent!</p> }
@@ -61,7 +69,7 @@ const [exists, setExists] = useState(false)
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            placeholder="Name"
+            placeholder="Nume"
             required
           />
           <input id = "emailSignup"
@@ -77,7 +85,7 @@ const [exists, setExists] = useState(false)
             name="password"
             value={formData.password}
             onChange={handleInputChange}
-            placeholder="Password"
+            placeholder="Parolă"
             required
           />
           <button id = "butonSignup" type="submit">Sign Up</button>
