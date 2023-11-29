@@ -34,7 +34,8 @@ const userSchema = new Schema({
   username: String,
   email: String,
   password: String, 
-  admin: Boolean
+  admin: Boolean,
+  interested_events: Array
 });
 
 const eventSchema = new Schema({
@@ -46,7 +47,8 @@ const eventSchema = new Schema({
   description: String,
   organizer: String,
   link: String,
-  category: String
+  category: String,
+  interested_count: Number
 })
 
 userSchema.plugin(passportLocalMongoose)
@@ -96,6 +98,13 @@ app.get('/api/event/:id', async function (req, res) {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
+
+app.get('/api/user/:name', async function (req, res)
+{
+    const userName = req.params.name;
+    const user = await User.findOne({username: userName})
+    res.json(user)
+})
 
 app.get('/api/userRole/:name', async function (req, res)
 {
@@ -194,6 +203,40 @@ app.post('/addevent', async function(req, res)
   res.json("Event added")
 })
 
+
+app.post('/addInterestedEvent/:eventId/:userName', async function(req, res)
+{
+  try
+  {
+    const eventId = req.params.eventId;
+    const userName = req.params.userName;
+
+    await Event.findByIdAndUpdate(eventId, {$inc: {interested_count: 1}})
+    await User.findOneAndUpdate({username: userName}, {$push: {interested_events: eventId}})
+  }
+  catch(e)
+  {
+    console.log(e)
+  }
+
+})
+
+app.post('/removeInterestedEvent/:eventId/:userName', async function(req, res)
+{
+  try
+  {
+    const eventId = req.params.eventId;
+    const userName = req.params.userName;
+    
+    await Event.findByIdAndUpdate(eventId, {$inc: {interested_count: -1}})
+    await User.findOneAndUpdate({username: userName}, {$pull: {interested_events: eventId}})
+  }
+  catch(e)
+  {
+    console.log(e)
+  }
+})
+
 //ADD FUNCTIONS
 
 function addUser(name, email, password)
@@ -203,7 +246,8 @@ function addUser(name, email, password)
       username: name,
       email: email,
       password: password,
-      admin: false
+      admin: false,
+      interested_events: []
     }
   )
 
@@ -222,7 +266,8 @@ function addEvent(title, date, picture, location, hour, description, organizer, 
     description: description,
     organizer: organizer,
     link: link,
-    category: category
+    category: category,
+    interested_count: 0
   }
   )
 

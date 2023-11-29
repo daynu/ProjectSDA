@@ -11,8 +11,50 @@ import Clock from '../img/clock.png'
 function EventPage()
 {
     const { id } = useParams()
+    const userString = localStorage.getItem('user');
+    const userObject = JSON.parse(userString);
+    const userName = userObject.name;
     const [eventData, setEventData] = useState([])
 
+    const [isInterested, setIsInterested] = useState(false);
+
+    const toggleInterest = () => {
+        if(userName !== null)
+        {
+            setIsInterested((prevInterested) => !prevInterested);
+        }
+        else
+        {
+            alert("Trebuie să fii logat pentru a putea adăuga evenimente la favorite!")
+        }
+        
+      };
+
+    useEffect(() =>
+    {
+        axios.get(`/api/user/${userName}`).then(res =>
+            {
+                if(res.data.interested_events.includes(id))
+                {
+
+                    setIsInterested(true) 
+                }
+            }
+        )
+    }, [id, userName])
+
+    useEffect(() =>
+    {
+        if(isInterested)
+        {
+            axios.post(`/addInterestedEvent/${id}/${userName}`)
+        }
+        else
+        {
+            axios.post(`/removeInterestedEvent/${id}/${userName}`)
+        }
+    }, [isInterested, id, userName])
+      
     useEffect(() =>
     {
         axios.get(`/api/event/${id}`).then(res =>
@@ -49,7 +91,13 @@ function EventPage()
                 
             <div className="buyTicketContainer">
                 <a id="buyTicketLink" href={eventData.link ? eventData.link : "https://www.youtube.com/watch?v=NpkPy3y6ors"} target="_blank"><button id="buyTicket">Cumpără bilet</button></a>
-                <button id="interestedButton">Interesat</button>
+                <button
+                    id="interestedButton"
+                    className={isInterested ? 'interested' : ''}
+                    onClick={toggleInterest}
+                    >
+                    {isInterested ? 'Intereted' : 'Not Interested'}
+                    </button>
                 </div>
             </div>
         </div>

@@ -862,13 +862,18 @@ footer {
 }
 
 
-body {
-  font-family: Arial, sans-serif;
- }
- 
- body {
-  font-family: Arial, sans-serif;
- }
+ #interestedButton {
+  background-color: #142d4c;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#interestedButton.interested {
+  background-color: #e74c3c; /* Change color for interested state */
+}
  
 
 
