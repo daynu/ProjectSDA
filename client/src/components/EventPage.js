@@ -12,8 +12,8 @@ function EventPage()
 {
     const { id } = useParams()
     const userString = localStorage.getItem('user');
-    const userObject = JSON.parse(userString);
-    const userName = userObject.name;
+    const userObject = userString ? JSON.parse(userString) : { name: null };
+    const userName = userObject ? userObject.name : null;
     const [eventData, setEventData] = useState([])
 
     const [isInterested, setIsInterested] = useState(false);
@@ -31,16 +31,18 @@ function EventPage()
       };
 
     useEffect(() =>
-    {
-        axios.get(`/api/user/${userName}`).then(res =>
-            {
-                if(res.data.interested_events.includes(id))
+    {   
+        if(userName !== null)
+        {
+            axios.get(`/api/user/${userName}`).then(res =>
                 {
-
-                    setIsInterested(true) 
+                    if(res.data.interested_events.includes(id))
+                    {
+                        setIsInterested(true) 
+                    }
                 }
-            }
-        )
+            )
+        }
     }, [id, userName])
 
     useEffect(() =>
