@@ -289,7 +289,7 @@ img
 .eventCell {
   color: black;
   width: 20vw;
-  height: 42vh;
+  height: 45vh;
   border-radius: 5%;
   overflow: hidden;
   background-color: white;
@@ -337,7 +337,7 @@ img
   width: 15px;
 }
 
-.eventCellDate, .eventCellLocation, .eventCellTitle, .eventCellHour
+.eventCellDate, .eventCellLocation, .eventCellTitle, .eventCellHour, .eventCellInterested
 {
   display: flex;
   justify-content: center;

@@ -120,6 +120,7 @@ export default function Home() {
                       <p className="eventCellTitle">{event.title}</p>
                       <div className="eventCellDate"><img className="eventIcon" alt="calendar" src={Calendar}/><p>{dateToString(event.date)}</p></div>
                       <div className="eventCellLocation"><img src={Location} className="eventIcon"/><p>{event.location}</p></div>
+                      <div className="eventCellInterested"><p>{event.interested_count} interesati</p></div>
                     </div>
                   </a>
                 ))
