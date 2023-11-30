@@ -28,7 +28,6 @@ function EventPage() {
         
       } catch (error) {
         console.error('API call failed:', error);
-        // If API call fails, you may want to handle this accordingly.
       }
     } else {
       alert("Trebuie să fii logat pentru a putea adăuga evenimente la favorite!");
