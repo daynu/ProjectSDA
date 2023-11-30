@@ -12,6 +12,7 @@ import Brasov from '../img/brasov.jpg'
 import Calendar from '../img/date.png'
 import Location from '../img/pin.png'
 import Footer from "./Footer";
+import UserIcon from '../img/user.png'
 
 
 export default function Home() {
@@ -120,7 +121,7 @@ export default function Home() {
                       <p className="eventCellTitle">{event.title}</p>
                       <div className="eventCellDate"><img className="eventIcon" alt="calendar" src={Calendar}/><p>{dateToString(event.date)}</p></div>
                       <div className="eventCellLocation"><img src={Location} className="eventIcon"/><p>{event.location}</p></div>
-                      <div className="eventCellInterested"><p>{event.interested_count} interesati</p></div>
+                      <div className="eventCellInterested"><img src={UserIcon} className="eventIcon"/><p>{event.interested_count} Interesați</p></div>
                     </div>
                   </a>
                 ))

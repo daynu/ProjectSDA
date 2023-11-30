@@ -10,7 +10,7 @@ export default function Footer()
             <p>Despre</p>
             <p>Contact</p>
           </div>
-          <p>&copy; 2023 Pixel. All rights reserved.</p>
+          <p id="copyright">&copy; 2023 Pixel. All rights reserved.</p>
         </div>
       </footer>
     )
