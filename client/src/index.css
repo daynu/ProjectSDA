@@ -700,6 +700,7 @@ select
   flex-direction: column;
   margin-top: 0.5vh;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 
@@ -714,6 +715,15 @@ select
   color: black;
   display: flex;
 }
+
+.focused
+{
+  background-color: rgb(220, 218, 218);
+  color: black;
+  display: flex;
+}
+
+
 
 p
 {
