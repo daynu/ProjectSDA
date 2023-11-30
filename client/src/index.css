@@ -144,7 +144,7 @@ a
   flex-direction: column;
 }
 
-#logo
+#logo, #footerLogo
 {
   font-family: 'FontLogo';
   font-weight: bolder;
@@ -859,6 +859,10 @@ footer {
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -875,7 +879,21 @@ footer {
   background-color: #e74c3c; /* Change color for interested state */
 }
  
+#footerOptions {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  gap: 10vw;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
 
+#footerOptions > *
+{
+  text-align: center;
+}
 
 @keyframes loadingScreen {
 
