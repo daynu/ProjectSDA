@@ -62,8 +62,8 @@ const [exists, setExists] = useState(false)
 
       <div id = "signupPage">
         <h2>Creare cont</h2>
-        {exists && <p>Utilizator existent!</p> }
-        <form onSubmit={handleFormSubmit}>
+        
+        <form onSubmit={handleFormSubmit} id = "signupForm">
           <input id = "numeSignup"
             type="text"
             name="name"
@@ -88,6 +88,7 @@ const [exists, setExists] = useState(false)
             placeholder="Parolă"
             required
           />
+          {exists && <p>Utilizator existent!</p> }
           <button id = "butonSignup" type="submit">Sign Up</button>
         </form>
         <GoogleAuth />

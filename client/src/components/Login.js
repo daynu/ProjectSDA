@@ -60,11 +60,11 @@ export default function Login()
                 <input id = "numeLogin" onChange={handleInputChange} name="name" type="text" placeholder="Nume" required/> 
                 <input id = "parolaLogin" onChange={handleInputChange} name="password" type="password" placeholder="Parolă" required/> 
                 <p>{response && response}</p>
-                <input id = "butonLogin" type="submit" value="Log in"/>
+                <input id = "butonLogin" type="submit" value="Log In"/>
               </form>
               <GoogleAuth/>
               <div>
-                  <p id = "loginQ" >Nu ai cont? <a style={{color: 'blue'}} href="/signup">Apasă aici!</a></p>
+                  <p id = "loginQ" >Nou venit? <a style={{color: 'blue'}} href="/signup">Creează un cont</a></p>
               </div>
 
         </div>

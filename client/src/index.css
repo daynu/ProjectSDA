@@ -214,7 +214,7 @@ img
   font-weight: bold;
   margin-top: 30%;
   margin-bottom: 5%;
-  color: rgb(0, 139, 226);
+  color: #142d4c;
   text-align: center;
 }
 
@@ -223,9 +223,10 @@ img
   display:flex;
   margin-bottom: 3vh;
   border-radius: 30px;
-  border-color: rgb(0, 139, 226);
+  border-color: #142d4c;
   border-width: 2px;
   border-style: solid;
+  padding-left: 3%;
   font-size: large;
   font-weight: bold;
   width: 25vw;
@@ -241,13 +242,13 @@ img
   left: 30%;
   width: 40%;
   height: 25%;
-  background-color: rgb(0, 139, 226);
+  background-color: #142d4c;
   color: white;
   font-size: 30px;
   font-weight: bolder;
   text-align: center;
   border-radius: 40px;
-  border-color: rgb(0, 139, 226);
+  border-color: #142d4c;
   border-width: 2px;
   border-style:solid;
   transition: 0.3s;
@@ -255,9 +256,9 @@ img
 
 #butonLogin:hover, #butonSignup:hover
 {
-  transform: scale(1.2);
+  transform: scale(1.1);
   background-color: white;
-  color: rgb(0, 139, 226);
+  color: #142d4c;
 }
 
 #loginQ, #signupQ
@@ -267,8 +268,9 @@ img
   text-align: center;
 }
 
-#loginForm > p
+#loginForm > p, #signupForm > p
 {
+  position: absolute;
   color: red;
   font-weight: bold;
   font-size: larger;
@@ -379,6 +381,7 @@ img
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
+  backdrop-filter: blur(10px);
   border-radius: 20px;
   width: 42vw;
   height: 83vh;
@@ -445,6 +448,7 @@ img
   margin-left: 1vw;
   border-style: solid;
   border-color: #142d4c;
+  padding-left: 1%;
   border-width: 3px;
   border-radius: 20px;
   width: 24.5vw;
@@ -467,6 +471,7 @@ img
 
 #dataAE > input, #oraAE > input, #loculAE > input
 {
+  padding-left: 3%;
   border-radius: 20px;
   border-style: solid;
   border-color: #142d4c;
@@ -481,6 +486,7 @@ img
   margin-left: 1vw;
   border-style: solid;
   border-color: #142d4c;
+  padding-left: 1%;
   border-width: 3px;
   border-radius: 20px;
   width: 24.5vw;
@@ -493,6 +499,7 @@ img
   margin-left: 1vw;
   border-style: solid;
   border-color: #142d4c;
+  padding-left: 1%;
   border-width: 3px;
   border-radius: 20px;
   width: 12.25vw;
@@ -505,6 +512,7 @@ img
   margin-left: 1vw;
   border-style: solid;
   border-color: #142d4c;
+  padding-left: 1%;
   border-width: 3px;
   border-radius: 20px;
   width: 40vw;
@@ -542,7 +550,7 @@ img
   font-size: 30px;
   font-weight: bold;
   border-style: solid;
-  border-radius: 25px;
+  border-radius: 40px;
   width: 15vw;
   height: 7vh;
   transition: 0.3s;
@@ -558,7 +566,7 @@ img
   font-size: 25px;
   font-weight: bold;
   border-style: solid;
-  border-radius: 20px;
+  border-radius: 40px;
   width: 10vw;
   height: 5vh;
   transition: 0.3s;
@@ -566,7 +574,7 @@ img
 
 #submitAE:hover
 {
-  transform: scale(1.2);
+  transform: scale(1.1);
   color: #142d4c;
   background-color: white;
 }

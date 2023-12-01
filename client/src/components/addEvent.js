@@ -85,6 +85,7 @@ export default function AddEvent({isAdmin})
         }
         
       {showForm &&
+      
       <div id = "addEventBox">
         <form onSubmit={handleFormSubmit} id = "eventForm">
           <label id = "headerAE">Adaugă un eveniment</label>
