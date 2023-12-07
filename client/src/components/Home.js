@@ -106,7 +106,7 @@ export default function Home() {
     <div id="filterContainer">
           <Filter toggleFilter={toggleFilter}  setFilterPreferences={setFilterPreferences}/>
     </div>  
-    <h2 id="evenimenteTitle">Evenimente</h2>
+    
     
       
       <div id="evenimenteDisplay">

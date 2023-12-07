@@ -93,7 +93,7 @@ const [exists, setExists] = useState(false)
         </form>
         <GoogleAuth />
         <div>
-            <p id = "signupQ" >Ai deja un cont? <a style={{color: 'blue'}} href="/login">Apasa aici!</a></p>
+            <p id = "signupQ" >Ai deja un cont? <a style={{color: 'blue'}} href="/login">Apasă aici!</a></p>
         </div>
       </div>
     </div>  
