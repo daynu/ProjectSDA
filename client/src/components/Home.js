@@ -73,17 +73,7 @@ export default function Home() {
 
 
 
-  function fetchEvents() {
-    axios.get('/api/events')
-      .then((res) => {
-        setEventsData(res.data);
-        setRefresh(!refresh); 
-        console.log("FETCHCHHCHCHCCHHC")
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+
 
 
   function toggleFilter()
@@ -95,9 +85,11 @@ export default function Home() {
   return (
     <div id="mainPage">
       <Navbar  events={eventsData}/>
-      <div id="loadingOverlay" className={eventsData.length === 0 ? 'show' : 'hide'}>
-        <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
-      </div>
+      {eventsData.length > 0 ? (
+        <div id="loadingOverlay" className={eventsData.length === 0 ? 'show' : 'hide'}>
+          <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
+        </div>
+      ) : null}
     <div id = "mainPhotoContainer">
       <img className="vignette" id="mainPhoto" src={Brasov} alt="Brasov" />
       <p id="mainTitle">Evenimente în Brașov</p>

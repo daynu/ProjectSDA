@@ -7,6 +7,7 @@ import Signup from "./components/Signup";
 import { AuthProvider } from "./utils/AuthContext";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EventPage from "./components/EventPage";
+import DeleteEvents from "./components/DeleteEvents";
 import { EventsProvider } from "./utils/EventsProvider";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/event/:id",
     element: <EventPage />
+  },
+  {
+    path:"/manage-events",
+    element: <DeleteEvents />
   }
 ]);
 

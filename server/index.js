@@ -237,6 +237,25 @@ app.post('/removeInterestedEvent/:eventId/:userName', async function(req, res)
   }
 })
 
+
+app.delete('/delete/:id', async function (req, res) {
+  const eventId = req.params.id;
+
+  try {
+    const eventRes = await Event.findByIdAndDelete(eventId);
+
+    if (!eventRes) {
+      return res.status(404).json({ message: 'Event not found' });
+    }
+
+    res.json(eventRes);
+  } catch (error) {
+    console.error('Error deleting event:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+
+})
+
 //ADD FUNCTIONS
 
 function addUser(name, email, password)

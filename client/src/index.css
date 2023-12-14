@@ -5,6 +5,11 @@
   src: url('./fonts/Agbalumo-Regular.ttf');
 }
 
+@font-face
+{
+  font-family: 'FontMainTitle';
+  src: url('./fonts/YoungSerif-Regular.ttf')
+}
 
 body {
   margin: 0;
@@ -684,6 +689,7 @@ select
 }
 
 #mainTitle {
+  font-family: 'FontMainTitle';
   position: absolute;
   font-size: 48px;
   z-index: 2;
