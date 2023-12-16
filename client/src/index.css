@@ -310,11 +310,7 @@ img
   transform: scale(1.05);
 }
 
-.eventCell:hover >.eventCellImgContainer
-{
-  background-color: rgba(0, 0, 255, 0.5); /* Blue overlay color */
-  z-index: 5 ;
-}
+
 
 .eventCellImg {
   width: 100%;
@@ -431,6 +427,7 @@ img
   border-color: #142d4c;
   border-width: 3px;
   left: 27vw;
+  overflow: hidden;
 }
 
 #butonPozaAE:hover
@@ -438,14 +435,13 @@ img
   background-color: rgb(209, 209, 209);
 }
 
-#PozaAE
+#pozaAE
 {
-  margin-top: 12vh;
-  position: fixed;
-  width: 13.25vw;
-  height: 26.5vh;
+  z-index: 5;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
   border-radius: 20px;
-  left: 27vw;
 }
 
 #titluAE
