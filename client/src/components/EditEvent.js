@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import convertTo64 from '../utils/convertTo64';
 
 const EditEvent = () => {
     const [event, setEvent] = useState([]);
@@ -36,9 +37,21 @@ const EditEvent = () => {
     }, [event]);
 
     const handleSubmitEdit = async (e) => {
-        
+        e.preventDefault();
+        try {
+            await axios.put(`/edit/${eventId}`, event);
+            window.location.pathname = "/manage-events";
+        } catch (error) {
+            console.error('API call failed:', error);
+        }
     }
 
+
+    const handlePictureChange = async (e) => {
+        const file = e.target.files[0];
+        const base64 = await convertTo64(file);
+        setEvent({ ...event, picture: base64 });
+    };
 
     return (
         <div>
@@ -49,7 +62,7 @@ const EditEvent = () => {
               <img id = "pozaAE" src={event.picture} alt="EventPhoto"/>
             </label>
            
-            <input id="pictureInput" type="file" accept=".jpeg, .jpg, .png" required/>
+            <input onChange={handlePictureChange} id="pictureInput" type="file" accept=".jpeg, .jpg, .png" required/>
             <input id = "titluAE" onChange={handleInputChange} value={event.title} name = "title" placeholder="Nume eveniment" type="text" required/>
   
             <div id = "dataOraLoc">

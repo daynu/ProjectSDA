@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import LoadingScreen from '../img/BrasovStema.png'
 
 export default function ManageEvents() {
 
@@ -21,6 +22,9 @@ export default function ManageEvents() {
 
     return(
         <div>
+            <div id="loadingOverlay" className={eventsData.length === 0 ? 'show' : 'hide'}>
+                <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
+            </div>
             <h1>Events</h1>
             <ul>
                 {eventsData.map(event => (

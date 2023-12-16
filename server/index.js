@@ -256,6 +256,27 @@ app.delete('/delete/:id', async function (req, res) {
 
 })
 
+app.put('/edit/:id', async function (req, res) {
+
+  const eventId = req.params.id;
+  const {title, date, picture, location, hour, description, organizer, link, category} = req.body
+
+  try {
+    const eventRes = await Event.findByIdAndUpdate(eventId, {title: title, date: date, picture: picture, location: location, hour: hour, description: description, organizer: organizer, link: link, category: category});
+
+    if (!eventRes) {
+      return res.status(404).json({ message: 'Event not found' });
+    }
+
+    res.json(eventRes);
+  } catch (error) {
+    console.error('Error deleting event:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+
+})
+
+
 //ADD FUNCTIONS
 
 function addUser(name, email, password)
