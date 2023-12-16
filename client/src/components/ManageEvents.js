@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function DeleteEvents() {
+export default function ManageEvents() {
 
     const [eventsData, setEventsData] = useState([]);
 
@@ -15,7 +15,9 @@ export default function DeleteEvents() {
 
     const handleDeleteEvent = (eventId) => {
         axios.delete('/delete/' + eventId)
+        window.location.reload();
     }
+
 
     return(
         <div>
@@ -30,6 +32,7 @@ export default function DeleteEvents() {
                         <p>{event.location}</p>
                         <p>{event.category}</p>
                         <button onClick={() => handleDeleteEvent(event._id)}>Delete</button>
+                        <button onClick={() => window.location.pathname = `/edit-event/${event._id}`}>Edit</button>
                     </li>
                 ))}
             </ul>

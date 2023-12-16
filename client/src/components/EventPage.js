@@ -78,7 +78,7 @@ function EventPage() {
               <a id="buyTicketLink" href={eventData.link ? eventData.link : "https://www.youtube.com/watch?v=NpkPy3y6ors"} target="_blank"><button id="buyTicket">Cumpără bilet</button></a>
               <button
                 id="interestedButton"
-                className={isInterested ? 'interested' : ''}
+                className={isInterested ? 'interested' : 'not-interested'}
                 onClick={toggleInterest}
               >
                 {isInterested ? 'Interested' : 'Not Interested'}

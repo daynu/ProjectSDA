@@ -7,9 +7,11 @@ import Signup from "./components/Signup";
 import { AuthProvider } from "./utils/AuthContext";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EventPage from "./components/EventPage";
-import DeleteEvents from "./components/DeleteEvents";
+import DeleteEvents from "./components/ManageEvents";
 import { EventsProvider } from "./utils/EventsProvider";
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import EditEvent from "./components/EditEvent";
+import ManageEvents from "./components/ManageEvents";
 
 
 const router = createBrowserRouter([
@@ -31,7 +33,11 @@ const router = createBrowserRouter([
   },
   {
     path:"/manage-events",
-    element: <DeleteEvents />
+    element: <ManageEvents />
+  },
+  {
+    path: "/edit-event/:id",
+    element: <EditEvent />
   }
 ]);
 
