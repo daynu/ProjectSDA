@@ -62,7 +62,7 @@ const EditEvent = () => {
               <img id = "pozaAE" src={event.picture} alt="EventPhoto"/>
             </label>
            
-            <input onChange={handlePictureChange} id="pictureInput" type="file" accept=".jpeg, .jpg, .png" required/>
+            <input onChange={handlePictureChange} id="pictureInput" type="file" accept=".jpeg, .jpg, .png"/>
             <input id = "titluAE" onChange={handleInputChange} value={event.title} name = "title" placeholder="Nume eveniment" type="text" required/>
   
             <div id = "dataOraLoc">
