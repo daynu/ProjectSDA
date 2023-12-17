@@ -946,7 +946,9 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 5vh;
-  margin-top: 10vh;
+  top: 15vh;
+  position: absolute;
+  transform: translateX(50%);
 
 }
 

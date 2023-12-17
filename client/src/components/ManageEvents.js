@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LoadingScreen from '../img/BrasovStema.png'
+import { Nav } from "react-bootstrap";
+import Navbar from "./Navbar";
 
 export default function ManageEvents() {
 
@@ -22,10 +24,10 @@ export default function ManageEvents() {
 
     return(
         <div>
+            <Navbar />
             <div id="loadingOverlay" className={eventsData.length === 0 ? 'show' : 'hide'}>
                 <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
             </div>
-            <h1>Events</h1>
             <div id="eventsManageContainer">
                 {eventsData.map(event => (
                         <div className="eventManageCell" key={event._id}>
