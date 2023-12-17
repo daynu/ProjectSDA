@@ -3,10 +3,30 @@ import axios from "axios";
 import LoadingScreen from '../img/BrasovStema.png'
 import { Nav } from "react-bootstrap";
 import Navbar from "./Navbar";
+import { useAuth } from "../utils/AuthContext";
 
 export default function ManageEvents() {
 
     const [eventsData, setEventsData] = useState([]);
+    const { user } = useAuth()
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        if (user.name) {
+            axios.get(`/api/userRole/${user.name}`)
+              .then((res) => {
+                setIsAdmin(res.data.isAdmin);
+              })
+              .catch((error) => {
+                console.error("Error fetching user role:", error);
+              });
+          }
+          else
+          {
+            setIsAdmin(false)
+          }
+    }
+    , [user])
 
     useEffect(() => {
         axios.get('/api/events').then(res =>
@@ -23,6 +43,7 @@ export default function ManageEvents() {
 
 
     return(
+        isAdmin ? (
         <div>
             <Navbar />
             <div id="loadingOverlay" className={eventsData.length === 0 ? 'show' : 'hide'}>
@@ -50,5 +71,15 @@ export default function ManageEvents() {
                 ))}
                 </div>
         </div>
+        ) : (
+        <>
+            <div id="loadingOverlay" className={eventsData.length === 0 ? 'show' : 'hide'}>
+                <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
+            </div>
+            <div>Unauthorized Access</div>
+            <button onClick={() => window.location.pathname = '/'}>Înapoi la pagina principală</button>
+        </>
+    
+    )
     )
 }
