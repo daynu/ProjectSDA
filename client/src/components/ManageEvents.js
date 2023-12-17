@@ -26,20 +26,27 @@ export default function ManageEvents() {
                 <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
             </div>
             <h1>Events</h1>
-            <ul>
+            <div id="eventsManageContainer">
                 {eventsData.map(event => (
-                    <li key={event._id}>
-                        <h2>{event.name}</h2>
-                        <p>{event.description}</p>
-                        <p>{event.date}</p>
-                        <p>{event.time}</p>
-                        <p>{event.location}</p>
-                        <p>{event.category}</p>
-                        <button onClick={() => handleDeleteEvent(event._id)}>Delete</button>
-                        <button onClick={() => window.location.pathname = `/edit-event/${event._id}`}>Edit</button>
-                    </li>
+                        <div className="eventManageCell" key={event._id}>
+                            <div className="eventManageCellImage">
+                                <img src={event.picture} alt={event.name} />
+                            </div>
+                            <div className="eventManageCellInfo">
+                                 <h4>{event.title}</h4>
+                                <p>{event.date}</p>
+                                <p>{event.time}</p>
+                                <p>{event.location}</p>
+                                <p>{event.category}</p>
+                            </div>
+                            <div className="eventManageCellButtons">
+                                <button className="manageButton" onClick={() => handleDeleteEvent(event._id)}>Delete</button>
+                                <button className="manageButton" onClick={() => window.location.pathname = `/edit-event/${event._id}`}>Edit</button>
+                            </div>
+                            
+                        </div>
                 ))}
-            </ul>
+                </div>
         </div>
     )
 }

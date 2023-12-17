@@ -927,8 +927,84 @@ footer {
   color: rgb(207, 207, 207);
 }
 
+.eventManageCell
+{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  color: black;
+  width: 50vw;
+  height: 20vh;
+  border-radius: 10px;
+  overflow: hidden;
+}
 
+#eventsManageContainer
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5vh;
+  margin-top: 10vh;
 
+}
+
+.eventManageCellButtons
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5vh;
+  margin-right: 5vw;
+}
+
+.manageButton
+{
+  background-color: #142d4c;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 10vw;
+  height: 5vh;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eventManageCellImage
+{
+  width: 35%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.eventManageCellInfo
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+}
+
+.eventManageCellInfo > *
+{
+  margin: 0.2vh;
+  padding: 0;
+}
+
+.eventManageCellImage>img
+{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 @keyframes loadingScreen {
 
