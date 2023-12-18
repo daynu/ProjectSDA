@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LoadingScreen from '../img/BrasovStema.png'
-import { Nav } from "react-bootstrap";
-import Navbar from "./Navbar";
+import Magnifying from '../img/Magnifying.svg.png';
 import { useAuth } from "../utils/AuthContext";
+import { getSearchEvents } from "../utils/SearchBarUtils";
+import { Link } from "react-router-dom";
 
 export default function ManageEvents() {
 
     const [eventsData, setEventsData] = useState([]);
+    const [searchedEvents, setSearchedEvents] = useState([eventsData]);
     const { user } = useAuth()
     const [isAdmin, setIsAdmin] = useState(false);
 
@@ -35,22 +37,54 @@ export default function ManageEvents() {
             })
     }, []);
 
+    useEffect(() => {
+        setSearchedEvents(eventsData);
+    }, [eventsData])
+
 
     const handleDeleteEvent = (eventId) => {
         axios.delete('/delete/' + eventId)
         window.location.reload();
     }
 
+    const handleSearch = (e) => {
+        const updatedSearch = e.target.value;
+        if(updatedSearch === '')
+        {
+            setSearchedEvents(eventsData);
+            return;
+        }
+        const results = getSearchEvents(updatedSearch, eventsData);
+        setSearchedEvents(results);
+    }
+
 
     return(
         isAdmin ? (
         <div>
-            <Navbar />
+            <div id="navbarManage">
+                <Link id = "logo" to="/">BVent</Link>
+                <div id="searchBar">
+                <div id="searchMain">
+                <img src={Magnifying} alt="magnifying" />
+                <input
+                id="searchArea"
+                onChange={handleSearch}
+                type="text"
+                placeholder="Caută evenimente"
+                />
+        </div>
+            </div>
+                
+      </div>
             <div id="loadingOverlay" className={eventsData.length === 0 ? 'show' : 'hide'}>
                 <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
             </div>
+            {searchedEvents.length === 0 ? <div id="NoEventManage">Niciun eveniment găsit
+            </div> : <></>}
             <div id="eventsManageContainer">
-                {eventsData.map(event => (
+                
+                {searchedEvents.map(event => (
                         <div className="eventManageCell" key={event._id}>
                             <div className="eventManageCellImage">
                                 <img src={event.picture} alt={event.name} />

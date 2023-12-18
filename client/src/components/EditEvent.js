@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import convertTo64 from '../utils/convertTo64';
+import LoadingScreen from '../img/BrasovStema.png'
 
 const EditEvent = () => {
     const [event, setEvent] = useState([]);
@@ -54,7 +55,11 @@ const EditEvent = () => {
     };
 
     return (
+        
         <div>
+           <div id="loadingOverlay" className={event.length === 0 ? 'show' : 'hide'}>
+            <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
+        </div>
             <div id = "addEventBox">
         <form onSubmit={handleSubmitEdit} id = "eventForm">
           <label id = "headerAE">Edit Event</label>

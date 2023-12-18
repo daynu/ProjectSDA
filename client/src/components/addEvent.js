@@ -1,12 +1,20 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import convertTo64 from "../utils/convertTo64";
+import PerfectScrollbar from 'perfect-scrollbar';
+
 
 export default function AddEvent({isAdmin})
 {
 
   const [showForm, setShowForm] = useState(false);
   
+  useEffect(() => {
+    const container = document.querySelector('#descriereAE');
+    if (container) { // Make sure the element exists
+      const ps = new PerfectScrollbar(container);
+    }
+  }, []);
 
   function toggleAddForm() {
     setShowForm(!showForm);

@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import Magnifying from '../img/Magnifying.svg.png';
+import { getSearchEvents } from "../utils/SearchBarUtils";
 
 function SearchEventsBar({ events }) {
   const [search, setSearch] = useState('');
@@ -63,17 +64,6 @@ function SearchEventsBar({ events }) {
   );
 }
 
-function getSearchEvents(search, events) {
-  const query = normalizeString(search).toLowerCase();
 
-  return events.filter((event) => {
-    const normalizedTitle = normalizeString(event.title).toLowerCase();
-    return normalizedTitle.includes(query);
-  });
-}
-
-function normalizeString(str) {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
 
 export default SearchEventsBar;
