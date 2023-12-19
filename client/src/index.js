@@ -12,6 +12,7 @@ import { EventsProvider } from "./utils/EventsProvider";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import EditEvent from "./components/EditEvent";
 import ManageEvents from "./components/ManageEvents";
+import UserPage from "./components/UserPage";
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/edit-event/:id",
     element: <EditEvent />
+  },
+  {
+    path: "/user/:id",
+    element: <UserPage />
   }
 ]);
 

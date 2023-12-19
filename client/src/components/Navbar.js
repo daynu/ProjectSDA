@@ -58,6 +58,9 @@ export default function Navbar()
                         
                             {showUserOptions && 
                             <div class="userOptions">
+                              <div class="menu-item" onClick={() => window.location.pathname = `/user/${user.name}`}>
+                                My Profile
+                              </div>
                               <AddEvent isAdmin={isAdmin} />
                               {isAdmin &&
                               <div class="menu-item" onClick={() => window.location.pathname = "/manage-events"}>
@@ -69,6 +72,7 @@ export default function Navbar()
                                 </svg>
                                 Log out
                               </div>
+
                             </div>
                             }
                             

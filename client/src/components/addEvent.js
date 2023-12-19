@@ -2,12 +2,15 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import convertTo64 from "../utils/convertTo64";
 import PerfectScrollbar from 'perfect-scrollbar';
+import { useAuth } from "../utils/AuthContext";
 
 
 export default function AddEvent({isAdmin})
 {
 
   const [showForm, setShowForm] = useState(false);
+
+  const {user} = useAuth()
   
   useEffect(() => {
     const container = document.querySelector('#descriereAE');
@@ -29,7 +32,8 @@ export default function AddEvent({isAdmin})
         description: '',
         organizer: '',
         link: '',
-        category: 'Muzica'
+        category: 'Muzica',
+        user: user.name
       });
 
     const [photo, setPhoto] = useState()

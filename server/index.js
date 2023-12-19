@@ -35,7 +35,8 @@ const userSchema = new Schema({
   email: String,
   password: String, 
   admin: Boolean,
-  interested_events: Array
+  interested_events: Array,
+  added_events: Array
 });
 
 const eventSchema = new Schema({
@@ -196,9 +197,9 @@ app.post("/login", async function(req, res)
 
 app.post('/addevent', async function(req, res)
 {
-  const {title, date, picture, location, hour, description, organizer, link, category} = req.body
+  const {title, date, picture, location, hour, description, organizer, link, category, user} = req.body
 
-  addEvent(title, date, picture, location, hour, description, organizer, link, category)
+  addEvent(title, date, picture, location, hour, description, organizer, link, category, user)
 
   res.json("Event added")
 })
@@ -294,7 +295,7 @@ function addUser(name, email, password)
   newUser.save()
 }
 
-function addEvent(title, date, picture, location, hour, description, organizer, link, category)
+function addEvent(title, date, picture, location, hour, description, organizer, link, category, user)
 {
   const newEvent = new Event(
   { 
@@ -312,6 +313,19 @@ function addEvent(title, date, picture, location, hour, description, organizer, 
   )
 
   newEvent.save()
+  .then((savedEvent) => {
+    User.findOne({username: user})
+      .then((UserNeeded) => {
+        UserNeeded.added_events.push(savedEvent._id);
+        UserNeeded.save();
+      })
+      .catch((error) => {
+        console.error('Error finding user:', error);
+      });
+  })
+  .catch((error) => {
+    console.error('Error saving event:', error);
+  });
 }
 
 
