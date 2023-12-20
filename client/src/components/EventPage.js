@@ -52,7 +52,7 @@ function EventPage() {
   return (
     <>
       <div id="loadingOverlay" className={eventData.length === 0 ? 'show' : 'hide'}>
-        <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
+        <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />                    
       </div>
       <Navbar />
       <div id="mainEventPhotoContainer">

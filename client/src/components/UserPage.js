@@ -7,6 +7,7 @@ import Calendar from '../img/date.png'
 import Location from '../img/pin.png'
 import UserIcon from '../img/user.png'
 import dateToString from "../utils/dateFormatter";
+import Navbar from "./Navbar";
 
 
 export default function UserPage() {
@@ -78,7 +79,8 @@ export default function UserPage() {
             <div id="loadingOverlay" className={(!eventsLoaded) ? 'show' : 'hide'}>
                 <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
             </div>
-        {user.name && <h4>{user.name}</h4>}
+        <Navbar/>
+        
         <div id="userPage">
             <div id = "userPageMenu">
                 <div className={`userPageMenuButton ${activeOption === "Evenimente interesate" ? "active" : ''}`} onClick={() => {
