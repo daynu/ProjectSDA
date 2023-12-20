@@ -5,6 +5,7 @@ const cors = require('cors')
 const app = express()
 const bcrypt = require('bcryptjs')
 const { OAuth2Client } = require('google-auth-library');
+const nodemailer = require('nodemailer');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -295,6 +296,37 @@ app.put('/edit/:id', async function (req, res) {
   }
 
 })
+
+app.post('/send-email', async (req, res) => {
+  const { firstName, lastName, email, phone } = req.body;
+
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    service: 'gmail',
+    auth: {
+      user: 'bventbrasov@gmail.com',
+      pass: 'qfxi smco ztpo jaob',
+  }});
+
+  let mailOptions = {
+    from: 'bventbrasov@gmail.com',
+    to: 'bventbrasov@gmail.com',
+    subject: 'New Premium Access Request',
+    text: `New premium access request from ${firstName} ${lastName}. Email: ${email}, Phone: ${phone}.`,
+    html: `<p>New premium access request from ${firstName} ${lastName}.</p><p>Email: ${email}</p><p>Phone: ${phone}</p><button>Confirm Access</button>`,
+  };
+
+  try {
+    let info = await transporter.sendMail(mailOptions);
+    console.log('Message sent: %s', info.messageId);
+    res.json({ message: 'Email sent' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
 
 
 //ADD FUNCTIONS
