@@ -68,6 +68,11 @@ export default function UserPage() {
         setActiveOption("Evenimente interesate")
     }, [interestedEvents])
 
+    const handleSettingsButton = () => {
+        setActiveOption("Setări")
+        setDisplayedEvents([])
+    }
+
     return (
         <div>
             <div id="loadingOverlay" className={(!eventsLoaded) ? 'show' : 'hide'}>
@@ -76,32 +81,41 @@ export default function UserPage() {
         {user.name && <h4>{user.name}</h4>}
         <div id="userPage">
             <div id = "userPageMenu">
-                <div className="userPageMenuButton" onClick={() => {
+                <div className={`userPageMenuButton ${activeOption === "Evenimente interesate" ? "active" : ''}`} onClick={() => {
                         setDisplayedEvents(interestedEvents)
                         setActiveOption("Evenimente interesate")
                 }}>Evenimente interesate</div>
-                <div className="userPageMenuButton" onClick={() => 
+                <div className={`userPageMenuButton ${activeOption === "Evenimente adăugate" ? "active" : ''}`} onClick={() => 
                     {
                         setDisplayedEvents(addedEvents)
                         setActiveOption("Evenimente adăugate")
                 }}>Evenimente adăugate</div>
-                <div className="userPageMenuButton">Setări</div>
+                <div className={`userPageMenuButton ${activeOption === "Setări" ? "active" : ''}`} onClick={() => handleSettingsButton()}>Setări</div>
             </div>
-            <div id="userPageEventsContainer">
+            <div id="userActiveOption">
                 <h3>{activeOption}</h3>
-            {displayedEvents && displayedEvents.map(event => <a href={`/event/${event._id}`}>
-                    <div className="eventCell">
-                        <div className="eventCellImgContainer"><img className="eventCellImg" src={event.picture} alt={event.title}/></div>
-                        <p className="eventCellTitle">{event.title}</p>
-                        <div className="eventCellDate"><img className="eventIcon" alt="calendar" src={Calendar}/><p>{dateToString(event.date)}</p></div>
-                        <div className="eventCellLocation"><img src={Location} className="eventIcon"/><p>{event.location}</p></div>
-                        <div className="eventCellInterested"><img src={UserIcon} className="eventIcon"/><p>{event.interested_count} Interesați</p></div>
+                <div id="userPageEventsContainer">
+                {displayedEvents && displayedEvents.map(event => <a href={`/event/${event._id}`}>
+                        <div className="eventCell">
+                            <div className="eventCellImgContainer"><img className="eventCellImg" src={event.picture} alt={event.title}/></div>
+                            <p className="eventCellTitle">{event.title}</p>
+                            <div className="eventCellDate"><img className="eventIcon" alt="calendar" src={Calendar}/><p>{dateToString(event.date)}</p></div>
+                            <div className="eventCellLocation"><img src={Location} className="eventIcon"/><p>{event.location}</p></div>
+                            <div className="eventCellInterested"><img src={UserIcon} className="eventIcon"/><p>{event.interested_count} Interesați</p></div>
+                            </div>
+                        </a>)}
+                </div>
+                <div id="userPageSettingsContainer">
+                    {displayedEvents.length === 0 && 
+                        <div>
+                        <button>Ștergere Cont</button>
                         </div>
-                    </a>)}
-            </div>
+                    }
+                </div>
         </div>
         
 
+        </div>
         </div>
     );
 
