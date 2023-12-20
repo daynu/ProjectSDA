@@ -33,7 +33,7 @@ export default function AddEvent({isAdmin})
         organizer: '',
         link: '',
         category: 'Muzica',
-        user: user.name
+        user: user.name   
       });
 
     const [photo, setPhoto] = useState()

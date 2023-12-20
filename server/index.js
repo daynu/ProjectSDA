@@ -257,6 +257,25 @@ app.delete('/delete/:id', async function (req, res) {
 
 })
 
+app.delete('/deleteUser/:name', async function (req, res) {
+
+  const userName = req.params.name;
+  try {
+    let user = await User.findOneAndDelete({username: userName});
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    await Event.deleteMany({_id: {$in: user.added_events}});
+    res.json("User deleted");
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+
+
 app.put('/edit/:id', async function (req, res) {
 
   const eventId = req.params.id;

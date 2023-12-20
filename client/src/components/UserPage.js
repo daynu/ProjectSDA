@@ -12,7 +12,7 @@ import Navbar from "./Navbar";
 
 export default function UserPage() {
 
-    const {user} = useAuth()
+    const {user, logout} = useAuth()
 
     const [interestedEventsIds, setInterestedEventsIds] = useState([])
     const [addedEventsIds, setAddedEventsIds] = useState([])
@@ -74,6 +74,14 @@ export default function UserPage() {
         setDisplayedEvents([])
     }
 
+    const handleDeleteButton = () => {
+        axios.delete(`/deleteUser/${user.name}`).then(res => {
+            console.log(res)
+            logout()
+            window.location.href = "/"
+        })
+    }
+
     return (
         <div>
             <div id="loadingOverlay" className={(!eventsLoaded) ? 'show' : 'hide'}>
@@ -108,9 +116,9 @@ export default function UserPage() {
                         </a>)}
                 </div>
                 <div id="userPageSettingsContainer">
-                    {displayedEvents.length === 0 && 
+                    {(displayedEvents.length === 0 && activeOption === 'Setări') && 
                         <div>
-                        <button>Ștergere Cont</button>
+                        <button onClick={() => handleDeleteButton()}>Ștergere Cont</button>
                         </div>
                     }
                 </div>
