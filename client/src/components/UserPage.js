@@ -75,6 +75,7 @@ export default function UserPage() {
     }
 
     const handleDeleteButton = () => {
+        
         axios.delete(`/deleteUser/${user.name}`).then(res => {
             console.log(res)
             logout()

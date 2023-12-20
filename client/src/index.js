@@ -13,6 +13,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import EditEvent from "./components/EditEvent";
 import ManageEvents from "./components/ManageEvents";
 import UserPage from "./components/UserPage";
+import BecomeOrganizer from "./components/BecomeOrganizer";
 
 
 const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: "/user/:id",
     element: <UserPage />
+  },
+  {
+    path: "/become-organizer",
+    element: <BecomeOrganizer />
   }
 ]);
 

@@ -6,7 +6,7 @@ export default function Footer()
         <div className="footer-content">
           <h3 id="footerLogo">Bvent</h3>
           <div id="footerOptions">
-            <p>Devino Organizator</p>
+            <p onClick={() => window.location.pathname = "/become-organizer"}>Devino Organizator</p>
             <p>Despre</p>
             <p>Contact</p>
           </div>
