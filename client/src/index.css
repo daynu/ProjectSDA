@@ -385,7 +385,8 @@ img
   backdrop-filter: blur(10px);
   border-radius: 20px;
   width: 42vw;
-  height: 83vh;
+  min-height: 83vh;
+  max-height: fit-content   ;
   z-index: 10;
 }
 
@@ -494,10 +495,9 @@ img
   border-radius: 20px;
   width: 24.5vw;
   min-height: 10vh;
-  height: max-content;
+  height: auto;
+  overflow: hidden;
   color: black;
-  position: relative;
-  transform: translateZ(0);
 }
 
 #descriereAE::-webkit-scrollbar {
@@ -574,6 +574,9 @@ img
 
 #cancelAE
 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 2vh;
   margin-left: 16vw;
   background-color: #8e4141;
@@ -1042,6 +1045,27 @@ footer {
   justify-content: center;
   align-items: center;
   height: 50vh;
+}
+
+#userPageEventsContainer
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5vh;
+
+}
+
+#userPage
+{
+  display: flex;
+}
+
+#userPageMenu
+{
+  display: flex;
+  width: 25vw;
+  flex-direction: column;
 }
 
 @keyframes loadingScreen {

@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import AddEvent from "./addEvent";
-import EventCarousel from "./EventCarousel";
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { useAuth } from "../utils/AuthContext";
 import LoadingScreen from '../img/BrasovStema.png'
 import Filter from "./Filter";
-import SearchEventsBar from "./SearchEventsBar";
 import dateToString from "../utils/dateFormatter";
 import Navbar from "./Navbar";
 import Brasov from '../img/brasov.jpg'
