@@ -19,6 +19,7 @@ export default function UserPage() {
     const [addedEvents, setAddedEvents] = useState([])
     const [displayedEvents, setDisplayedEvents] = useState([])
     const [activeOption, setActiveOption] = useState("")
+    const [eventsLoaded, setEventsLoaded] = useState(false);
 
     useEffect(() => {
         axios.get(`/api/user/${user.name}`).then(res => {
@@ -26,6 +27,7 @@ export default function UserPage() {
             setAddedEventsIds(res.data.added_events)
         })
     }, [])
+    
 
     useEffect(() => {
         const fetchInterestedEvents = async () => {
@@ -41,7 +43,7 @@ export default function UserPage() {
             );
             setInterestedEvents(events.filter(event => event !== null));
         };
-        fetchInterestedEvents();
+        fetchInterestedEvents().then(() => setEventsLoaded(true));
     }, [interestedEventsIds]);
     
     useEffect(() => {
@@ -58,7 +60,7 @@ export default function UserPage() {
             );
             setAddedEvents(events.filter(event => event !== null));
         };
-        fetchAddedEvents();
+        fetchAddedEvents().then(() => setEventsLoaded(true));
     }, [addedEventsIds]);
 
     useEffect(() => {
@@ -68,7 +70,7 @@ export default function UserPage() {
 
     return (
         <div>
-            <div id="loadingOverlay" className={(interestedEvents.length === 0 || addedEvents.length === 0) ? 'show' : 'hide'}>
+            <div id="loadingOverlay" className={(!eventsLoaded) ? 'show' : 'hide'}>
                 <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
             </div>
         {user.name && <h4>{user.name}</h4>}
