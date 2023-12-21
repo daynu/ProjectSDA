@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -9,6 +10,12 @@ const ConfirmOrganizer = () => {
     // This might involve making a request to your server
     console.log(`Confirming organizer status for ${email}`);
   }, [email]);
+
+  useEffect(() => {
+    console.log(`Confirming organizer status for ${email}`);  
+    axios.post('/confirm-organizer/' + email)
+  }, [email]);
+
 
   return (
     <div>

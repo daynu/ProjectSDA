@@ -328,6 +328,23 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
+app.post('/confirm-organizer/:email', async (req, res) => {
+
+  const { email } = req.params;
+  
+  try {
+    let user = await User.findOneAndUpdate({ email: email }, { user_role: 'organizer' });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json({ message: 'User role updated' });
+  }
+  catch(e)
+  {
+    console.log(e)
+  }
+
+})
 
 //ADD FUNCTIONS
 
