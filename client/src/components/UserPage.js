@@ -91,6 +91,7 @@ export default function UserPage() {
         <Navbar/>
         
         <div id="userPage">
+            
             <div id = "userPageMenu">
                 <div className={`userPageMenuButton ${activeOption === "Evenimente interesate" ? "active" : ''}`} onClick={() => {
                         setDisplayedEvents(interestedEvents)
