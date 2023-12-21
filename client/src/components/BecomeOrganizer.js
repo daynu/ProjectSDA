@@ -26,6 +26,7 @@ function BecomeOrganizer() {
   
       const data = await response.json();
       console.log('Email sent:', data);
+      alert('Request sent!');
     } catch (error) {
       console.error('Error sending email:', error);
     }
