@@ -14,6 +14,7 @@ import EditEvent from "./components/EditEvent";
 import ManageEvents from "./components/ManageEvents";
 import UserPage from "./components/UserPage";
 import BecomeOrganizer from "./components/BecomeOrganizer";
+import ConfirmOrganizer from "./components/ConfirmOrganizer";
 
 
 const router = createBrowserRouter([
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: "/become-organizer",
     element: <BecomeOrganizer />
+  },
+  {
+    path: "/confirm-organizer/:email",
+    element: <ConfirmOrganizer />
   }
 ]);
 

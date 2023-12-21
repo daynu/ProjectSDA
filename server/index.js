@@ -35,7 +35,7 @@ const userSchema = new Schema({
   username: String,
   email: String,
   password: String, 
-  admin: Boolean,
+  user_role: String,
   interested_events: Array,
   added_events: Array
 });
@@ -114,7 +114,7 @@ app.get('/api/userRole/:name', async function (req, res)
 
   const userRole = await findUserRole(userName)
 
-  res.json({isAdmin: userRole})
+  res.json({role: userRole})
 })
 
 
@@ -315,7 +315,7 @@ app.post('/send-email', async (req, res) => {
     to: 'bventbrasov@gmail.com',
     subject: 'New Premium Access Request',
     text: `New premium access request from ${firstName} ${lastName}. Email: ${email}, Phone: ${phone}.`,
-    html: `<p>New premium access request from ${firstName} ${lastName}.</p><p>Email: ${email}</p><p>Phone: ${phone}</p><button>Confirm Access</button>`,
+    html: `<p>New premium access request from ${firstName} ${lastName}.</p><p>Email: ${email}</p><p>Phone: ${phone}</p><a href = "http://localhost:3000/confirm-organizer/${email}"><button>Confirm Access</button></a>`,
   };
 
   try {
@@ -385,7 +385,7 @@ async function findUserRole(name)
   try {
     const user = await User.findOne({ username: name });
     if (user) {
-      return user.admin;
+      return user.user_role;
     }
   } catch (error) {
     

@@ -1,5 +1,6 @@
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 const AuthContext = createContext();
@@ -11,6 +12,24 @@ export const AuthProvider = ({ children }) => {
     return storedUser ? JSON.parse(storedUser) : { name: '' };
   });
 
+  const [role, setRole] = useState('visitor')
+
+  useEffect(() => {
+    //Checking if user is an admin
+    if (user.name) {
+      axios.get(`/api/userRole/${user.name}`)
+        .then((res) => {
+          setRole(res.data.role);
+        })
+        .catch((error) => {
+          console.error("Error fetching user role:", error);
+        });
+    }
+    else
+    {
+      setRole('visitor')
+    }
+  }, [user]);
 
   const logout = () => {
     setUser({ name: '' });
@@ -25,7 +44,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, logout, login }}>
+    <AuthContext.Provider value={{ user, logout, login, role }}>
       {children}
     </AuthContext.Provider>
   );

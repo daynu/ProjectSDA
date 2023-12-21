@@ -10,25 +10,8 @@ export default function ManageEvents() {
 
     const [eventsData, setEventsData] = useState([]);
     const [searchedEvents, setSearchedEvents] = useState([eventsData]);
-    const { user } = useAuth()
-    const [isAdmin, setIsAdmin] = useState(false);
+    const { role } = useAuth()
 
-    useEffect(() => {
-        if (user.name) {
-            axios.get(`/api/userRole/${user.name}`)
-              .then((res) => {
-                setIsAdmin(res.data.isAdmin);
-              })
-              .catch((error) => {
-                console.error("Error fetching user role:", error);
-              });
-          }
-          else
-          {
-            setIsAdmin(false)
-          }
-    }
-    , [user])
 
     useEffect(() => {
         axios.get('/api/events').then(res =>
@@ -60,7 +43,7 @@ export default function ManageEvents() {
 
 
     return(
-        isAdmin ? (
+        role === "admin" ? (
         <div>
             <div id="navbarManage">
                 <Link id = "logo" to="/">BVent</Link>

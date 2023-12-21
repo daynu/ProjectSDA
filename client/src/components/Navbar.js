@@ -5,32 +5,15 @@ import SearchEventsBar from "./SearchEventsBar"
 import { useEvents } from "../utils/EventsProvider"
 import { useState } from "react"
 import AddEvent from "./addEvent"
-import axios from "axios"
+
 
 
 
 export default function Navbar()
 {
 
-    const {user, logout} = useAuth()
-    const [isAdmin, setIsAdmin] = useState(false);
+    const {user, logout, role} = useAuth()
 
-    useEffect(() => {
-        //Checking if user is an admin
-        if (user.name) {
-          axios.get(`/api/userRole/${user.name}`)
-            .then((res) => {
-              setIsAdmin(res.data.isAdmin);
-            })
-            .catch((error) => {
-              console.error("Error fetching user role:", error);
-            });
-        }
-        else
-        {
-          setIsAdmin(false)
-        }
-      }, [user]);
 
     const [showUserOptions, setShowUserOptions] = useState(false)
 
@@ -61,8 +44,8 @@ export default function Navbar()
                               <div class="menu-item" onClick={() => window.location.pathname = `/user/${user.name}`}>
                                 My Profile
                               </div>
-                              <AddEvent isAdmin={isAdmin} />
-                              {isAdmin &&
+                              <AddEvent role={role} />
+                              {role === "admin" &&
                               <div class="menu-item" onClick={() => window.location.pathname = "/manage-events"}>
                                 Manage Events
                                 </div>
