@@ -9,128 +9,133 @@ import UserIcon from '../img/user.png'
 import dateToString from "../utils/dateFormatter";
 import Navbar from "./Navbar";
 
-
 export default function UserPage() {
+  const { user, logout } = useAuth();
 
-    const {user, logout} = useAuth()
+  const [interestedEventsIds, setInterestedEventsIds] = useState([]);
+  const [addedEventsIds, setAddedEventsIds] = useState([]);
+  const [interestedEvents, setInterestedEvents] = useState([]);
+  const [addedEvents, setAddedEvents] = useState([]);
+  const [displayedEvents, setDisplayedEvents] = useState([]);
+  const [activeOption, setActiveOption] = useState('Evenimente interesate');
+  const [eventsLoaded, setEventsLoaded] = useState(false);
 
-    const [interestedEventsIds, setInterestedEventsIds] = useState([])
-    const [addedEventsIds, setAddedEventsIds] = useState([])
-    const [interestedEvents, setInterestedEvents] = useState([])
-    const [addedEvents, setAddedEvents] = useState([])
-    const [displayedEvents, setDisplayedEvents] = useState([])
-    const [activeOption, setActiveOption] = useState("")
-    const [eventsLoaded, setEventsLoaded] = useState(false);
+  useEffect(() => {
+    axios.get(`/api/user/${user.name}`).then(res => {
+      setInterestedEventsIds(res.data.interested_events);
+      setAddedEventsIds(res.data.added_events);
+    });
+  }, []);
 
-    useEffect(() => {
-        axios.get(`/api/user/${user.name}`).then(res => {
-            setInterestedEventsIds(res.data.interested_events)
-            setAddedEventsIds(res.data.added_events)
-        })
-    }, [])
-    
+  useEffect(() => {
+    const fetchEvents = async (eventIds, setEventsFunction) => {
+      const events = await Promise.all(
+        eventIds.map(eventId =>
+          axios
+            .get(`/api/event/${eventId}`)
+            .then(res => res.data)
+            .catch(error => {
+              console.error(`Failed to fetch event with ID ${eventId}: ${error}`);
+              return null;
+            })
+        )
+      );
+      setEventsFunction(events.filter(event => event !== null));
+    };
 
-    useEffect(() => {
-        const fetchInterestedEvents = async () => {
-            const events = await Promise.all(
-                interestedEventsIds.map(eventId =>
-                    axios.get(`/api/event/${eventId}`)
-                        .then(res => res.data)
-                        .catch(error => {
-                            console.error(`Failed to fetch event with ID ${eventId}: ${error}`);
-                            return null;
-                        })
-                )
-            );
-            setInterestedEvents(events.filter(event => event !== null));
-        };
-        fetchInterestedEvents().then(() => setEventsLoaded(true));
-    }, [interestedEventsIds]);
-    
-    useEffect(() => {
-        const fetchAddedEvents = async () => {
-            const events = await Promise.all(
-                addedEventsIds.map(eventId =>
-                    axios.get(`/api/event/${eventId}`)
-                        .then(res => res.data)
-                        .catch(error => {
-                            console.error(`Failed to fetch event with ID ${eventId}: ${error}`);
-                            return null;
-                        })
-                )
-            );
-            setAddedEvents(events.filter(event => event !== null));
-        };
-        fetchAddedEvents().then(() => setEventsLoaded(true));
-    }, [addedEventsIds]);
+    const fetchData = async () => {
+      await fetchEvents(interestedEventsIds, setInterestedEvents);
+      await fetchEvents(addedEventsIds, setAddedEvents);
+      setEventsLoaded(true);
+    };
 
-    useEffect(() => {
-        setDisplayedEvents(interestedEvents)
-        setActiveOption("Evenimente interesate")
-    }, [interestedEvents])
+    fetchData();
+  }, [interestedEventsIds, addedEventsIds]);
 
-    const handleSettingsButton = () => {
-        setActiveOption("Setări")
-        setDisplayedEvents([])
+  useEffect(() => {
+    if (activeOption === 'Evenimente interesate') {
+      setDisplayedEvents(interestedEvents);
+    } else if (activeOption === 'Evenimente adăugate') {
+      setDisplayedEvents(addedEvents);
     }
+  }, [interestedEvents, addedEvents, activeOption]);
 
-    const handleDeleteButton = () => {
-        
-        axios.delete(`/deleteUser/${user.name}`).then(res => {
-            console.log(res)
-            logout()
-            window.location.href = "/"
-        })
-    }
+  const handleSettingsButton = () => {
+    setActiveOption('Setări');
+    setDisplayedEvents([]);
+  };
 
-    return (
-        <div>
-            <div id="loadingOverlay" className={(!eventsLoaded) ? 'show' : 'hide'}>
-                <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
-            </div>
-        <Navbar/>
-        
-        <div id="userPage">
-            
-            <div id = "userPageMenu">
-                <div className={`userPageMenuButton ${activeOption === "Evenimente interesate" ? "active" : ''}`} onClick={() => {
-                        setDisplayedEvents(interestedEvents)
-                        setActiveOption("Evenimente interesate")
-                }}>Evenimente interesate</div>
-                <div className={`userPageMenuButton ${activeOption === "Evenimente adăugate" ? "active" : ''}`} onClick={() => 
-                    {
-                        setDisplayedEvents(addedEvents)
-                        setActiveOption("Evenimente adăugate")
-                }}>Evenimente adăugate</div>
-                <div className={`userPageMenuButton ${activeOption === "Setări" ? "active" : ''}`} onClick={() => handleSettingsButton()}>Setări</div>
-            </div>
-            <div id="userActiveOption">
-                <h3>{activeOption}</h3>
-                <div id="userPageEventsContainer">
-                {displayedEvents && displayedEvents.map(event => <a href={`/event/${event._id}`}>
-                        <div className="eventCell">
-                            <div className="eventCellImgContainer"><img className="eventCellImg" src={event.picture} alt={event.title}/></div>
-                            <p className="eventCellTitle">{event.title}</p>
-                            <div className="eventCellDate"><img className="eventIcon" alt="calendar" src={Calendar}/><p>{dateToString(event.date)}</p></div>
-                            <div className="eventCellLocation"><img src={Location} className="eventIcon"/><p>{event.location}</p></div>
-                            <div className="eventCellInterested"><img src={UserIcon} className="eventIcon"/><p>{event.interested_count} Interesați</p></div>
-                            </div>
-                        </a>)}
-                </div>
-                <div id="userPageSettingsContainer">
-                    {(displayedEvents.length === 0 && activeOption === 'Setări') && 
-                        <div>
-                        <button onClick={() => handleDeleteButton()}>Ștergere Cont</button>
-                        </div>
-                    }
-                </div>
+  const handleDeleteButton = () => {
+    axios.delete(`/deleteUser/${user.name}`).then(res => {
+      console.log(res);
+      logout();
+      window.location.href = '/';
+    });
+  };
+
+  const handleDeleteEvent = (eventId) => {
+    axios.delete(`/delete/${eventId}`);
+    window.location.reload();
+  };
+
+  return (
+    <div>
+      <div id="loadingOverlay" className={!eventsLoaded ? 'show' : 'hide'}>
+        <img id="loadingScreen" src={LoadingScreen} alt="LoadingScreen" />
+      </div>
+      <Navbar />
+      <div id="userPage">
+        <div id="userPageMenu">
+          <div
+            className={`userPageMenuButton ${activeOption === 'Evenimente interesate' ? 'active' : ''}`}
+            onClick={() => {
+              setDisplayedEvents(interestedEvents);
+              setActiveOption('Evenimente interesate');
+            }}
+          >
+            Evenimente interesate
+          </div>
+          <div
+            className={`userPageMenuButton ${activeOption === 'Evenimente adăugate' ? 'active' : ''}`}
+            onClick={() => {
+              setDisplayedEvents(addedEvents);
+              setActiveOption('Evenimente adăugate');
+            }}
+          >
+            Evenimente adăugate
+          </div>
+          <div className={`userPageMenuButton ${activeOption === 'Setări' ? 'active' : ''}`} onClick={handleSettingsButton}>
+            Setări
+          </div>
         </div>
-        
-
+        <div id="userActiveOption">
+          <h3>{activeOption}</h3>
+          <div id="userPageEventsContainer">
+            {displayedEvents &&
+              displayedEvents.map(event => (
+                <div className="eventCell">
+                <div className="eventCellImgContainer"><img className="eventCellImg" src={event.picture} alt={event.title}/></div>
+                <p className="eventCellTitle">{event.title}</p>
+                <div className="eventCellDate"><img className="eventIcon" alt="calendar" src={Calendar}/><p>{dateToString(event.date)}</p></div>
+                <div className="eventCellLocation"><img src={Location} className="eventIcon"/><p>{event.location}</p></div>
+                <div className="eventCellInterested"><img src={UserIcon} className="eventIcon"/><p>{event.interested_count} Interesați</p></div>
+                <div className="eventCellButtons">
+                    <button className="eventCellButton" onClick={() => window.location.href = `/event/${event._id}`}>Detalii</button>
+                    {activeOption === 'Evenimente adăugate' && <> <button className="eventCellButton" onClick={() => handleDeleteEvent(event._id)}>Șterge</button>
+                                    <button onClick={() => window.location.href = `/edit-event/${event._id}`} className="eventCellButton">Editează</button></>}
+                </div>    
+              </div>
+              ))}
+          </div>
+          <div id="userPageSettingsContainer">
+            {displayedEvents.length === 0 && activeOption === 'Setări' && (
+              <div>
+                <button onClick={handleDeleteButton}>Ștergere Cont</button>
+              </div>
+            )}
+          </div>
         </div>
-        </div>
-    );
-
+      </div>
+    </div>
+  );
 }
-
-

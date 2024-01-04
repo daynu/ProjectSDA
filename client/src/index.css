@@ -1,7 +1,7 @@
 
 @font-face {
   font-family: 'FontLogo';
-  src: url('./fonts/RusticMarket.ttf');
+  src: url('./fonts/IndoorDesign.otf');
 }
 
 @font-face
@@ -126,7 +126,6 @@ code {
 a
 {
     text-decoration: none;
-    color: white;
 }
 
 .eventLink
@@ -160,6 +159,7 @@ a
   font-size: 50px;
   letter-spacing: 1px;
   margin-left: 2vh;
+  color: white;
 }
 
 img
@@ -300,7 +300,8 @@ img
 .eventCell {
   color: black;
   width: 20vw;
-  height: 46vh;
+  min-height: 46vh;
+  height: fit-content;
   border-radius: 5%;
   overflow: hidden;
   background-color: white;
@@ -1119,6 +1120,39 @@ footer {
   color: black;
 }
 
+
+.deleteeditButtons
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.eventCellButtons
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+.eventCellButton
+{
+  background-color: #142d4c;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 27%;
+  height: 5vh;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
 
 @keyframes loadingScreen {
 

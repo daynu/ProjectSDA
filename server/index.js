@@ -328,6 +328,7 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
+
 app.post('/confirm-organizer/:email', async (req, res) => {
 
   const { email } = req.params;

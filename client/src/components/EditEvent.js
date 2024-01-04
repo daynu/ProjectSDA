@@ -41,7 +41,7 @@ const EditEvent = () => {
         e.preventDefault();
         try {
             await axios.put(`/edit/${eventId}`, event);
-            window.location.pathname = "/manage-events";
+            window.history.back();
         } catch (error) {
             console.error('API call failed:', error);
         }
