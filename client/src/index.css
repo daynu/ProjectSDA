@@ -618,7 +618,7 @@ img
 #mainPhotoContainer, #mainEventPhotoContainer {
   position: relative;
   max-width: 100%;
-  height: 70vh;
+  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -647,7 +647,7 @@ img
   background-color: white;
   justify-self: center;
   align-self: center;
-  transform: translateY(60vh);
+  transform: translateY(50vh);
   position: absolute;
   width: 40vw;
   display: flex;
