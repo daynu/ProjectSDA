@@ -37,25 +37,35 @@ function BecomeOrganizer() {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
+    <div id="becomeOrganizer">
+      <h1>Devino Organizator</h1>
+      <p>Completează formularul</p>
+    </div>
+    <form id = "organizerForm" onSubmit={handleSubmit}>
       <label>
-        First Name:
+        Prenume:
+        <br></br>
         <input type="text" name="firstName" onChange={handleChange} />
       </label>
       <label>
-        Last Name:
+        Nume:
+        <br></br>
         <input type="text" name="lastName" onChange={handleChange} />
       </label>
       <label>
         Email:
+        <br></br>
         <input type="email" name="email" onChange={handleChange} />
       </label>
       <label>
-        Phone:
+        Telefon:
+        <br></br>
         <input type="tel" name="phone" onChange={handleChange} />
       </label>
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Trimite" />
     </form>
+    </>
   );
 }
 

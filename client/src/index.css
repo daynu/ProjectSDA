@@ -1155,6 +1155,32 @@ footer {
 
 }
 
+.footerLink
+{
+  cursor: pointer;
+}
+
+#organizerForm
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5vh;
+  margin-top: 2vh ;
+}
+
+#becomeOrganizer
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vh;
+  margin-top: 10vh;
+
+}
+
 @keyframes loadingScreen {
 
   from
