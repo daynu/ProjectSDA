@@ -5,7 +5,7 @@ import SearchEventsBar from "./SearchEventsBar"
 import { useEvents } from "../utils/EventsProvider"
 import { useState } from "react"
 import AddEvent from "./addEvent"
-import UserIcon from "../img/profile-1341-svgrepo-com.svg"
+
 
 
 
