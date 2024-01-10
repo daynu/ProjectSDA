@@ -62,7 +62,7 @@ code {
   height: 25px;
   margin-right: 30px;
   margin-left: 20px;
-  fill:#C8C8C8
+  fill:#C8C8C8;
   }
 
 #searchBar input[type=text]
@@ -116,11 +116,12 @@ code {
 }
 
 
-#userName
+#usersName
 {
   margin: 0;
   margin-right: 2vh;
   cursor: pointer;
+  font-size: 20px;
 }
 
 a

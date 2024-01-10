@@ -5,6 +5,7 @@ import SearchEventsBar from "./SearchEventsBar"
 import { useEvents } from "../utils/EventsProvider"
 import { useState } from "react"
 import AddEvent from "./addEvent"
+import UserIcon from "../img/profile-1341-svgrepo-com.svg"
 
 
 
@@ -37,16 +38,18 @@ export default function Navbar()
             {user.name ? (
                 <>
                     <div id = "userName">
-                        <p onClick={handleUserNameClick} id="userName">{user.name}</p>
+                        <p onClick={handleUserNameClick} id="usersName">{user.name}</p>
                         
                             {showUserOptions && 
                             <div class="userOptions">
                               <div class="menu-item" onClick={() => window.location.pathname = `/user/${user.name}`}>
+                              <svg className="menu-icon" xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/></svg>
                                 My Profile
                               </div>
                               <AddEvent role={role} />
                               {role === "admin" &&
                               <div class="menu-item" onClick={() => window.location.pathname = "/manage-events"}>
+                                <svg className="menu-icon" xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M448 160H320V128H448v32zM48 64C21.5 64 0 85.5 0 112v64c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zM448 352v32H192V352H448zM48 288c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V336c0-26.5-21.5-48-48-48H48z"/></svg>
                                 Manage Events
                                 </div>
                               }
