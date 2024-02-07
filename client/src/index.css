@@ -24,6 +24,11 @@ body {
   }
   background-color: #142d4c;
   color: white;
+  width: 100vw;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
 
 code {
@@ -415,7 +420,7 @@ img
 #headerAE
 {
   color: #142d4c;
-  font-family: 'FontLogo';
+  font-family: 'FontMainTitle';
   text-align: center;
   margin-top: 2vh;
   font-size: 30px;
