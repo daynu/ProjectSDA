@@ -41,30 +41,33 @@ function BecomeOrganizer() {
     <div id="becomeOrganizer">
       <h1>Devino Organizator</h1>
       <p>Completează formularul</p>
-    </div>
-    <form id = "organizerForm" onSubmit={handleSubmit}>
-      <label>
-        Prenume:
-        <br></br>
-        <input type="text" name="firstName" onChange={handleChange} />
-      </label>
-      <label>
-        Nume:
-        <br></br>
-        <input type="text" name="lastName" onChange={handleChange} />
-      </label>
-      <label>
-        Email:
-        <br></br>
-        <input type="email" name="email" onChange={handleChange} />
-      </label>
-      <label>
-        Telefon:
-        <br></br>
-        <input type="tel" name="phone" onChange={handleChange} />
-      </label>
-      <input type="submit" value="Trimite" />
-    </form>
+
+      <div id = "organizerFormBackground">
+        <form id = "organizerForm" onSubmit={handleSubmit}>
+          <label>
+            Prenume:
+            <br></br>
+            <input type="text" name="firstName" onChange={handleChange} />
+          </label>
+          <label>
+            Nume:
+            <br></br>
+            <input type="text" name="lastName" onChange={handleChange} />
+          </label>
+          <label>
+            Email:
+            <br></br>
+            <input type="email" name="email" onChange={handleChange} />
+          </label>
+          <label>
+            Telefon:
+            <br></br>
+            <input type="tel" name="phone" onChange={handleChange} />
+          </label>
+          <input type="submit" value="Trimite" />
+        </form>
+        </div>
+      </div>
     </>
   );
 }
