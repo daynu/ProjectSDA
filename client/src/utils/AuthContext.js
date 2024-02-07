@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
   {
     setUser({name: user})
     localStorage.setItem('user', JSON.stringify({ name: user }));
-    window.location.href = '/'
+    window.location.href = '/ '
   }
 
   return (
