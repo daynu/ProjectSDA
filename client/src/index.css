@@ -296,13 +296,19 @@ img
 
 #evenimenteDisplay
 {
+  align-self: center;
   min-height: 42vh;
   display: flex;
+  width: 100vw;
+  overflow: scroll;
   align-items: center;
   justify-content: center;
   gap: 2vw;
-  padding-top: 10vh;
-
+  height: 64vh;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  position: relative;
+  transition: opacity 1s ease;
 }
 
 .eventCell {
@@ -312,10 +318,11 @@ img
   height: fit-content;
   border-radius: 5%;
   overflow: hidden;
+  margin-top: 5vh;
   background-color: white;
-  margin-bottom: 5vh;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.7);
   border: none;
+  transition: opacity 1s ease;
 }
 
 .eventCell:hover > .eventCellImgContainer > .eventCellImg
@@ -323,7 +330,49 @@ img
   transform: scale(1.05);
 }
 
+#navigationButtons
+{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+  border-radius: 20px;
+  width: 7vw;
+  overflow: hidden;
+  right: 15vw;
+  top: 4vh;
+}
 
+#previousButton, #nextButton
+{
+  position: relative;
+  background-color: #060d17;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 5vw;
+  height: 5vh;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 25%;
+  overflow: hidden;
+}
+
+
+#previousButton:hover, #nextButton:hover
+{
+  background-color: #2d5d97;
+}
+
+.arrow
+{
+  width: 50%;
+  height: 70%;
+  filter: invert();
+}
 
 .eventCellImg {
   width: 100%;

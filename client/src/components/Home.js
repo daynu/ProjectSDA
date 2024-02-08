@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { CSSTransition } from "react-transition-group";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useAuth } from "../utils/AuthContext";
 import LoadingScreen from '../img/BrasovStema.png'
@@ -11,6 +12,8 @@ import Calendar from '../img/date.png'
 import Location from '../img/pin.png'
 import Footer from "./Footer";
 import UserIcon from '../img/user.png'
+import Left from '../img/left.png'
+import Right from '../img/right.png'
 
 
 export default function Home() {
@@ -24,6 +27,12 @@ export default function Home() {
     category: '',
     date: ''
   })
+
+  const [displayedEvents, setDisplayedEvents] = useState([])
+
+  useEffect(() => {
+    setDisplayedEvents(filteredEvents.slice(0, 3))
+  }, [filteredEvents])
 
 
   useEffect(() => {
@@ -71,7 +80,25 @@ export default function Home() {
 
 
 
-
+  function handlePrevious() {
+    let currentEvents = displayedEvents;
+    let index = filteredEvents.indexOf(currentEvents[0]);
+    if (index - 1 >= 0) {
+      setDisplayedEvents(filteredEvents.slice(index - 1, index + 2));
+    }
+  }
+  
+  function handleNext() {
+    let currentEvents = displayedEvents;
+    let index = filteredEvents.indexOf(currentEvents[0]);
+    if (index + 3 < filteredEvents.length) {
+      setDisplayedEvents(filteredEvents.slice(index + 1, index + 4));
+    }
+  }
+  
+  
+  
+  
 
 
   function toggleFilter()
@@ -97,12 +124,14 @@ export default function Home() {
     </div>  
     
     
-      
+    <CSSTransition
+      in={displayedEvents}
+      transitionLeaveTimeout={1000}>
       <div id="evenimenteDisplay">
         {
-          filteredEvents.length > 0 ? 
+          displayedEvents.length > 0 ? 
           (
-                filteredEvents.map((event) =>
+                displayedEvents.map((event) =>
                 (
                   <a href={`/event/${event._id}`}>
                   <div className="eventCell">
@@ -120,8 +149,13 @@ export default function Home() {
           )
           
         }
-        </div>
-  
+        {filteredEvents.length > 3 && (<div id="navigationButtons">
+          <button id="previousButton" onClick={() => handlePrevious()}><img className="arrow" src={Left} /></button>
+          <button id="nextButton" onClick={() => handleNext()}><img className="arrow" src={Right} /></button>
+        </div>)}
+        
+      </div>
+  </CSSTransition>
         <Footer />
   </div>
 )
@@ -168,7 +202,9 @@ function upcomingEvents(events)
     }
   }
   
-  return upcomingEvents;
+  const sortedUpcoming = upcomingEvents.sort((a, b) => compareDates(a.date, b.date))
+
+  return sortedUpcoming;
 
 
 }
@@ -238,7 +274,9 @@ function filterByCategory(events, category)
     }
   }
 
-  return newEvents
+  const sortedNewEvents = newEvents.sort((a, b) => compareDates(a.date, b.date))
+
+  return sortedNewEvents;
 }
 
 
