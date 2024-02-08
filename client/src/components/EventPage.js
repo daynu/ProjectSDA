@@ -16,11 +16,11 @@ function EventPage() {
   const [eventData, setEventData] = useState([]);
   const [isInterested, setIsInterested] = useState(false);
 
+
   const toggleInterest = async () => {
     if (userName !== null) {
       setIsInterested(prevInterested => {
         const newInterested = !prevInterested;
-        // Perform the API call outside of the state update function
         if (newInterested) {
           axios.post(`/addInterestedEvent/${id}/${userName}`)
             .catch(error => console.error('API call failed:', error));
@@ -28,7 +28,7 @@ function EventPage() {
           axios.post(`/removeInterestedEvent/${id}/${userName}`)
             .catch(error => console.error('API call failed:', error));
         }
-        return newInterested; // Return the new state value
+        return newInterested;
       });
     } else {
       alert("Trebuie să fii logat pentru a putea adăuga evenimente la favorite!");

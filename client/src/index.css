@@ -361,6 +361,8 @@ img
 
 #buyTicket, #interestedButton
 {
+  align-items: center;
+  justify-items: center;
   border-radius: 5px;
   background-color: #142d4c;
   color: white;
@@ -875,7 +877,7 @@ p
   background-color: white;
   padding: 20px;
   border-left: 4px solid black;
-  border-left-style: dashed ;
+  border-left-style: dashed;
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -920,13 +922,12 @@ footer {
   background-color: #142d4c;
   color: white;
   border: none;
-  padding: 10px;
   cursor: pointer;
   border-radius: 5px;
 }
 
 #interestedButton.interested {
-  background-color: #e74c3c; /* Change color for interested state */
+  background-color: #e74c3c;
 }
  
 #footerOptions {
