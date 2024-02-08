@@ -32,7 +32,7 @@ export default function UserPage() {
     if (user.name) {
       axios.get(`/api/userRole/${user.name}`)
         .then((res) => {
-          setRole(res.data.role);
+          if(res.data.role) setRole(res.data.role);
         })
         .catch((error) => {
           console.error("Error fetching user role:", error);
@@ -83,22 +83,33 @@ export default function UserPage() {
   };
 
   const handleDeleteButton = () => {
-    axios.delete(`/deleteUser/${user.name}`).then(res => {
-      console.log(res);
-      logout();
-      window.location.href = '/';
-    });
-  };
-
-  const handleDeleteEvent = (eventId) => {
-    if (window.confirm('Ești sigur că vrei să ștergi acest cont?'))
-    {
-      axios.delete(`/delete/${eventId}`);
-      window.location.reload();
+    const confirmed = window.confirm('Ești sigur că vrei să ștergi acest cont?');
+  
+    if (confirmed) {
+      axios.delete(`/deleteUser/${user.name}`)
+        .then(res => {
+          console.log(res);
+          logout();
+          window.location.href = '/';
+        })
+        .catch(error => {
+          console.error('Error deleting user:', error);
+        });
     }
-    
-    
   };
+  
+
+  const handleDeleteEvent = async (eventId) => {
+
+    const confirmed = window.confirm('Ești sigur că vrei să ștergi acest eveniment?');
+
+    if (confirmed)
+    {
+      await axios.delete(`/delete/${eventId}`);
+      window.location.reload();
+    
+    };
+  }
 
   return (
     <div>
