@@ -167,6 +167,7 @@ a
   letter-spacing: 1px;
   margin-left: 2vh;
   color: white;
+  cursor: pointer;
 }
 
 img
@@ -895,6 +896,8 @@ p
 
 .eventDescription
 {
+  width: 70vw;
+  margin-bottom: 5vh;
   margin-top: 15vh;
   display: flex;
   flex-direction: column;

@@ -7,6 +7,7 @@ import dateToString from "../utils/dateFormatter";
 import Calendar from '../img/date.png'
 import Location from '../img/pin.png'
 import Clock from '../img/clock.png'
+import Footer from "./Footer";
 
 function EventPage() {
   const { id } = useParams();
@@ -90,6 +91,7 @@ function EventPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

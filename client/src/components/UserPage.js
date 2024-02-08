@@ -19,6 +19,7 @@ export default function UserPage() {
   const [displayedEvents, setDisplayedEvents] = useState([]);
   const [activeOption, setActiveOption] = useState('Evenimente interesate');
   const [eventsLoaded, setEventsLoaded] = useState(false);
+  const [role, setRole] = useState('visitor');
 
   useEffect(() => {
     axios.get(`/api/user/${user.name}`).then(res => {
@@ -26,6 +27,22 @@ export default function UserPage() {
       setAddedEventsIds(res.data.added_events);
     });
   }, []);
+
+  useEffect(() => {
+    if (user.name) {
+      axios.get(`/api/userRole/${user.name}`)
+        .then((res) => {
+          setRole(res.data.role);
+        })
+        .catch((error) => {
+          console.error("Error fetching user role:", error);
+        });
+    }
+    else
+    {
+      setRole('visitor')
+    }
+  }, [user]);
 
   useEffect(() => {
     const fetchEvents = async (eventIds, setEventsFunction) => {
@@ -74,8 +91,13 @@ export default function UserPage() {
   };
 
   const handleDeleteEvent = (eventId) => {
-    axios.delete(`/delete/${eventId}`);
-    window.location.reload();
+    if (window.confirm('Ești sigur că vrei să ștergi acest cont?'))
+    {
+      axios.delete(`/delete/${eventId}`);
+      window.location.reload();
+    }
+    
+    
   };
 
   return (
@@ -130,6 +152,7 @@ export default function UserPage() {
           <div id="userPageSettingsContainer">
             {displayedEvents.length === 0 && activeOption === 'Setări' && (
               <div>
+                <p>Rol: {role}</p>
                 <button onClick={handleDeleteButton}>Ștergere Cont</button>
               </div>
             )}
