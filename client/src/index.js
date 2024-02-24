@@ -7,7 +7,6 @@ import Signup from "./components/Signup";
 import { AuthProvider } from "./utils/AuthContext";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EventPage from "./components/EventPage";
-import DeleteEvents from "./components/ManageEvents";
 import { EventsProvider } from "./utils/EventsProvider";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import EditEvent from "./components/EditEvent";
@@ -15,6 +14,11 @@ import ManageEvents from "./components/ManageEvents";
 import UserPage from "./components/UserPage";
 import BecomeOrganizer from "./components/BecomeOrganizer";
 import ConfirmOrganizer from "./components/ConfirmOrganizer";
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+
+if (process.env.NODE_ENV === 'production') {
+  disableReactDevTools();
+}
 
 
 const router = createBrowserRouter([
