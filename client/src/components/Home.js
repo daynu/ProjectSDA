@@ -37,7 +37,7 @@ export default function Home() {
 
   useEffect(() => {
     // Fetch data when the component mounts
-    axios.get('/api/events').then(res =>
+    axios.get(`${process.env.BACKEND_URL}/api/events`).then(res =>
         {
             setEventsData(res.data)
         })

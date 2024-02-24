@@ -12,7 +12,7 @@ function GoogleAuth()
 
     function addUser(credentials)
     {
-        axios.post('/google-user-add', credentials)
+        axios.post(`${process.env.BACKEND_URL}/google-user-add`, credentials)
     }
 
     return(

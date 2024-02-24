@@ -13,7 +13,7 @@ const ConfirmOrganizer = () => {
 
   useEffect(() => {
     console.log(`Confirming organizer status for ${email}`);  
-    axios.post('/confirm-organizer/' + email)
+    axios.post(`${process.env.BACKEND_URL}/confirm-organizer/` + email)
   }, [email]);
 
 

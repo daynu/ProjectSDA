@@ -38,7 +38,7 @@ export default function AddEvent()
 
         try
         {
-            axios.post('/addevent', formData).then(res =>
+            axios.post(`${process.env.BACKEND_URL}/addevent`, formData).then(res =>
               {
                  console.log("Event Added")
               })

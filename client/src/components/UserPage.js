@@ -22,7 +22,7 @@ export default function UserPage() {
   const [role, setRole] = useState('visitor');
 
   useEffect(() => {
-    axios.get(`/api/user/${user.name}`).then(res => {
+    axios.get(`${process.env.BACKEND_URL}/api/user/${user.name}`).then(res => {
       setInterestedEventsIds(res.data.interested_events);
       setAddedEventsIds(res.data.added_events);
     });
@@ -30,7 +30,7 @@ export default function UserPage() {
 
   useEffect(() => {
     if (user.name) {
-      axios.get(`/api/userRole/${user.name}`)
+      axios.get(`${process.env.BACKEND_URL}/api/userRole/${user.name}`)
         .then((res) => {
           if(res.data.role) setRole(res.data.role);
         })
@@ -49,7 +49,7 @@ export default function UserPage() {
       const events = await Promise.all(
         eventIds.map(eventId =>
           axios
-            .get(`/api/event/${eventId}`)
+            .get(`${process.env.BACKEND_URL}/api/event/${eventId}`)
             .then(res => res.data)
             .catch(error => {
               console.error(`Failed to fetch event with ID ${eventId}: ${error}`);
@@ -86,7 +86,7 @@ export default function UserPage() {
     const confirmed = window.confirm('Ești sigur că vrei să ștergi acest cont?');
   
     if (confirmed) {
-      axios.delete(`/deleteUser/${user.name}`)
+      axios.delete(`${process.env.BACKEND_URL}/deleteUser/${user.name}`)
         .then(res => {
           console.log(res);
           logout();
@@ -105,7 +105,7 @@ export default function UserPage() {
 
     if (confirmed)
     {
-      await axios.delete(`/delete/${eventId}`);
+      await axios.delete(`${process.env.BACKEND_URL}/delete/${eventId}`);
       window.location.reload();
     
     };

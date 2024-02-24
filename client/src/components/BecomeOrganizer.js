@@ -12,7 +12,7 @@ function BecomeOrganizer() {
     e.preventDefault();
   
     try {
-      const response = await fetch('/send-email', {
+      const response = await fetch(`${process.env.BACKEND_URL}/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
