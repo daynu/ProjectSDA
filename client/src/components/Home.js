@@ -16,7 +16,7 @@ import Left from '../img/left.png'
 import Right from '../img/right.png'
 import { dotenv } from "dotenv";
 
-dotenv.config()
+dotenv.config({ path: '../../.env'})
 
 
 export default function Home() {
