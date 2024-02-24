@@ -14,7 +14,7 @@ import Footer from "./Footer";
 import UserIcon from '../img/user.png'
 import Left from '../img/left.png'
 import Right from '../img/right.png'
-import { dotenv } from "dotenv";
+import * as dotenv from 'dotenv'
 
 dotenv.config({ path: '../../.env'})
 
