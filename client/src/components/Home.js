@@ -39,8 +39,8 @@ export default function Home() {
 
 
   useEffect(() => {
-    // Fetch data when the component mounts
-    axios.get(`${process.env.BACKEND_URL}/api/events`).then(res =>
+    
+    axios.get(`https://bvent-backend.onrender.com/api/events`).then(res =>
         {
             setEventsData(res.data)
         })
@@ -76,7 +76,7 @@ export default function Home() {
 
   useEffect(() =>
   {
-    // Setting the events
+    
     setUpcoming(upcomingEvents(eventsData))
     setFilteredEvents(upcomingEvents(eventsData))
   }, [eventsData])
