@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     //Checking if user is an admin
     if (user.name) {
-      axios.get(`${process.env.BACKEND_URL}/api/userRole/${user.name}`)
+      axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/userRole/${user.name}`)
         .then((res) => {
           setRole(res.data.role);
         })

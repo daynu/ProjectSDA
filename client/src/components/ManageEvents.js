@@ -14,7 +14,7 @@ export default function ManageEvents() {
 
 
     useEffect(() => {
-        axios.get(`${process.env.BACKEND_URL}/api/events`).then(res =>
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/events`).then(res =>
             {
                 setEventsData(res.data)
             })

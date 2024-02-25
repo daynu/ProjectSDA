@@ -23,10 +23,10 @@ function EventPage() {
       setIsInterested(prevInterested => {
         const newInterested = !prevInterested;
         if (newInterested) {
-          axios.post(`${process.env.BACKEND_URL}/addInterestedEvent/${id}/${userName}`)
+          axios.post(`${process.env.REACT_APP_BACKEND_URL}/addInterestedEvent/${id}/${userName}`)
             .catch(error => console.error('API call failed:', error));
         } else {
-          axios.post(`${process.env.BACKEND_URL}/removeInterestedEvent/${id}/${userName}`)
+          axios.post(`${process.env.REACT_APP_BACKEND_URL}/removeInterestedEvent/${id}/${userName}`)
             .catch(error => console.error('API call failed:', error));
         }
         return newInterested;

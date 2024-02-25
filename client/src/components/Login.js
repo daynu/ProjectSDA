@@ -20,7 +20,7 @@ export default function Login()
         e.preventDefault();
         
         try {
-          await axios.post(`${process.env.BACKEND_URL}/login`, loginData).then(res =>
+          await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, loginData).then(res =>
           {
               setResponse(res.data)
           });

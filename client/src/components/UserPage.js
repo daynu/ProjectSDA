@@ -105,7 +105,7 @@ export default function UserPage() {
 
     if (confirmed)
     {
-      await axios.delete(`${process.env.BACKEND_URL}/delete/${eventId}`);
+      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/delete/${eventId}`);
       window.location.reload();
     
     };

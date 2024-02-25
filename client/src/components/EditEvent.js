@@ -40,7 +40,7 @@ const EditEvent = () => {
     const handleSubmitEdit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`${process.env.BACKEND_URL}/edit/${eventId}`, event);
+            await axios.put(`${process.env.REACT_APP_BACKEND_URL}/edit/${eventId}`, event);
             window.history.back();
         } catch (error) {
             console.error('API call failed:', error);
