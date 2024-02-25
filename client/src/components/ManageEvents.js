@@ -26,7 +26,7 @@ export default function ManageEvents() {
 
 
     const handleDeleteEvent = (eventId) => {
-        axios.delete(`${process.env.BACKEND_URL}/delete/` + eventId)
+        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/delete/` + eventId)
         window.location.reload();
     }
 

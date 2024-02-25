@@ -15,7 +15,7 @@ const EditEvent = () => {
     useEffect(() => {
         const fetchEventDetails = async () => {
             try {
-                axios.get(`/api/event/${eventId}`).then(res => {
+                axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/event/${eventId}`).then(res => {
                     setEvent(res.data);
                 });
             } catch (error) {

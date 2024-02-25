@@ -40,14 +40,14 @@ function EventPage() {
 
 
   useEffect(() => {
-    axios.get(`/api/event/${id}`).then(res => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/event/${id}`).then(res => {
       setEventData(res.data);
     });
   }, [id]);
 
   useEffect(() => {
     if (userName !== null) {
-      axios.get(`/api/user/${userName}`).then(res => {
+      axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/user/${userName}`).then(res => {
         setIsInterested(res.data.interested_events.includes(id));
       });
     }
