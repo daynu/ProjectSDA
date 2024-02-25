@@ -40,7 +40,7 @@ export default function Home() {
 
   useEffect(() => {
     
-    axios.get(`https://bvent-backend.onrender.com/api/events`).then(res =>
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/events`).then(res =>
         {
             setEventsData(res.data)
         })
